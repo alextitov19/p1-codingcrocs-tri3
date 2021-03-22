@@ -12,7 +12,7 @@
     <artifactId>demo</artifactId>
     <version>0.0.1-demo</version>
     <name>social</name>
-    <description>Soical media platform using java</description>
+    <description>Social media platform using java</description>
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -55,6 +55,18 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-core</artifactId>
+            <version>1.11.979</version>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-dynamodb</artifactId>
+            <version>1.11.979</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
