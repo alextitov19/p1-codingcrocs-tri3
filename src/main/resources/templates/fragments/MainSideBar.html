@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Side Bar Navigation</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+            font-family: 'Fjalla One', sans-serif;
+        }
+
+        body{
+            background-color: #ffffff;
+        }
+
+        .sidebar{
+            width: 7.5%;
+            height: 100%;
+            background: #eeeae5;
+            padding: 45px 0px;
+            position: fixed;
+        }
+
+        .sidebar h2{
+            color: #b04a69;
+            text-decoration-style: solid;
+            font-size: 150%;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar ul li{
+            padding: 15px;
+            border-bottom: 1px solid #bdb8d7;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .sidebar ul li a{
+            color: #1C0F13;
+            display: block;
+        }
+
+        .sidebar ul li a .fas{
+            width: 25px;
+        }
+
+        .sidebar ul li:hover{
+            background-color: #948ad2;
+        }
+
+        .sidebar ul li:hover a{
+            color: #8f08a2;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Social Media Platform</h2>
+    <ul>
+        <li><a href="/socialMedia/home"><i class="fas fa-camera-retro"></i>Home</a></li>
+        <li><a href="/socialMedia/home"><i class="fas fa-search"></i>Search</a></li>
+        <li><a href="/socialMedia/home"><i class="fas fa-sign-in-alt"></i>Sign in</a></li>
+        <li><a href="/socialMedia/home"><i class="fas fa-sign-out-alt"></i>Sign Out</a></li>
+        <li><a href="/socialMedia/home"><i class="fas fa-user-circle"></i>Account info</a></li>
+    </ul>
+</div>
+
+</body>
