@@ -1,7 +1,7 @@
 # p1-codingcrocs-tri3
 
 
-Goals:
+# Goals:
 working social media platform 
 Have users be able to subscribe to content
 Have users upload images
