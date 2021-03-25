@@ -36,7 +36,7 @@ public class Fibo {
 
     /**
      * returns modified array
-     * @param n
+     * @param n the nth term in the sequence
      * @param f the array pointer
      */
     private void findVal(int n, int[] f)
@@ -50,7 +50,7 @@ public class Fibo {
 
     /**
      * tester
-     * @param args
+     * @param args not used
      */
     public static void main(String[] args)
     {
