@@ -13,6 +13,12 @@ public class Recursion {
         }
         else return 1;
     }
+    int getFib(int n)
+    {
+        Fibo fib = new Fibo(n);
+        return fib.val;
+    }
+
 
 
 }
