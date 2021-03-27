@@ -1,5 +1,6 @@
 # p1-codingcrocs-tri3
 
+# [Tickets](https://github.com/alextitov19/p1-codingcrocs-tri3/projects/1)
 
 # Goals:
 - working social media platform
