@@ -15,8 +15,8 @@ public class Recursion {
     }
     int getFib(int n)
     {
-        Fibo fib = new Fibo(n);
-        return fib.val;
+        Fibo fib = new Fibo();
+        return 0;
     }
 
 

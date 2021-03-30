@@ -1,17 +1,14 @@
 package com.codingcorcs.demo.MiniLabs.Andrew.Recursion;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.Array;
+import java.math.BigInteger;
+import java.util.*;
 
 public class Fibo {
-    List<Integer> series;
-    int n; //nth term in fibo sequence
-    int val;
-    Fibo(int n)
+
+    Fibo()
     {
-        series = new ArrayList<>();
-        this.n = n;
-        this.val = findValBad(n);
+
     }
 
     /**
@@ -25,7 +22,7 @@ public class Fibo {
         {
             return Math.max(n, 0);
         }
-        else return findValBad(n-1) + findValBad(n-2);
+        else return findValBad(n-1) + findValBad(n-2); // really bad for optimization o(2^n)
     }
     public int DriverForBetter(int n)
     {
@@ -47,16 +44,56 @@ public class Fibo {
         f[1]=temp+f[1];
         findVal(--n,f);//pass f to the next loop
     }
+    public List<Long> memroizationDriver(int n)
+    {
+        List<Long> Sequence = new ArrayList<>(Collections.nCopies(n+1,-1L));
+        fibUsingMem(n,Sequence);
+        return Sequence;
+    }
+    /*
+     Long[] tempArray = new Long[n+1];
+        Arrays.fill(tempArray,-1L);
+        List<Long> listOfns = Arrays.asList(tempArray);
+        System.out.println(listOfns.toString());
+        fibUsingMem(n,listOfns);
+        return listOfns;
+     */
+    private void fibUsingMem(int n,List<Long> array)
+    {
+        if (n<= 1)
+        {
+            array.set(n, (long) Math.max(n,0));
+            if (n==1)
+            {
+                array.set(0, 0L);
+            }
+            return;
+        }
+        if (array.get(n - 1) == -1) {
+            fibUsingMem(n - 1, array);
+        }
+        long first = array.get(n-1);
+        if (array.get(n-2) == -1)
+        {
+            fibUsingMem(n-2,array);
+        }
+        long second = array.get(n-2);
+        array.set(n,first+second);
+
+    }
+
 
     /**
      * tester
      * @param args not used
+     * the tester job is just to test all three different methods being dynamic,normal recursion,memorization
      */
     public static void main(String[] args)
     {
-        Fibo temp = new Fibo(20);
-        System.out.println(temp.val);
+        Fibo temp = new Fibo();
+        System.out.println(temp.findValBad(20));
         System.out.println(temp.DriverForBetter(20));
+        System.out.println(temp.memroizationDriver(60));
 
     }
 
