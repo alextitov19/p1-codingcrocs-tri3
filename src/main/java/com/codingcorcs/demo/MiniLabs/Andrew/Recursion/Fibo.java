@@ -1,7 +1,5 @@
 package com.codingcorcs.demo.MiniLabs.Andrew.Recursion;
 
-import java.lang.reflect.Array;
-import java.math.BigInteger;
 import java.util.*;
 
 public class Fibo {
@@ -44,7 +42,7 @@ public class Fibo {
         f[1]=temp+f[1];
         findVal(--n,f);//pass f to the next loop
     }
-    public List<Long> memroizationDriver(int n)
+    public List<Long> memoizationDriver(int n)
     {
         List<Long> Sequence = new ArrayList<>(Collections.nCopies(n+1,-1L));
         fibUsingMem(n,Sequence);
@@ -93,7 +91,7 @@ public class Fibo {
         Fibo temp = new Fibo();
         System.out.println(temp.findValBad(20));
         System.out.println(temp.DriverForBetter(20));
-        System.out.println(temp.memroizationDriver(60));
+        System.out.println(temp.memoizationDriver(60));
 
     }
 

@@ -1,5 +1,5 @@
 package com.codingcorcs.demo.MiniLabs.Andrew.Recursion;
-
+import java.util.List;
 
 /**
  * Class will contain mini lab recursion for Andrew
@@ -13,10 +13,10 @@ public class Recursion {
         }
         else return 1;
     }
-    int getFib(int n)
+   public List<Long> getFib(int n)
     {
         Fibo fib = new Fibo();
-        return 0;
+        return fib.memoizationDriver(n);
     }
 
 
