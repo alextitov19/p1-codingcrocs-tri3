@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .Content{
+            background-color: antiquewhite;
+            position: absolute;
+            bottom: 90%;
+        }
+        .Content ul{
+            list-style-type: circle;
+        }
+       .Content a{
+            font-size: 12px;
+        }
+        .Content a:active {
+            color: blue;
+        }
+        .Content a:hover{
+            color: red;
+            font-size: 15px;
+        }
+        .Content a:visited{
+            outline-color: purple;
+        }
+    </style>
+</head>
+<body>
+<div class="import" th:replace="fragments/MiniLabNavBar"></div>
+<div class="Content">
+<ul>
+    <li><a href="/miniLab/Andrew/Fib/">Fib Lab</a></li>
+</ul>
+</div>
+</body>
+</html>

@@ -14,5 +14,10 @@ public class WebMainMvcController {
     {
         return "Hello";
     }
+    @GetMapping("/Home")
+    public String HomePage()
+    {
+        return "Hello"; // place holder for now
+    }
 
 }
