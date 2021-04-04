@@ -9,5 +9,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/miniLab")
 public class MiniLabController {
 
+    @GetMapping("")
+    public String showMainPage()
+    {
+        return "MiniLabMainPage";
+    }
+
 }
 
