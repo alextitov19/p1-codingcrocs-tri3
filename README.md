@@ -8,10 +8,10 @@
 - Have users upload images
 - Use Aws to backend the project
 
-#Tickets
+# Tickets
  Back Log Tickets 
  
-#Mini Lab Access
+# Mini Lab Access
 - Alex: "/alex/" (Not yet fully deployed)
 - Andrew: "/miniLab/Andrew/Fib/"
  
