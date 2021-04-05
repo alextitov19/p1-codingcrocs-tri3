@@ -18,7 +18,7 @@ public class AndrewMiniLabController {
     {
         model.addAttribute("ListNth",new Recursion().getFib(nth.orElse(0)));
         return "Andrew/AndrewFib";
-    } //returns json list
+    } // used to return json list
     @GetMapping("")
     public String HtmlTemplate()
     {
