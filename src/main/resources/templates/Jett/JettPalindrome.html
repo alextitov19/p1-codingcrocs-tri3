@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <title>Jett Recursion Minilab</title>
 </head>
-<body>
-Jett's Individual Page
+<body style="background-color:LightBlue;">
+<h1 style="font-family:'Courier New', monospace; background-color:LightSkyBlue">Jett's Mini-Lab</h1>
+<h3 style="font-family:'Courier New', monospace">Palindrome Checker</h3>
 <form th:action="@{/miniLab/Jett/}">
     <input type="text" th:name="word" placeholder="enter word"/>
-    <input type="submit"/>
+    <input type="Submit"/>
 </form>
-<h1 th:text="${isPal}"> </h1>
+<h1 style="font-family:'Courier New', monospace" th:text="${isPal}" > </h1>
 </body>
 </html>
+
