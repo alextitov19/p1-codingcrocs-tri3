@@ -14,4 +14,4 @@
 # Mini Lab Access
 - Alex: "/alex/" (Not yet fully deployed)
 - Andrew: "/miniLab/Andrew/Fib/"
- 
+- Jett: "/miniLab/Jett/"
