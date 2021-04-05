@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Jett Recursion Minilab</title>
+</head>
+<body>
+Jett's Individual Page
+<form th:action="@{/miniLab/Jett/}">
+    <input type="text" th:name="word" placeholder="enter word"/>
+    <input type="submit"/>
+</form>
+<h1 th:text="${isPal}"> </h1>
+</body>
+</html>
