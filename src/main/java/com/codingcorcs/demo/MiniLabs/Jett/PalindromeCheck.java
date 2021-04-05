@@ -1,6 +1,6 @@
 package com.codingcorcs.demo.MiniLabs.Jett;
 
-class PalindromeCheck
+public class PalindromeCheck
 {
 //string 0 or 1 means that it is a palindrome
     public static boolean isPal(String s)
