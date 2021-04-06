@@ -14,7 +14,7 @@ public class AlexRecursion {
                 "  '-\\__Y__/-'    ",
                 "     `---`        "
         };
-        displayWithTimer(array, 1);
+        System.out.println(sum(4));
     }
 
     public static int sum(int k) {
