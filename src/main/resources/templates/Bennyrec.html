@@ -7,27 +7,24 @@
 <body style="background-color:Pink;">
 <h1 style="font-family:'Courier New', monospace; background-color:Pink">Benny's Mini Lab</h1>
 <h3 style="font-family:'Courier New', monospace">factorial</h3>
-<div style="text-align: center">
+<div style="text-align: left">
     <label style="font-size: 20px">Please enter a number</label><br>
     <input type="number" id="num" name="num"><br><br>
-    <button onclick="setLabelText()">Execute</button><br><br><br>
+    <button onclick="setLabelText()">Run</button><br><br><br>
     <label id="output">test</label>
 </div>
-<h1 style="font-family:'Courier New', monospace"> </h1>
 <script>
- {static int factorial( int n ) {
-    if (n != 0)  // termination condition
-        return n * factorial(n-1); // recursive call
-    else
-        return 1;
-}
+ function  factorial(x)
 
-    public static void main(String[] args) {
-        int number = 4, result;
-        result = factorial(number);
-        System.out.println(number + " factorial = " + result);
+ {
+    if (x === 0)
+    {return 1;
     }
-}
+        return x * factorial(x-1);
+
+ }
+   console.log(factorial(5))
+
 </script>
-</body>
-</html>
+<body>
+<html>
