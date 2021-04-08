@@ -1,4 +1,4 @@
-package com.codingcorcs.demo;
+package com.codingcorcs.demo.Andrew;
 
 import com.codingcorcs.demo.MiniLabs.Andrew.Recursion.Recursion;
 import org.springframework.stereotype.Controller;
