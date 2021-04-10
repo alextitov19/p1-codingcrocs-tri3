@@ -49,9 +49,9 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
      * inner class of Double Circle list
      */
     private class Node{
-        t data;
-        Node prev;
-        Node next;
+       private t data;
+       private Node prev;
+        private Node next;
         Node(t data, Node prev){
 
         }
@@ -64,6 +64,15 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
         void setPrev(Node prev){
             this.prev = prev;
         }
+        t getData()
+        {
+            return data;
+        }
+        Node getPrev()
+        {
+            return prev;
+        }
+
 
     }
 }
