@@ -1,6 +1,10 @@
 package com.codingcorcs.demo.Andrew.DataStructure;
 
 public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
+    private Node Head; //first node
+    private Node Tail; // last node && current Node
+
+
     @Override
     public t getNode() {
         return null;
@@ -39,5 +43,10 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
     @Override
     public void delete(int index) {
 
+    }
+    private class Node{
+        t data;
+        Node prev;
+        Node next;
     }
 }
