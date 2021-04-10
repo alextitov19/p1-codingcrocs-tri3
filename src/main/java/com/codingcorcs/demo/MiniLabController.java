@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/miniLab")
+@RequestMapping({"/miniLab","/minilab"})
 public class MiniLabController {
 
     @GetMapping("")
@@ -14,6 +14,5 @@ public class MiniLabController {
     {
         return "MiniLabMainPage";
     }
-
 }
 
