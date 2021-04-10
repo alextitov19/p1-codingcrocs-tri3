@@ -44,9 +44,26 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
     public void delete(int index) {
 
     }
+
+    /**
+     * inner class of Double Circle list
+     */
     private class Node{
         t data;
         Node prev;
         Node next;
+        Node(t data, Node prev){
+
+        }
+        Node(t data, Node prev, Node next){
+
+        }
+        void setNext(Node next){
+            this.next = next;
+        }
+        void setPrev(Node prev){
+            this.prev = prev;
+        }
+
     }
 }
