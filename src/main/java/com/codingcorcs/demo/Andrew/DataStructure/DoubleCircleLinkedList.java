@@ -19,7 +19,6 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
                 add(e.get(i));
             }
         }
-
     }
     public DoubleCircleLinkedList(t[] array) //array copying
     {
@@ -34,6 +33,11 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
             }
         }
     }
+    public DoubleCircleLinkedList()
+    {
+
+    }
+
 
 
     @Override
@@ -109,7 +113,6 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
         {
             return prev;
         }
-
 
     }
 }
