@@ -1,4 +1,4 @@
-/*package com.pluralsight.soap;
+package com.pluralsight.soap;
 
 public class Book {
 	private String name;
@@ -29,4 +29,4 @@ public class Book {
 		this.author = author;
 	}
 
-}*/
+}
