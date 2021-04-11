@@ -5,7 +5,7 @@ public interface LinkedListInterFace<t> {
      *
      * @return given generic by the user
      */
-    t getNode(); // will return current node
+    t getNodeData(); // will return current node
 
     /**
      * @param index the index used to get the generic
