@@ -1,4 +1,4 @@
-package com.codingcorcs.demo.Andrew.DataStructure;
+package com.codingcorcs.demo.Andrew.DataStructure.LinkedList;
 
 import java.util.List;
 
@@ -11,12 +11,8 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
     public DoubleCircleLinkedList(List<t> e) //list copying
     {
         if (!e.isEmpty()) {
-            Head = new Node(e.get(0),null);
-            Tail= Head;
-            size++;
-            for (int i=1; i<e.size(); i++)
-            {
-                add(e.get(i));
+            for (t t : e) {
+                add(t);
             }
         }
     }
@@ -24,12 +20,8 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
     {
         if (array.length!=0)
         {
-            Head = new Node(array[0],null);
-            Tail=Head;
-            size++;
-            for (int i =1; i< array.length; i++)
-            {
-               add(array[i]);
+            for (t t : array) {
+                add(t);
             }
         }
     }
@@ -52,10 +44,16 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
 
     @Override
     public void add(t object) {
-        Tail = new Node(object,Tail);
-        Tail.prev.setNext(Tail);
-        Tail.setNext(Head); //Current Node Pointing to Head
-        Head.setPrev(Tail); // Head pointing To Tail
+        if (size>0) {
+            Tail = new Node(object, Tail);
+            Tail.prev.setNext(Tail);
+            Tail.setNext(Head); //Current Node Pointing to Head
+            Head.setPrev(Tail); // Head pointing To Tail
+        }
+        else{
+            Head = new Node(object,null);
+            Tail= Head;
+        }
         size++;
     }
 

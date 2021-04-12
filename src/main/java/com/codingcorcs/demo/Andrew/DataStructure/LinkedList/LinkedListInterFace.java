@@ -1,4 +1,4 @@
-package com.codingcorcs.demo.Andrew.DataStructure;
+package com.codingcorcs.demo.Andrew.DataStructure.LinkedList;
 
 public interface LinkedListInterFace<t> {
     /**
