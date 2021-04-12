@@ -1,8 +1,8 @@
 # p1-codingcrocs-tri3
 
 # [Website](https://unified-ruler-310320.wm.r.appspot.com/)
-Username: Tester
-Password: Password
+- Username: Tester
+- Password: Password
 
 # [Tickets](https://github.com/alextitov19/p1-codingcrocs-tri3/projects/1)
 
