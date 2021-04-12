@@ -17,17 +17,8 @@
             <label id="output">test</label>
 
 </div>
-<div style="width: 800px; padding: 10px; border: 5px solid #dda1ff; margin: 50px; text-align: center; position: absolute; left: 900px">
-    <label style="font-size: 35px">Inheritance MiniLab</label><br>
-    <label style="font-size: 20px">Please enter a number</label><br>
-    <input type="number" id="num2" name="num"><br><br>
-    <button onclick="setLabelText()">Execute</button><br><br><br>
-    <label id="output2">test</label>
 
-</div>
-<div>
 
-</div>
 <script>
     function setLabelText() {
         var number = addUp(document.getElementById("num").value);
@@ -42,6 +33,42 @@
         } else {
             return 0;
         }
+    }
+</script>
+
+
+<div style="width: 800px; padding: 10px; border: 5px solid #dda1ff; margin: 50px; text-align: center; position: absolute; left: 900px">
+    <label style="font-size: 35px">Inheritance MiniLab</label><br>
+    <label style="font-size: 20px">First name</label><br>
+    <input type="text" id="firstname" name="firstname"><br><br>
+    <label style="font-size: 20px">Last name</label><br>
+    <input type="text" id="lastname" name="lastname"><br><br>
+    <label style="font-size: 20px">Age</label><br>
+    <input type="number" id="age" name="age"><br><br>
+    <label style="font-size: 20px">Gender</label><br>
+    <input type="text" id="gender" name="gender"><br><br>
+    <label style="font-size: 20px">Interests</label><br>
+    <input type="text" id="interests" name="interests"><br><br>
+    <button onclick="setLabelText()">Execute</button><br><br><br>
+    <label id="output2">test</label>
+
+</div>
+
+
+<script>
+    function Person(first, last, age, gender, interests) {
+        this.name = {
+            first,
+            last
+        };
+        this.age = age;
+        this.gender = gender;
+        this.interests = interests;
+    };
+
+    function registerUser() {
+        let myperson = new Person();
+        let userAge = myperson.age;
     }
 </script>
 </body>
