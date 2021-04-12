@@ -1,4 +1,4 @@
-package com.example.demo;
+/*package com.example.demo;
 
 import java.io.File;
 
@@ -19,4 +19,4 @@ public class FileUploadApplication {
 		new File(FileUploadController.uploadDirectory).mkdir();
 		SpringApplication.run(FileUploadApplication.class, args);
 	}
-}
+}*/
