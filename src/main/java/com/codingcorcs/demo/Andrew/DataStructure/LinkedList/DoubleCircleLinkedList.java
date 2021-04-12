@@ -106,6 +106,50 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
 
     @Override
     public void add(int index, t object) {
+        if (index>=getSize()|| index<0){
+            throw new IndexOutOfBoundsException("index given is either bigger than LinkList size or is less than 0");
+        }
+        if (index ==0)
+        {
+            Head.prev= new Node(object,Tail,Head);
+            Head = Head.getPrev();
+            size++;
+            return;
+        }
+        if (index == getSize()-1)
+        {
+            Tail.setNext(new Node(object,Tail,Head));
+            Tail = Tail.getNext();
+            size++;
+            return;
+        }
+        int counter = 1;
+        Node nodeOfIndex;
+        if (index>(getSize()-1)-index) {
+            nodeOfIndex = Tail.getPrev();
+            while((getSize()-1)-counter!=index) {
+                nodeOfIndex = nodeOfIndex.getPrev();
+                counter++;
+            }
+            /*Node temp2 = temp.getPrev(); // broken into multiple lines
+            temp2.next = new Node(object,temp2,temp);*/
+
+        }
+        else{
+            nodeOfIndex = Head.getNext();
+            while (counter!=index){
+                nodeOfIndex = nodeOfIndex.getNext();
+                counter++;
+            }
+
+        }
+            nodeOfIndex.getPrev().setNext(new Node(object,nodeOfIndex.getPrev(),nodeOfIndex));
+            nodeOfIndex.setPrev(nodeOfIndex.getPrev().next);
+        /*Node prev = nodeOfIndex.getPrev();
+        Node newNode = new Node(object,prev,nodeOfIndex);
+        prev.next=newNode;
+        nodeOfIndex.prev=newNode;*/
+        size++;
 
     }
 
@@ -136,8 +180,11 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
             this.data = data;
             this.prev=prev;
         }
-        Node(t data, Node prev, Node next){
 
+        Node(t data, Node prev, Node next){
+                this.data=data;
+                this.prev=prev;
+                this.next=next;
         }
         void setNext(Node next){
             this.next = next;
@@ -157,5 +204,14 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
             return prev;
         }
 
+    }
+
+    public static void main(String[] args) {
+        Integer[] thing = {10,12,13,14,15,25,26,27,9,10};
+        LinkedListInterFace<Integer> linkedListInterFace = new DoubleCircleLinkedList<>(thing);
+        linkedListInterFace.add(14);
+        linkedListInterFace.add(4,23);
+        linkedListInterFace.set(4,92);
+        System.out.println("thing");
     }
 }
