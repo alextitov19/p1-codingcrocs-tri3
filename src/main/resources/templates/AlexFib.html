@@ -49,7 +49,7 @@
     <input type="text" id="gender" name="gender"><br><br>
     <label style="font-size: 20px">Interests</label><br>
     <input type="text" id="interests" name="interests"><br><br>
-    <button onclick="setLabelText()">Execute</button><br><br><br>
+    <button onclick="registerUser()">Execute</button><br><br><br>
     <label id="output2">test</label>
 
 </div>
@@ -67,8 +67,8 @@
     };
 
     function registerUser() {
-        let myperson = new Person();
-        let userAge = myperson.age;
+        let myperson = new Person(document.getElementById("firstname").value, document.getElementById("lastname").value, document.getElementById("age").value, document.getElementById("gender").value, document.getElementById("interests").value);
+        document.getElementById("output2").innerText = myperson.age;
     }
 </script>
 </body>
