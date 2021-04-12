@@ -58,8 +58,50 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
     }
 
     @Override
-    public void set(int index, t object) {
+    public void set(int index, t object) {//java does not have f**king unsigned types why!!!!
+        if (index>=getSize() || index<0){
+            throw new IndexOutOfBoundsException("index is greater than size of LinkedList or is less than 0!");
+        }
+        if ((getSize()-1) == index)
+        {
+            Tail.data=object;
+            return;
+        }
+        if (index==0)
+        {
+            Head.data=object;
+            return;
+        }
+            Node temp;
+            int counter = 1;
+            if (index>((getSize()-1)-index)) { // iterate backwards
 
+                temp = Tail.getPrev(); //prev pointer
+                while (temp!=Tail)
+                {
+                    if ((getSize()-1)-counter==index)
+                    {
+                        temp.data=object;
+                        return;
+                    }
+                    temp = temp.getPrev();
+                    counter++;
+                }
+
+            }
+            else
+            {
+                    temp= Head.getNext();
+                    while (temp != Head){
+                        if (counter==index)
+                        {
+                            temp.data=object;
+                            return;
+                        }
+                        temp=temp.getNext();
+                        counter++;
+                    }
+            }
     }
 
     @Override
@@ -102,6 +144,9 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
         }
         void setPrev(Node prev){
             this.prev = prev;
+        }
+        Node getNext(){
+            return next;
         }
         t getData()
         {
