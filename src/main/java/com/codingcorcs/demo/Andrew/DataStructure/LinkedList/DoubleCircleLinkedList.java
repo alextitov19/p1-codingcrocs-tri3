@@ -131,9 +131,6 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
                 nodeOfIndex = nodeOfIndex.getPrev();
                 counter++;
             }
-            /*Node temp2 = temp.getPrev(); // broken into multiple lines
-            temp2.next = new Node(object,temp2,temp);*/
-
         }
         else{
             nodeOfIndex = Head.getNext();
@@ -143,12 +140,16 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
             }
 
         }
+         /*Node temp2 = temp.getPrev(); // broken into multiple lines
+            temp2.next = new Node(object,temp2,temp);
+            temp.prev = temp2.next
+            Better Notation of vars:
+                Node prev = nodeOfIndex.getPrev();
+                Node newNode = new Node(object,prev,nodeOfIndex);
+                prev.next=newNode;
+                nodeOfIndex.prev=newNode;*/
             nodeOfIndex.getPrev().setNext(new Node(object,nodeOfIndex.getPrev(),nodeOfIndex));
             nodeOfIndex.setPrev(nodeOfIndex.getPrev().next);
-        /*Node prev = nodeOfIndex.getPrev();
-        Node newNode = new Node(object,prev,nodeOfIndex);
-        prev.next=newNode;
-        nodeOfIndex.prev=newNode;*/
         size++;
 
     }
@@ -170,7 +171,7 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
     }
 
     /**
-     * inner class of Double Circle list
+     * inner/inline class of Double Circle list
      */
     private class Node{
        private t data;
