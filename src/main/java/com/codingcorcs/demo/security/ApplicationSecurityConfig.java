@@ -30,7 +30,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter{
                 .authenticated()
                 .and()
                 .formLogin()
-                .defaultSuccessUrl("/hello",false);
+                .defaultSuccessUrl("/miniLab",true);
     }
 
     @Override
