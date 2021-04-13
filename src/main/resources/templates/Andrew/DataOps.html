@@ -5,15 +5,17 @@
     <title>Title</title>
 </head>
 <body>
-<div class="table">
-    <table>
+<div class="import" th:replace="fragments/MiniLabNavBar"></div>
+<div class="position-absolute top-50 start-50 translate-middle">
+    <table class="mx-auto table table-dark table-bordered table-hover">
         <tr>
-            <th>Data</th>
+            <th scope="col">Data</th>
         </tr>
         <tr th:each="data:${ListData}">
             <td th:text="${data.toString()}"></td>
         </tr>
     </table>
-</div>
+    </div>
+
 </body>
 </html>
