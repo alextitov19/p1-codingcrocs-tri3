@@ -9,11 +9,19 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
     private Node tail;
 
 
-     //default constructor
+    /**
+     * <p color="red">default constructor</p>
+     */
     public SingleLinkedList()
     {
 
     }
+
+    /**
+     * <p color="red">constructor for SingleLinked List</p>
+     * @param array the array used to fill LinkedList list
+     * @throws IllegalStateException if array is null
+     */
     public SingleLinkedList(t[] array)
     {
         if (array.length>0) {
@@ -25,6 +33,12 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
             throw new IllegalStateException("empty array given");
         }
     }
+
+    /**
+     * <p color='red'>constructor for SingleLinkedList</p>
+     * @param list the listed used to fill LinkedList
+     * @throws IllegalStateException if list is emtpy
+     */
     public SingleLinkedList(List<t> list)
     {
             if (!list.isEmpty()){
@@ -33,6 +47,12 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
                 }
             }else throw new IllegalStateException("empty List given");
     }
+
+    /**
+     * <p color='red'>constructor for SingleLinkedList</p>
+     * @param set the set used to fill the LinkedList
+     * @throws IllegalStateException if empty set is given
+     */
     public SingleLinkedList(Set<t> set)
     {
             if (!set.isEmpty()) {
@@ -70,6 +90,19 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
 
     @Override
     public void set(int index, t object) {
+        if (index==0)
+        {
+            head.setData(object);
+        }else{
+            int counter=1;
+            Node indexOfCounter = head.getNext();
+            while (counter!=index)
+            {
+                indexOfCounter = indexOfCounter.getNext();
+                counter++;
+            }
+            indexOfCounter.setData(object);
+        }
 
     }
 
@@ -91,6 +124,21 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
     @Override
     public void delete(int index) {
 
+    }
+
+    @Override
+    public void delete() {
+
+    }
+
+    @Override
+    public t remove() {
+        return null;
+    }
+
+    @Override
+    public t remove(int index) {
+        return null;
     }
 
     private class Node{

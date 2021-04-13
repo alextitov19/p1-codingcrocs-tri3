@@ -50,7 +50,10 @@ public interface LinkedListInterFace<t> {
      * @param index the index to be deleted
      */
     void delete(int index);
+    void delete();
 
+    t remove();
+    t remove(int index);
 
 
 

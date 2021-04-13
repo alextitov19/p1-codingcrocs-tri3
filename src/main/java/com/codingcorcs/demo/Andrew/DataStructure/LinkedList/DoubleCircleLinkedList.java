@@ -1,5 +1,6 @@
 package com.codingcorcs.demo.Andrew.DataStructure.LinkedList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
@@ -59,9 +60,7 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
 
     @Override
     public void set(int index, t object) {//java does not have f**king unsigned types why!!!!
-        if (index>=getSize() || index<0){
-            throw new IndexOutOfBoundsException("index is greater than size of LinkedList or is less than 0!");
-        }
+        indexCheck(index);
         if ((getSize()-1) == index)
         {
             Tail.data=object;
@@ -106,9 +105,7 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
 
     @Override
     public void add(int index, t object) {
-        if (index>=getSize()|| index<0){
-            throw new IndexOutOfBoundsException("index given is either bigger than LinkList size or is less than 0");
-        }
+        indexCheck(index);
         if (index ==0)
         {
             Head.prev= new Node(object,Tail,Head);
@@ -153,6 +150,21 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
         size++;
 
     }
+    @Override
+    public String toString() {
+
+        StringBuilder builder = new StringBuilder("[");
+        Node indexer = Head;
+        do {
+            builder.append("(").append(indexer.getData().toString()).append(")");
+            indexer =indexer.getNext();
+            if (indexer!=Head){
+                builder.append(",");
+            }
+        }while (indexer!=Head);
+        builder.append("]");
+        return builder.toString();
+    }
 
     @Override
     public int getSize() {
@@ -167,6 +179,41 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
 
     @Override
     public void delete(int index) {
+        indexCheck(index);
+        if (index == 0) {
+            Head=Head.getNext();
+            Head.setPrev(Tail);
+            Tail.setNext(Head);
+            return;
+        }
+        if (index == getSize()-1){
+                Tail=Tail.getPrev();
+                Tail.setNext(Head);
+                Head.setPrev(Tail);
+        }
+        int counter =1;Node NodeOfIndex;
+        if (index>(getSize()-1)-index){ //iterate backwards
+            NodeOfIndex = Tail.getPrev();
+            while ((getSize()-1)-counter!=index){
+                NodeOfIndex=NodeOfIndex.getPrev();
+                counter++;
+            }
+        }else{
+            NodeOfIndex = Head.getNext();
+            while (counter!=index){
+                NodeOfIndex = NodeOfIndex.getNext();
+                counter++;
+            }
+        }
+            NodeOfIndex.getPrev().setNext(NodeOfIndex.getNext());
+            NodeOfIndex.getNext().setPrev(NodeOfIndex.getPrev());
+    }
+
+    @Override
+    public void delete() {
+        Tail.prev.setNext(Head);
+        Tail = Tail.getPrev();
+        Head.setPrev(Tail);
 
     }
 
@@ -207,12 +254,76 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
 
     }
 
+    /**
+     * <p color='red'>removes the last item from list but returns it, similar to delete</p>
+     * @return the value of the last Item Of list
+     * @see #delete(int)
+     * @see LinkedListInterFace#remove() InterFace Method Decloration
+     */
+    @Override
+    public t remove() {
+        Tail.getPrev().setNext(Head);
+        Head.setPrev(Tail.getPrev());
+        t temp = Tail.getData();
+        Tail = Head.getPrev();
+        return temp;
+    }
+    public t peek(){
+        return Tail.getData();
+    }
+
+    /**
+     *
+     * @param index the index to be deleted and returned
+     * @return value of the specified index
+     * @see #delete(int)
+     * @see LinkedListInterFace#remove(int) InterFace Method Decloration
+     */
+    @Override
+    public t remove(int index){
+        indexCheck(index);
+        if (index==0){
+            Head.getNext().setPrev(Tail);
+            Tail.setNext(Head.getNext());
+            t temp= Head.getData();
+            Head=Tail.getNext();
+            return temp;
+        }
+        if (index==getSize()-1) return remove();
+        int counter =1;
+        Node indexer;
+        if (index>(getSize()-1)-index){
+            indexer = Tail.getPrev();
+            while(getSize()-1-counter!=index){
+                indexer=indexer.getPrev();
+                counter++;
+            }
+        }else{
+                indexer=Head.getNext();
+                while (counter!=index){
+                    indexer = indexer.getNext();
+                    counter++;
+                }
+        }
+            indexer.getPrev().setNext(indexer.getNext());
+            indexer.getNext().setPrev(indexer.getPrev());
+            return indexer.getData();
+
+    }
+
+    private void indexCheck(int index){
+        if (index>=getSize() || index<0){
+            throw new IndexOutOfBoundsException(index+" does not fit given parameters <= size or >= 0");
+        }
+    }
+
+
     public static void main(String[] args) {
         Integer[] thing = {10,12,13,14,15,25,26,27,9,10};
         LinkedListInterFace<Integer> linkedListInterFace = new DoubleCircleLinkedList<>(thing);
         linkedListInterFace.add(14);
         linkedListInterFace.add(4,23);
         linkedListInterFace.set(4,92);
-        System.out.println("thing");
+        System.out.println(linkedListInterFace);
     }
 }
