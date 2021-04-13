@@ -34,10 +34,10 @@ public class AndrewMiniLabController {
     public String DataOpsMapping(Model model)
     {
         LinkedListInterFace<MasterDataType> masterData = new DoubleCircleLinkedList<>(ListOfData.masterDataTypeList());
-        System.out.println(masterData);
-        for (MasterDataType type : masterData) {
+      /*for (MasterDataType type : masterData) { //testing java syntax
             System.out.println(type);
-        }
+        }*/
+        model.addAttribute("ListData",masterData);
         return "Andrew/DataOps";
     }
 

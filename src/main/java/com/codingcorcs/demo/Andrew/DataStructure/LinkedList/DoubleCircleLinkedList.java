@@ -179,9 +179,10 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
     public int getSize() {
         return size;
     }
-
+    /**
+     * <p color='green'> empty list/removes all elements</p>
+     */
     @Override
-
     public void clear() {
         while(Tail!=Head){
             delete();
@@ -191,6 +192,10 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
         size--;
     }
 
+    /**
+     * delete the index give by the user
+     * @param index <font color='red'>the index to be deleted</font>
+     */
     @Override
     public void delete(int index) {
         indexCheck(index);
@@ -225,6 +230,9 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
             size--;
     }
 
+    /**
+     * deletes the Last index or tail
+     */
     @Override
     public void delete() {
         Tail.prev.setNext(Head);
@@ -234,6 +242,10 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
 
     }
 
+    /**
+     *
+     * @return <font color='red'>an iterator used for java language specifics</font>
+     */
     @Override
     public Iterator<t> iterator() {
         return new ListIter();
@@ -403,6 +415,10 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
             throw new IndexOutOfBoundsException(index+" does not fit given parameters < size or >= 0");
         }
     }
+
+    /**
+     * <font color='green'>used by java for foreach loops and other cool things</font>
+     */
     private class ListIter implements Iterator<t>{
         Node current;
         public ListIter()
