@@ -155,13 +155,16 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
 
         StringBuilder builder = new StringBuilder("[");
         Node indexer = Head;
+        if (indexer == null){
+            return builder.append("]").toString();
+        }
         do {
             builder.append("(").append(indexer.getData().toString()).append(")");
             indexer =indexer.getNext();
             if (indexer!=Head){
                 builder.append(",");
             }
-        }while (indexer!=Head);
+        }while (indexer!=Head && indexer!=null);
         builder.append("]");
         return builder.toString();
     }
@@ -174,7 +177,12 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
     @Override
 
     public void clear() {
-
+        while(Tail!=Head){
+            delete();
+        }
+        Tail=null;
+        Head=null;
+        size--;
     }
 
     @Override
@@ -184,6 +192,7 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
             Head=Head.getNext();
             Head.setPrev(Tail);
             Tail.setNext(Head);
+            size--;
             return;
         }
         if (index == getSize()-1){
@@ -207,6 +216,7 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
         }
             NodeOfIndex.getPrev().setNext(NodeOfIndex.getNext());
             NodeOfIndex.getNext().setPrev(NodeOfIndex.getPrev());
+            size--;
     }
 
     @Override
@@ -214,6 +224,7 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
         Tail.prev.setNext(Head);
         Tail = Tail.getPrev();
         Head.setPrev(Tail);
+        size--;
 
     }
 
@@ -266,6 +277,7 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
         Head.setPrev(Tail.getPrev());
         t temp = Tail.getData();
         Tail = Head.getPrev();
+        size--;
         return temp;
     }
     public t peek(){
@@ -287,6 +299,7 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
             Tail.setNext(Head.getNext());
             t temp= Head.getData();
             Head=Tail.getNext();
+            size--;
             return temp;
         }
         if (index==getSize()-1) return remove();
@@ -307,6 +320,7 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
         }
             indexer.getPrev().setNext(indexer.getNext());
             indexer.getNext().setPrev(indexer.getPrev());
+            size--;
             return indexer.getData();
 
     }
@@ -325,5 +339,9 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
         linkedListInterFace.add(4,23);
         linkedListInterFace.set(4,92);
         System.out.println(linkedListInterFace);
+        System.out.println();
+        linkedListInterFace.clear();
+        System.out.println(linkedListInterFace);
+
     }
 }
