@@ -6,15 +6,33 @@
 </head>
 <body style="background-color:Lightpink;">
 <h1 style="font-family:'Courier New', monospace; background-color:LightSkyBlue">Benny Mini-Lab</h1>
-<h3 style="font-family:'Courier New', monospace">correct order </h3>
-<h3 style="font-family:'Courier New', monospace">incorrect order</h3>
-<h3 th:text="${unsorted}"></h3>
+<h3 style="font-family:'Courier New', monospace">incorrect order </h3>
+<h3 style="font-family:'Courier New', monospace">correct order</h3>
+<h3 th:text="${incorrect}"></h3>
 <h3 style="font-family:'Courier New', monospace"></h3>
-<h3 th:text="${sorted}"></h3>
+<h3 th:text="${correct}"></h3>
 <button type="submit" onClick="refreshPage()">Refresh Button</button>
 <script>
-function refreshPage(){
-    window.location.reload();
+public class inheritance {
+}
+class Teacher {
+    String designation = "Professor";
+    String collegeName = "lecture hall";
+    void does(){
+        System.out.println("Teaching");
+    }
+}
+
+ class PhysicsTeacher extends Teacher{
+    String mainSubject = "Calculus";
+    public static void main(String args[]){
+        PhysicsTeacher obj = new PhysicsTeacher();
+        System.out.println(obj.collegeName);
+        System.out.println(obj.designation);
+        System.out.println(obj.mainSubject);
+        obj.does();
+    }
+}
 }
  </script>
 <form th:action="@{Minilabs/Recursion//}">
