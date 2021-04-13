@@ -1,5 +1,7 @@
 package com.codingcorcs.demo.Andrew.DataStructure.LinkedList;
 
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -113,7 +115,7 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
 
     @Override
     public int getSize() {
-        return 0;
+        return size;
     }
 
     @Override
@@ -139,6 +141,21 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
     @Override
     public t remove(int index) {
         return null;
+    }
+
+    @Override
+    public void sort() {
+
+    }
+
+    @Override
+    public void sort(Comparator<t> comparator) {
+
+    }
+
+    @Override
+    public Iterator<t> iterator() {
+        return new iter();
     }
 
     private class Node{
@@ -169,6 +186,23 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
 
         public Node getNext() {
             return Next;
+        }
+    }
+    private class iter implements Iterator<t>{
+        Node current;
+        iter(){
+            current = head;
+        }
+        @Override
+        public boolean hasNext() {
+           return current.getNext()!=null;
+        }
+
+        @Override
+        public t next() {
+            t data = current.getData();
+            current= current.getNext();
+            return data;
         }
     }
 }

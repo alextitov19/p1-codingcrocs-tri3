@@ -1,7 +1,13 @@
 package com.codingcorcs.demo.Andrew.DataStructure.LinkedList;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.ToDoubleFunction;
+import java.util.function.ToIntFunction;
+import java.util.function.ToLongFunction;
 
 public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
     int size = 0;
@@ -228,6 +234,11 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
 
     }
 
+    @Override
+    public Iterator<t> iterator() {
+        return new ListIter();
+    }
+
     /**
      * inner/inline class of Double Circle list
      */
@@ -257,6 +268,9 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
         t getData()
         {
             return data;
+        }
+        void setData(t object){
+            this.data=object;
         }
         Node getPrev()
         {
@@ -324,24 +338,108 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
             return indexer.getData();
 
     }
+    /**
+     * Insertion sort
+     * <p color='red'>May not work if your data does not use the string compare method for example 14 compareTo 6 returns -5 as in 6 is greater than 14</p>
+     * @see String#compareTo(String)
+     * @see #sort(Comparator)
+     *
+     */
+    @Override
+    public void sort() {
+        if (getSize()<=1) return; //already sorted
+        Node Node1 = Head; // initial pointers will move forward after every pass
+        Node Node2 =Head.getNext();
+        while(Node1.getNext()!=Head){
+            t key = Node2.getData();
+              Node pointer1 = Node1;
+              Node pointer2 = Node2;
+              while(pointer1.getData().toString().compareTo(key.toString())>0 && pointer1!=Tail){
+                       pointer2.setData(pointer1.getData());
+                       pointer1=pointer1.getPrev();
+                       pointer2 = pointer2.getPrev();
+              }
+              pointer2.setData(key);
+              Node1 = Node1.getNext();
+              Node2 = Node2.getNext();
+        }
 
+
+
+    }
+
+    /**
+     * <font color='red'>Insertion sort</font>
+     * @param comparator <font color='red'>the comparator used by method to sort the data in the give list must be of t type</font>
+     */
+    @Override
+    public void sort(Comparator<t> comparator) {
+        if (getSize()<=1) return; //already sorted
+        Node Node1 = Head; // initial pointers will move forward after every pass
+        Node Node2 =Head.getNext();
+        while(Node1.getNext()!=Head){
+            t key = Node2.getData();
+            Node pointer1 = Node1;
+            Node pointer2 = Node2;
+            while(comparator.compare(pointer1.getData(),key)>0 && pointer1!=Tail){
+                pointer2.setData(pointer1.getData());
+                pointer1=pointer1.getPrev();
+                pointer2 = pointer2.getPrev();
+            }
+            pointer2.setData(key);
+            Node1 = Node1.getNext();
+            Node2 = Node2.getNext();
+        }
+
+    }
+
+    /**
+     *
+     * @param index to be check if in range of parameters
+     * @throws IndexOutOfBoundsException <font color='green'>only thrown if index is >= size or < 0</font>
+     */
     private void indexCheck(int index){
         if (index>=getSize() || index<0){
-            throw new IndexOutOfBoundsException(index+" does not fit given parameters <= size or >= 0");
+            throw new IndexOutOfBoundsException(index+" does not fit given parameters < size or >= 0");
+        }
+    }
+    private class ListIter implements Iterator<t>{
+        Node current;
+        public ListIter()
+        {
+            current = Head;
+        }
+        @Override
+        public boolean hasNext() {
+            return current.getNext() != Head;
+        }
+
+        @Override
+        public t next() {
+            t data = current.getData();
+            current=current.getNext();
+            return data;
         }
     }
 
-
+    /**
+     * static tester for List
+     * @param args not used
+     */
     public static void main(String[] args) {
-        Integer[] thing = {10,12,13,14,15,25,26,27,9,10};
+        Integer[] thing = {10,12,13,14,18,6,19,23};
         LinkedListInterFace<Integer> linkedListInterFace = new DoubleCircleLinkedList<>(thing);
         linkedListInterFace.add(14);
-        linkedListInterFace.add(4,23);
         linkedListInterFace.set(4,92);
         System.out.println(linkedListInterFace);
+        linkedListInterFace.sort();
+        System.out.println(linkedListInterFace);
         System.out.println();
+        linkedListInterFace.sort(new IntergerThing());
+        System.out.println(linkedListInterFace);
         linkedListInterFace.clear();
         System.out.println(linkedListInterFace);
+
 
     }
 }

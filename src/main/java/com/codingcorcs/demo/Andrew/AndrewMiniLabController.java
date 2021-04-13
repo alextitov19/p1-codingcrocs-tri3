@@ -1,12 +1,18 @@
 package com.codingcorcs.demo.Andrew;
 
+import com.codingcorcs.demo.Andrew.DataStructure.LinkedList.DoubleCircleLinkedList;
+import com.codingcorcs.demo.Andrew.DataStructure.LinkedList.LinkedListInterFace;
+import com.codingcorcs.demo.MiniLabs.Andrew.DataOps.ListOfData;
+import com.codingcorcs.demo.MiniLabs.Andrew.DataOps.MasterDataType;
 import com.codingcorcs.demo.MiniLabs.Andrew.Recursion.Recursion;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -25,10 +31,14 @@ public class AndrewMiniLabController {
         return "Andrew/ListOfLabs";
     }
     @GetMapping("/DataOps")
-    public String DataOpsMapping()
+    public String DataOpsMapping(Model model)
     {
-
-        return null;
+        LinkedListInterFace<MasterDataType> masterData = new DoubleCircleLinkedList<>(ListOfData.masterDataTypeList());
+        System.out.println(masterData);
+        for (MasterDataType type : masterData) {
+            System.out.println(type);
+        }
+        return "Andrew/DataOps";
     }
 
 

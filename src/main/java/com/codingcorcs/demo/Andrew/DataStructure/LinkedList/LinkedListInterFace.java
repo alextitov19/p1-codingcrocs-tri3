@@ -1,59 +1,83 @@
 package com.codingcorcs.demo.Andrew.DataStructure.LinkedList;
 
-public interface LinkedListInterFace<t> {
+import java.util.Comparator;
+
+public interface LinkedListInterFace<t> extends Iterable<t>{
     /**
      *
-     * @return given generic by the user
+     * @return <font color='red'>given generic by the user</font>
      */
     t getNodeData(); // will return current node
 
     /**
-     * @param index the index used to get the generic
-     * @return given generic by the user
+     * @param index <font color='red'>the index used to get the generic</font>
+     * @return <font color='red'>given generic by the user</font>
      *
      */
     t getIndex(int index);
 
     /**
      *
-     * @param object object passed to be stored
+     * @param object <font color='red'>object passed to be stored</font>
      */
     void add(t object); // will add an element to the end of the list
 
     /**
      * overrides the index given with the object passed
-     * @param index - the storage point used to store object
-     * @param object the object passed to the linked list
+     * @param index - <font color='red'>the storage point used to store object</font>
+     * @param object <font color='red'>the object passed to the linked list</font>
      */
     void set(int index,t object); //set will override the index
 
     /**
      * inserts the object at the given index does not override anything
-     * @param index the given index to insert the object
-     * @param object data given by the user
+     * @param index <font color='red'>the given index to insert the object</font>
+     * @param object <font color='red'>data given by the user</font>
      */
     void add(int index,t object);
 
     /**
      *
-     * @return the size of the linkedList
+     * @return <font color='red'>the size of the linkedList</font>
      */
     int getSize();
 
     /**
-     * deletes linklist
+     * <font color='red'>deletes whole list</font>
      */
     void clear(); //deletes list
 
     /**
      *
-     * @param index the index to be deleted
+     * @param index <font color='red'>the index to be deleted</font>
      */
     void delete(int index);
     void delete();
 
+    /**
+     *
+     * @return <font color='red'>generic data type given by user of the deleted node</font>
+     */
     t remove();
+
+    /**
+     *
+     * @param index the index to be deleted
+     * @return <font color='red'>generic data type give by the user of the give index to be deleted</font>
+     */
     t remove(int index);
+
+    /**
+     * <font color='red'>function to sort data via toString()</font>
+     */
+    void sort();
+
+    /**
+     *
+     * @param comparator <font color='red'>the comparator used by method to sort the data in the give list must be of t type</font>
+     */
+    void sort(Comparator<t> comparator);
+
 
 
 
