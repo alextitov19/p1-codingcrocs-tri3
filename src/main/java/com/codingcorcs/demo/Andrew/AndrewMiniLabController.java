@@ -2,10 +2,10 @@ package com.codingcorcs.demo.Andrew;
 
 import com.codingcorcs.demo.Andrew.DataStructure.LinkedList.DoubleCircleLinkedList;
 import com.codingcorcs.demo.Andrew.DataStructure.LinkedList.LinkedListInterFace;
+import com.codingcorcs.demo.Andrew.DataStructure.LinkedList.SingleLinkedList;
 import com.codingcorcs.demo.MiniLabs.Andrew.DataOps.ListOfData;
 import com.codingcorcs.demo.MiniLabs.Andrew.DataOps.MasterDataType;
 import com.codingcorcs.demo.MiniLabs.Andrew.Recursion.Recursion;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
