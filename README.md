@@ -1,6 +1,6 @@
 # p1-codingcrocs-tri3
 
-# [Website](https://unified-ruler-310320.wm.r.appspot.com/)
+# [Website](http://unified-ruler-310320.wm.r.appspot.com/)
 - Username: Tester
 - Password: Password
 
