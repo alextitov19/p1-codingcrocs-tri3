@@ -1,5 +1,6 @@
 package com.codingcorcs.demo;
 
+import com.codingcorcs.demo.MiniLabs.Jett.Inheritance;
 import com.codingcorcs.demo.MiniLabs.Jett.InsertionRecursion;
 import com.codingcorcs.demo.MiniLabs.Jett.PalindromeCheck;
 import org.springframework.stereotype.Controller;
@@ -8,11 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
 @Controller
-@RequestMapping({"/miniLab/Jett","/minilab/Jett"})
+@RequestMapping({"/miniLab/Jett"})
 public class JettMiniLabController {
     @GetMapping("")
     public String HtmlTemplate(@RequestParam(value = "word", required = false) String word, Model model)
@@ -38,6 +40,50 @@ public class JettMiniLabController {
         model.addAttribute("sorted", Arrays.toString(sr));
         model.addAttribute("unsorted", Arrays.toString(arr));
         return "Jett/JettInsertion";
+    }
+
+    @GetMapping("/inheritance")
+    public String inheritance(@RequestParam(value = "catSpots", required = false) Integer catSpots,
+                              @RequestParam(value = "catStripes", required = false) Integer catStripes,
+                              @RequestParam(value = "dogBrown", required = false) Integer dogBrown,
+                              @RequestParam(value = "dogWhite", required = false) Integer dogWhite,
+                              Model model){
+
+
+
+        int catSpotsNum = (catSpots == null || catSpots<0 || catSpots>10)?0:catSpots.intValue();
+        int catStripesNum = (catStripes == null || catStripes<0 || catStripes>10)?0:catStripes.intValue();
+        int dogBrownNum = (dogBrown == null || dogBrown<0 || dogBrown>10)?0:dogBrown.intValue();
+        int dogWhiteNum = (dogWhite == null || dogWhite<0 || dogWhite>10)?0:dogWhite.intValue();
+
+        ArrayList<Inheritance.Animal> lunchbox = new ArrayList<>();
+        for(int i=0;i<catSpotsNum;i++){ lunchbox.add(new Inheritance.Cat("Spots")); }
+        for(int i=0;i<catStripesNum;i++){ lunchbox.add(new Inheritance.Cat("Stripes")); }
+        for(int i=0;i<dogBrownNum;i++){ lunchbox.add(new Inheritance.Terrier("Brown")); }
+        for(int i=0;i<dogWhiteNum;i++){ lunchbox.add(new Inheritance.Terrier("White")); }
+
+
+        String[] strings = new String[lunchbox.size()];
+        Integer[]pnds = new Integer[lunchbox.size()];
+        int totalPnds = 0;
+
+        for(int i=0;i<strings.length;i++){
+            strings[i] = lunchbox.get(i).toString();
+           pnds[i] = lunchbox.get(i).getLbs();
+            totalPnds +=pnds[i];
+        }
+
+        model.addAttribute("strings", strings);
+        model.addAttribute("cals",pnds);
+        model.addAttribute("totalPnds", totalPnds);
+
+        model.addAttribute("catSpots", catSpotsNum);
+        model.addAttribute("catStripes", catStripesNum);
+        model.addAttribute("dogBrown", dogBrownNum);
+        model.addAttribute("dogWhite", dogWhiteNum);
+
+
+        return "Jett/JettInheritance.html";
     }
 
 }
