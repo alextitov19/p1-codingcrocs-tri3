@@ -385,7 +385,7 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
      * @param comparator <font color='red'>the comparator used by method to sort the data in the give list must be of t type</font>
      */
     @Override
-    public void sort(Comparator<t> comparator) {
+    public void sort(Comparator<t> comparator){
         if (getSize()<=1) return; //already sorted
         Node Node1 = Head; // initial pointers will move forward after every pass
         Node Node2 =Head.getNext();

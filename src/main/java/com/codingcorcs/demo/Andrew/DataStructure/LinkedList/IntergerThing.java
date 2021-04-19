@@ -10,7 +10,7 @@ public  class IntergerThing implements Comparator<Integer> {
 
     @Override
     public int compare(Integer o1, Integer o2) {
-        return o1.compareTo(o2);
+        return o1.compareTo(o2); // same as Integer.compareTo(o1,o2);
     }
 
     @Override
