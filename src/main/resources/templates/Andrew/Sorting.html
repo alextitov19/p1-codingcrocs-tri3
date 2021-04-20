@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="import" th:replace="fragments/MiniLabNavBar"></div>
+<div class="position-absolute top-50 start-50 translate-middle">
+    <table class="mx-auto table table-dark table-bordered table-hover">
+        <caption>Selection sort <span th:text="${SelectionTime}" th:remove="tag"></span> (time in milliseconds)</caption>
+        <tr>
+            <th>
+                Unsorted
+            </th>
+            <th>
+                Sorted
+            </th>
+        </tr>
+        <tr th:each="unsorted,stat:${selectionPre}">
+            <td th:text="${unsorted}"></td>
+            <td th:text="${SelectionSorted[stat.index]}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
