@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Benny Minilab</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-<body style="background-color:Pink;">
-<h1 style="font-family:'Courier New', monospace; background-color:Pink">Benny's Mini Lab</h1>
-<h3 style="font-family:'Courier New', monospace">factorial</h3>
-<div style="text-align: left">
+<body style="background-color: pink">
+<div style="text-align: center; font-size: 60px"><br>
+   Benny's MiniLab
+    <br><br>
+</div>
+<div style="width: 800px; padding: 10px; ; margin: 50px; text-align: center; position: center">
+    <label style="font-size: 35px">Recursion MiniLab</label><br>
     <label style="font-size: 20px">Please enter a number</label><br>
     <input type="number" id="num" name="num"><br><br>
-    <button onclick="setLabelText()">Run</button><br><br><br>
-    <label id="output">test</label>
+    <button onclick="setLabelText()">Execute</button><br><br><br>
+    <label id="output">sum</label>
+
 </div>
+
+
 <script>
- function  factorial(x)
-
- {
-    if (x === 0)
-    {return 1;
+ function setLabelText() {
+        var number = addUp(document.getElementById("num").value);
+        var s = number.toString()
+        var final = parseInt(s.charAt(0)) + parseInt(s.substring(1, s.length))
+        document.getElementById("output").innerText = final
     }
-        return x * factorial(x-1);
-
- }
-   console.log(factorial(5))
-
+    function addUp(k) {
+      if (k > 0) {
+            return k + addUp(k-1);
+        } else {
+            return 0;
+        }
+    }
 </script>
-<body>
-<html>
+

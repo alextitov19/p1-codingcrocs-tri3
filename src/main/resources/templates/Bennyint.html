@@ -1,41 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Benny Inheritance Minilab</title>
-</head>
-<body style="background-color:Lightpink;">
-<h1 style="font-family:'Courier New', monospace; background-color:LightSkyBlue">Benny Mini-Lab</h1>
-<h3 style="font-family:'Courier New', monospace">incorrect order </h3>
-<h3 style="font-family:'Courier New', monospace">correct order</h3>
-<h3 th:text="${incorrect}"></h3>
-<h3 style="font-family:'Courier New', monospace"></h3>
-<h3 th:text="${correct}"></h3>
-<button type="submit" onClick="refreshPage()">Refresh Button</button>
-<script>
-public class inheritance {
-}
-class Teacher {
-    String designation = "Professor";
-    String collegeName = "lecture hall";
-    void does(){
-        System.out.println("Teaching");
-    }
-}
+    <head>
+        <meta charset="UTF-8">
+        <title class="center">Benny's Recursion Minilab</title>
+    </head>
+<body style="background-color:LightBlue;">
 
- class PhysicsTeacher extends Teacher{
-    String mainSubject = "Calculus";
-    public static void main(String args[]){
-        PhysicsTeacher obj = new PhysicsTeacher();
-        System.out.println(obj.collegeName);
-        System.out.println(obj.designation);
-        System.out.println(obj.mainSubject);
-        obj.does();
-    }
-}
-}
- </script>
-<form th:action="@{Minilabs/Recursion//}">
-</form>
-</body>
-</html>
+<h1 style="font-family:'Courier New', monospace; background-color:LightSkyBlue"> Benny's Mini-Lab</h1>
+<div style="width: 800px; padding: 10px;  solid #dda1ff; margin: 50px; text-align: center; : 900px">
+    <label style="font-size: 35px">Inheritance MiniLab</label><br>
+    <label style="font-size: 20px">First name</label><br>
+    <input type="text" id="firstname" name="firstname"><br><br>
+    <label style="font-size: 20px">Last name</label><br>
+    <input type="text" id="lastname" name="lastname"><br><br>
+    <label style="font-size: 20px">Age</label><br>
+    <input type="number" id="age" name="age"><br><br>
+    <label style="font-size: 20px">Gender</label><br>
+    <input type="text" id="Job" name="job"><br><br>
+    <label style="font-size: 20px">Interests</label><br>
+    <input type="text" id="sport" name="sport"><br><br>
+    <button onclick="registerUser()">Execute</button><br><br><br>
+    <label id="output2">age</label><br><br>
+    <label id="output3">uid</label>
+
+</div>

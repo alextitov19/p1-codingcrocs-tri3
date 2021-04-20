@@ -9,9 +9,10 @@ class recursion
 }
 
     public static void main(String[] args) {
-        int number = 4, result;
+        int number = 9, result;
         result = factorial(number);
         System.out.println(number + " factorial = " + result);
+
     }
 }
 
