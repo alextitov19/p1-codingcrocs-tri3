@@ -8,6 +8,7 @@ import com.codingcorcs.demo.MiniLabs.Andrew.DataOps.Animal.Animals;
 import com.codingcorcs.demo.MiniLabs.Andrew.DataOps.DataOpsDto;
 import com.codingcorcs.demo.MiniLabs.Andrew.DataOps.ListOfData;
 import com.codingcorcs.demo.MiniLabs.Andrew.DataOps.MasterDataType;
+import com.codingcorcs.demo.MiniLabs.Andrew.DataOps.TypesOfPeople.People;
 import com.codingcorcs.demo.MiniLabs.Andrew.DataOps.TypesOfPeople.PersonAttributes;
 import com.codingcorcs.demo.MiniLabs.Andrew.Recursion.Recursion;
 import com.codingcorcs.demo.MiniLabs.Andrew.Sorting.BubbleSort;
@@ -18,9 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 @Controller
 @RequestMapping({"/miniLab/Andrew","/minilab/Andrew"})
@@ -40,7 +39,7 @@ public class AndrewMiniLabController {
     @GetMapping("/DataOps")
     public String DataOpsMapping(Model model, @ModelAttribute DataOpsDto dto)
     {
-        if (dto==null){
+        if (dto.getAnimalEnums()==null || dto.getPersonEnums()==null){
             dto = new DataOpsDto();
             dto.setAnimalEnums(AnimalEnums.Title);
             dto.setAnimal(true);
@@ -50,13 +49,23 @@ public class AndrewMiniLabController {
       /* System.out.println(dto.isAnimal());
         System.out.println(dto.isPerson());
         System.out.println(dto.getPersonEnums()); // debug */
-        LinkedListInterFace<MasterDataType> masterData = new DoubleCircleLinkedList<>(ListOfData.masterDataTypeList());
+        LinkedListInterFace<MasterDataType> masterData = new DoubleCircleLinkedList<>();
+        if (dto.isAnimal())masterData.addAll(ListOfData.animalList());
+        if (dto.isPerson())masterData.addAll(ListOfData.peopleList());
+        Animals.key=dto.getAnimalEnums();
+        People.key=dto.getPersonEnums();
       /*for (MasterDataType type : masterData) { //testing java syntax
             System.out.println(type);
         }*/
-        model.addAttribute("ListData",masterData);
-        model.addAttribute("Dto", new DataOpsDto());
-        return "Andrew/DataOps";
+        if (masterData.getSize()==0){
+            model.addAttribute("ListData", new ArrayList<>(Collections.singleton("empty")));
+            model.addAttribute("Dto", new DataOpsDto());
+            return "Andrew/DataOps";
+        }else
+            masterData.sort();
+            model.addAttribute("ListData",masterData);
+            model.addAttribute("Dto", new DataOpsDto());
+            return "Andrew/DataOps";
     }
     @GetMapping("/Sorting")
     public String Sorting(Model model){

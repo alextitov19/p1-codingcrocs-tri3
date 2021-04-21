@@ -154,6 +154,17 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
     }
 
     @Override
+    public void addAll(List<t> list) {
+
+    }
+
+    @SafeVarargs
+    @Override
+    public final void addAll(t... data) {
+
+    }
+
+    @Override
     public Iterator<t> iterator() {
         return new iter();
     }
