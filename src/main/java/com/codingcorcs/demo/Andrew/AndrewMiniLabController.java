@@ -3,8 +3,12 @@ package com.codingcorcs.demo.Andrew;
 import com.codingcorcs.demo.Andrew.DataStructure.LinkedList.DoubleCircleLinkedList;
 import com.codingcorcs.demo.Andrew.DataStructure.LinkedList.LinkedListInterFace;
 import com.codingcorcs.demo.Andrew.DataStructure.LinkedList.SingleLinkedList;
+import com.codingcorcs.demo.MiniLabs.Andrew.DataOps.Animal.AnimalEnums;
+import com.codingcorcs.demo.MiniLabs.Andrew.DataOps.Animal.Animals;
+import com.codingcorcs.demo.MiniLabs.Andrew.DataOps.DataOpsDto;
 import com.codingcorcs.demo.MiniLabs.Andrew.DataOps.ListOfData;
 import com.codingcorcs.demo.MiniLabs.Andrew.DataOps.MasterDataType;
+import com.codingcorcs.demo.MiniLabs.Andrew.DataOps.TypesOfPeople.PersonAttributes;
 import com.codingcorcs.demo.MiniLabs.Andrew.Recursion.Recursion;
 import com.codingcorcs.demo.MiniLabs.Andrew.Sorting.BubbleSort;
 import com.codingcorcs.demo.MiniLabs.Andrew.Sorting.InsertionSort;
@@ -12,9 +16,7 @@ import com.codingcorcs.demo.MiniLabs.Andrew.Sorting.SelctionSort;
 import com.codingcorcs.demo.MiniLabs.Andrew.Sorting.Sorts;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,13 +38,24 @@ public class AndrewMiniLabController {
         return "Andrew/ListOfLabs";
     }
     @GetMapping("/DataOps")
-    public String DataOpsMapping(Model model)
+    public String DataOpsMapping(Model model, @ModelAttribute DataOpsDto dto)
     {
+        if (dto==null){
+            dto = new DataOpsDto();
+            dto.setAnimalEnums(AnimalEnums.Title);
+            dto.setAnimal(true);
+            dto.setPerson(true);
+            dto.setPersonEnums(PersonAttributes.Title);
+        }
+      /* System.out.println(dto.isAnimal());
+        System.out.println(dto.isPerson());
+        System.out.println(dto.getPersonEnums()); // debug */
         LinkedListInterFace<MasterDataType> masterData = new DoubleCircleLinkedList<>(ListOfData.masterDataTypeList());
       /*for (MasterDataType type : masterData) { //testing java syntax
             System.out.println(type);
         }*/
         model.addAttribute("ListData",masterData);
+        model.addAttribute("Dto", new DataOpsDto());
         return "Andrew/DataOps";
     }
     @GetMapping("/Sorting")
