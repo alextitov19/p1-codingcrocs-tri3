@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Benny's Sort lab</title>
 </head>
 <body>
 <h1 style="font-family:'Courier New', monospace; background-color:purple">Benny's Mini-Lab</h1>
-<h3 style="font-family:'Courier New', monospace">Insertion Recursion</h3>
+<h3 style="font-family:'Courier New', monospace">Insertion sorts</h3>
 <h3 >Unsorted</h3>
-<h3 th:text="${unsorted}"></h3>
+<p id="unsorted"></p>
 <h3>Sorted</h3>
-<h3 th:text="${sorted}"></h3>
-<button type="submit" onClick="refreshPage()">Refresh Button</button>
+<p id="sorted"></p>
+<button onClick="refreshPage()">Refresh Button</button>
 <script>
 function insertionSort(arr, n)
 {
@@ -41,7 +41,8 @@ function printArray(arr, n)
         document.write(arr[i] + " ");
     document.write("<br>");
 }
-
+document.getElementById("unsorted").innerHTML = "unsorted";
+document.getElementById("sorted").innerHTML = "5, 6, 11, 12, 13";
 // Driver code
     let arr = [12, 11, 13, 5, 6 ];
     let n = arr.length;
@@ -51,6 +52,7 @@ function printArray(arr, n)
 function refreshPage(){
     window.location.reload();
 }
+
 </script>
 <form th:action="@{MiniLabs/Recursion/inserition.java}">
 
