@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="import" th:replace="fragments/MiniLabNavBar"></div>
+<div class="row mt-5 pt-2 w-25 mx-auto">
+        <div class="col">
+    <table class="mx-auto table table-dark table-bordered table-hover">
+        <caption>Selection sort <span th:text="${SelectionTime}" th:remove="tag"></span> (time in milliseconds)</caption>
+        <tr>
+            <th>
+                Unsorted
+            </th>
+            <th>
+                Sorted
+            </th>
+        </tr>
+        <tr th:each="unsorted,stat:${selectionPre}">
+            <td th:text="${unsorted}"></td>
+            <td th:text="${SelectionSorted[stat.index]}"></td>
+        </tr>
+    </table></div>
+        <div class="row mx-auto">
+    <table class="mx-auto table table-dark table-bordered table-hover">
+        <caption>Insertion sort <span th:text="${InsertionTime}" th:remove="tag"></span> (time in milliseconds)</caption>
+        <tr>
+            <th>
+                Unsorted
+            </th>
+            <th>
+                Sorted
+            </th>
+        </tr>
+        <tr th:each="unsorted,stat:${insertionSort}">
+            <td th:text="${unsorted}"></td>
+            <td th:text="${InsertionSorted[stat.index]}"></td>
+        </tr>
+    </table></div>
+    <div class="row mx-auto">
+    <table class="mx-auto table table-dark table-bordered table-hover">
+        <caption>Bubble sort <span th:text="${BubbleTime}" th:remove="tag"></span> (time in milliseconds)</caption>
+        <tr>
+            <th>
+                Unsorted
+            </th>
+            <th>
+                Sorted
+            </th>
+        </tr>
+        <tr th:each="unsorted,stat:${bubbleSort}">
+            <td th:text="${unsorted}"></td>
+            <td th:text="${BubbleSorted[stat.index]}"></td>
+        </tr>
+    </table></div>
+</div>
+</body>
+</html>

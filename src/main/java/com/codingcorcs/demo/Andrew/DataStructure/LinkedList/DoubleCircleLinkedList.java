@@ -251,6 +251,23 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
         return new ListIter();
     }
 
+    public void addAll(List<t> data){
+        if (data!=null){
+            for (t listdata:data) {
+                add(listdata);
+            }
+        }
+
+    }
+
+    @SafeVarargs
+    @Override
+    public final void addAll(t... data) {
+        for (t sub:data) {
+            add(sub);
+        }
+    }
+
     /**
      * inner/inline class of Double Circle list
      */

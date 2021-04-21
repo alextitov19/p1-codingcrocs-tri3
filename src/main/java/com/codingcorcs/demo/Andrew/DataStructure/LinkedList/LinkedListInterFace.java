@@ -1,6 +1,7 @@
 package com.codingcorcs.demo.Andrew.DataStructure.LinkedList;
 
 import java.util.Comparator;
+import java.util.List;
 
 public interface LinkedListInterFace<t> extends Iterable<t>{
     /**
@@ -77,6 +78,10 @@ public interface LinkedListInterFace<t> extends Iterable<t>{
      * @param comparator <font color='red'>the comparator used by method to sort the data in the give list must be of t type</font>
      */
     void sort(Comparator<t> comparator);
+
+    void addAll(List<t> list);
+
+    void addAll(t...data);
 
 
 
