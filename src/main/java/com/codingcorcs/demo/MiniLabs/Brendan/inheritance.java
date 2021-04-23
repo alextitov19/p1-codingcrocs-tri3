@@ -1,4 +1,4 @@
-package com.codingcorcs.demo.MiniLabs.Recursion;
+package com.codingcorcs.demo.MiniLabs.Brendan;
 
 public class inheritance {
 }
