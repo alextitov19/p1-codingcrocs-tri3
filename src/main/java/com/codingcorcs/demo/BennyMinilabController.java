@@ -20,17 +20,17 @@ public class BennyMinilabController {
         return "Bennyrec";
     }
 
-    @GetMapping("/insertion")
-    public String InsertionTemplate(Model model) {
-        Random rand = new Random();
-        int[] arr = new int[10];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = rand.nextInt(100) + 1;
-        }
-        InsertionRecursion ir = new InsertionRecursion();
-        int[] sr = ir.insertionSort(arr);
-        model.addAttribute("sorted", Arrays.toString(sr));
-        model.addAttribute("unsorted", Arrays.toString(arr));
-        return "Bennysorts";
+    @GetMapping("/Inheritance")
+    public String greeting2(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
+        model.addAttribute("Inheritance", name);
+        return "Bennyint";
     }
+
+    @GetMapping("/Sorts")
+    public String greeting3(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
+        model.addAttribute("Sorts", name);
+        return "Bennybbsort";
+    }
+
+
 }
