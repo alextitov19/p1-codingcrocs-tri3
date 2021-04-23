@@ -10,18 +10,39 @@
 <h1 style="font-family:'Courier New', monospace; background-color:LightSkyBlue"> Benny's Mini-Lab</h1>
 <div style="width: 800px; padding: 10px;  solid #dda1ff; margin: 50px; text-align: center; : 900px">
     <label style="font-size: 35px">Inheritance MiniLab</label><br>
-    <label style="font-size: 20px">First name</label><br>
-    <input type="text" id="firstname" name="firstname"><br><br>
-    <label style="font-size: 20px">Last name</label><br>
-    <input type="text" id="lastname" name="lastname"><br><br>
+    <label style="font-size: 20px">Height</label><br>
+    <input type="text" id="Height" name="Height"><br><br>
     <label style="font-size: 20px">Age</label><br>
-    <input type="number" id="age" name="age"><br><br>
-    <label style="font-size: 20px">Gender</label><br>
-    <input type="text" id="Job" name="job"><br><br>
-    <label style="font-size: 20px">Interests</label><br>
-    <input type="text" id="sport" name="sport"><br><br>
-    <button onclick="registerUser()">Execute</button><br><br><br>
+    <input type="text" id="Age" name="Age"><br><br>
+    <label style="font-size: 20px">Weight</label><br>
+    <input type="number" id="Weight" name="Weight"><br><br>
+    <label style="font-size: 20px">Color</label><br>
+    <input type="text" id="Color" name="Color"><br><br>
+    <button onclick="registerCow()">Execute</button><br><br><br>
     <label id="output2">age</label><br><br>
-    <label id="output3">uid</label>
+    <label id="output3">Weight</label>
+    <label id="output4">Color</label>
+
 
 </div>
+<script>
+function Animal(Height, Age, Weight, Color) {
+        this.Height = Height
+        this.Age = Age
+        this.Weight = Weight;
+        this.Color = Color;
+
+    };
+
+    function Cow(Height, Age, Weight, Color) {
+        Animal.call(this, Height, Age, Weight, Color);
+
+        this.cowID = Math.round(Math.random() * 100000000)
+    }
+     function registerCow() {
+        let myCow = new Cow(document.getElementById("Height").value, document.getElementById("lastname").value, document.getElementById("age").value, document.getElementById("gender").value, document.getElementById("interests").value);
+        document.getElementById("output2").innerText = myCow.age;
+        document.getElementById("output3").innerText = myCow.Weight;
+        document.getElementById("output4").innerText = myCow.Color;
+    }
+</script>

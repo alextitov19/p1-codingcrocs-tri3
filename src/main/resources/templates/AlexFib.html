@@ -86,6 +86,7 @@
 <label style="font-size: 20px">Pease enter an array on integers separated by whitespace</label><br>
 <input type="text" id="numstring" name="numstring" style="width: 400px"><br><br>
 <button onclick="sortArray()">Execute</button><br><br><br>
+    <label style="font-size: 20px">Bubble-sorted array</label><br>
 <label id="output4">Sorted array</label><br><br>
 
 </div>
@@ -95,8 +96,33 @@
         let string = document.getElementById("numstring").value;
         let stringArr = string.split(" ");
         var array = stringArr.map(Number);
-        document.getElementById("output4").innerText = array[2];
+
+        let sortedArr = bubbleSort(array)
+
+        document.getElementById("output4").innerText = sortedArr;
     }
+
+    function bubbleSort(a) {
+        var swapp;
+        var n = a.length-1;
+        var x=a;
+        do {
+            swapp = false;
+            for (var i=0; i < n; i++)
+            {
+                if (x[i] > x[i+1])
+                {
+                    var temp = x[i];
+                    x[i] = x[i+1];
+                    x[i+1] = temp;
+                    swapp = true;
+                }
+            }
+            n--;
+        } while (swapp);
+        return x;
+    }
+
 </script>
 
 </body>
