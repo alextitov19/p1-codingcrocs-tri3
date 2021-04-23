@@ -69,14 +69,14 @@ public class Inheritance {
 
 
     public static void main(String[] args) {
-        ArrayList<Animal> lunch = new ArrayList<>();
+        ArrayList<Animal> anim = new ArrayList<>();
 
-        lunch.add(new Cat("spots"));
-        lunch.add(new Cat("spots"));
-        lunch.add(new Terrier("brown"));
+        anim.add(new Cat("spots"));
+        anim.add(new Cat("spots"));
+        anim.add(new Terrier("brown"));
 
 
-        lunch.forEach((Animal -> {
+        anim.forEach((Animal -> {
             System.out.println(Animal);
         }));
 

@@ -56,20 +56,20 @@ public class JettMiniLabController {
         int dogBrownNum = (dogBrown == null || dogBrown<0 || dogBrown>10)?0:dogBrown.intValue();
         int dogWhiteNum = (dogWhite == null || dogWhite<0 || dogWhite>10)?0:dogWhite.intValue();
 
-        ArrayList<Inheritance.Animal> lunchbox = new ArrayList<>();
-        for(int i=0;i<catSpotsNum;i++){ lunchbox.add(new Inheritance.Cat("Spots")); }
-        for(int i=0;i<catStripesNum;i++){ lunchbox.add(new Inheritance.Cat("Stripes")); }
-        for(int i=0;i<dogBrownNum;i++){ lunchbox.add(new Inheritance.Terrier("Brown")); }
-        for(int i=0;i<dogWhiteNum;i++){ lunchbox.add(new Inheritance.Terrier("White")); }
+        ArrayList<Inheritance.Animal> animalList = new ArrayList<>();
+        for(int i=0;i<catSpotsNum;i++){ animalList.add(new Inheritance.Cat("Spots")); }
+        for(int i=0;i<catStripesNum;i++){ animalList.add(new Inheritance.Cat("Stripes")); }
+        for(int i=0;i<dogBrownNum;i++){ animalList.add(new Inheritance.Terrier("Brown")); }
+        for(int i=0;i<dogWhiteNum;i++){ animalList.add(new Inheritance.Terrier("White")); }
 
 
-        String[] strings = new String[lunchbox.size()];
-        Integer[]pnds = new Integer[lunchbox.size()];
+        String[] strings = new String[animalList.size()];
+        Integer[]pnds = new Integer[animalList.size()];
         int totalPnds = 0;
 
         for(int i=0;i<strings.length;i++){
-            strings[i] = lunchbox.get(i).toString();
-           pnds[i] = lunchbox.get(i).getLbs();
+            strings[i] = animalList.get(i).toString();
+           pnds[i] = animalList.get(i).getLbs();
             totalPnds +=pnds[i];
         }
 
