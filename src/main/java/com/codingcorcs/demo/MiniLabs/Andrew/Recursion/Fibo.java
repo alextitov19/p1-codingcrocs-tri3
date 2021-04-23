@@ -90,7 +90,7 @@ public class Fibo {
     {
         Fibo temp = new Fibo();
         System.out.println(temp.findValBad(20));
-        System.out.println(temp.DriverForBetter(20));
+        System.out.println(temp.DriverForBetter(60));
         System.out.println(temp.memoizationDriver(60));
 
     }
