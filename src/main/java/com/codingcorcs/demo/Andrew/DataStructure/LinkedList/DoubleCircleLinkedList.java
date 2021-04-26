@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.ToDoubleFunction;
-import java.util.function.ToIntFunction;
-import java.util.function.ToLongFunction;
+
 
 public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
     int size = 0;
@@ -32,8 +29,7 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
             }
         }
     }
-    public DoubleCircleLinkedList()
-    {
+    public DoubleCircleLinkedList() {
 
     }
 
@@ -167,7 +163,7 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
         do {
             builder.append("(").append(indexer.getData().toString()).append(")");
             indexer =indexer.getNext();
-            if (indexer!=Head){
+            if (indexer!=Head && indexer!=null){
                 builder.append(",");
             }
         }while (indexer!=Head && indexer!=null);
@@ -235,9 +231,14 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
      */
     @Override
     public void delete() {
-        Tail.prev.setNext(Head);
-        Tail = Tail.getPrev();
-        Head.setPrev(Tail);
+        if (size>1) {
+            Tail.prev.setNext(Head);
+            Tail = Tail.getPrev();
+            Head.setPrev(Tail);
+        }else{
+           Tail=null;
+           Head=null;
+        }
         size--;
 
     }
@@ -274,7 +275,7 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
     private class Node{
        private t data;
        private Node prev;
-        private Node next;
+       private Node next;
         Node(t data, Node prev){
             this.data = data;
             this.prev=prev;
@@ -471,6 +472,10 @@ public class DoubleCircleLinkedList<t> implements LinkedListInterFace<t>{
         linkedListInterFace.sort(new IntergerThing());
         System.out.println(linkedListInterFace);
         linkedListInterFace.clear();
+        System.out.println(linkedListInterFace);
+        linkedListInterFace.add(12);
+        System.out.println(linkedListInterFace);
+        linkedListInterFace.delete();
         System.out.println(linkedListInterFace);
 
 
