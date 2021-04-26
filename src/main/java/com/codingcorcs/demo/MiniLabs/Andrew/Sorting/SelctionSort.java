@@ -56,5 +56,11 @@ public class SelctionSort extends Sorts{
         totalTime = System.nanoTime()-time;
         System.out.println(Arrays.toString(array));
         System.out.println("Time(time in Mill): " +totalTime/nanoToMill);
+        Object[] objects = new Object[3];
+        objects[0] = new String("thing");
+        objects[1] = 230.25;
+        objects[2] = "not a number";
+        new SelctionSort().sort(objects);
+        System.out.println(Arrays.toString(objects));
     }
 }

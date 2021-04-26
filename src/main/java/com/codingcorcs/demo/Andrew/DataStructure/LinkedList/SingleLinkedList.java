@@ -76,7 +76,7 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
 
     @Override
     public t getNodeData() {
-        return null;
+        return tail.data;
     }
 
     @Override
@@ -119,6 +119,15 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
     @Override
     public void add(int index, t object) {
         checkIndex(index);
+        int counter = 0;
+        Node temp = head;
+        while(counter<index-1){
+            temp=temp.getNext();
+            counter++;
+        }
+        temp.setNext(new Node(object,temp.getNext()));
+        size++;
+
     }
 
     @Override
@@ -128,22 +137,56 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
 
     @Override
     public void clear() {
+        while (head!=null){
+            delete();
+        }
 
     }
 
     @Override
     public void delete(int index) {
         checkIndex(index);
+        if (index==0){
+            head=head.getNext(); // java will use trash collection to get rid of the old head node
+            return;
+        }
+        if (index==getSize()-1){
+            delete();return;
+        }
+        Node temp = head;
+        int counter = 0;
+        while (counter < index-1){
+            temp = temp.getNext();
+            counter++;
+        }
+        temp.setNext(temp.getNext().getNext());
     }
+
+
 
     @Override
     public void delete() {
+        checkSize();
+        if (size==1){
+            tail=null;
+            head=null;
+            size--;
+            return;
+        }
         Node pointer = head;
-        while (pointer.getNext()!=tail && size>1){
+        while (pointer.getNext()!=tail){
             pointer=pointer.getNext();
         }
         pointer.setNext(null);
         tail=pointer;
+        size--;
+    }
+
+    /**
+     * @throws IllegalStateException <font color='red'>if list is empty and an operation is called that requires it not to be</font>
+     */
+    private void checkSize(){
+        if (getSize()<=0) throw new IllegalStateException("List is empty when a operation was called that required the list not to be");
     }
 
     /**
@@ -160,7 +203,15 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
     @Override
     public t remove(int index) {
         checkIndex(index);
-        return null;
+        int counter = 0;
+        Node temp = head;
+        while (counter<index){ // doesnt make sense intuitively but you will get the right index by stopping before the index of
+            temp=temp.getNext();
+            counter++;
+        }
+        t data = temp.data;
+        delete(index);
+        return data;
     }
 
     @Override
@@ -184,7 +235,7 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
 
     /**
      * adds all the objects into the list great for copying data into the list
-     * @param data
+     * @param data varargs that is added to the list
      */
     @SafeVarargs
     @Override

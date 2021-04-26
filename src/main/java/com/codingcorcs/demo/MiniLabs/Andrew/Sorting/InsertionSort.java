@@ -47,5 +47,11 @@ public class InsertionSort extends Sorts{
         float totalTime= System.nanoTime()-time;
         System.out.println(Arrays.toString(array));
         System.out.println("Time(mill): " + totalTime/nanoToMill);
+        Object[] objects = new Object[3];
+        objects[0] = new String("thing");
+        objects[1] = 230.25;
+        objects[2] = "not a number";
+        new InsertionSort().sort(objects);
+        System.out.println(Arrays.toString(objects));
     }
 }

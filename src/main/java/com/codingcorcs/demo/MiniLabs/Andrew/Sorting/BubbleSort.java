@@ -44,5 +44,11 @@ public class BubbleSort extends Sorts{
         float totaltime = System.nanoTime() - time;
         System.out.println(Arrays.toString(array));
         System.out.println("time(mil seconds): " + totaltime/nanoToMill);
+        Object[] objects = new Object[3];
+        objects[0] = new String("thing");
+        objects[1] = 230.25;
+        objects[2] = "not a number";
+        new BubbleSort().sort(objects);
+        System.out.println(Arrays.toString(objects));
     }
 }
