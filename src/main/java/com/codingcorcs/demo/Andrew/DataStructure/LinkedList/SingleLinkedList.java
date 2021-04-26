@@ -226,7 +226,7 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
 
     /**
      * adds all the objects into the list greats for copying data into the list
-     * @param list
+     * @param list data to be added into the LinkedList
      */
     @Override
     public void addAll(List<t> list) {
