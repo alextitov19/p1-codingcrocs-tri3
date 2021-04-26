@@ -87,11 +87,15 @@
     <input type="text" id="numstring" name="numstring" style="width: 400px"><br><br>
     <button onclick="sortArray()">Execute</button><br><br><br>
     <label style="font-size: 20px">Bubble-sorted array</label><br>
-    <label id="output4">Sorted array</label><br><br>
+    <label id="bubbleOutput">Sorted array</label><br>
+    <label id="bubbleTime">Time</label><br><br>
     <label style="font-size: 20px">Selection-sorted array</label><br>
-    <label id="output5">Sorted array</label><br><br>
+    <label id="selectionOutput">Sorted array</label><br>
+    <label id="selectionTime">Time</label><br><br>
     <label style="font-size: 20px">Insertion-sorted array</label><br>
-    <label id="output6">Sorted array</label><br><br>
+    <label id="insertionOutput">Sorted array</label><br>
+    <label id="insertionTime">Time</label><br><br>
+
 
 </div>
 
@@ -101,17 +105,35 @@
         let stringArr = string.split(" ");
         let array = stringArr.map(Number);
 
-        let bubbleArr = bubbleSort(array)
-        let selectionArr = selectionSort(array)
-        let insertionArr = insertionSort(array)
+        let startTimeBubble = performance.now();
+        let bubbleArr = bubbleSort(array);
+        let endTimeBubble = performance.now();
+        let timeBubble = endTimeBubble - startTimeBubble;
+        let bubbleTimeString = String(timeBubble) + " ms"
 
-        document.getElementById("output4").innerText = bubbleArr;
-        document.getElementById("output5").innerText = selectionArr;
-        document.getElementById("output6").innerText = insertionArr;
+        let startTimeSelection = performance.now();
+        let selectionArr = selectionSort(array);
+        let endTimeSelection = performance.now();
+        let timeSelection = endTimeSelection - startTimeSelection;
+        let selectionTimeString = String(timeSelection) + " ms"
+
+        let startTimeInsertion = performance.now();
+        let insertionArr = insertionSort(array);
+        let endTimeInsertion = performance.now();
+        let timeInsertion = endTimeInsertion - startTimeInsertion;
+        let insertionTimeString = String(timeInsertion) + " ms"
+
+        document.getElementById("bubbleOutput").innerText = bubbleArr;
+        document.getElementById("selectionOutput").innerText = selectionArr;
+        document.getElementById("insertionOutput").innerText = insertionArr;
+
+        document.getElementById("bubbleTime").innerText = bubbleTimeString;
+        document.getElementById("selectionTime").innerText = selectionTimeString;
+        document.getElementById("insertionTime").innerText = insertionTimeString;
 
     }
 
-    function bubbleSort(a) {
+    function bubbleSort(a) {  //simple bubble sort implementation
         var swap;
         var n = a.length-1;
         var x=a;
@@ -119,7 +141,7 @@
             swap = false;
             for (var i=0; i < n; i++)
             {
-                if (x[i] > x[i+1])
+                if (x[i] > x[i+1]) //if need to swap
                 {
                     var temp = x[i];
                     x[i] = x[i+1];
