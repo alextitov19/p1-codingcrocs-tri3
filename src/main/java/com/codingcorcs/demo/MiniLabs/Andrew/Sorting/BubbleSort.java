@@ -3,6 +3,10 @@ package com.codingcorcs.demo.MiniLabs.Andrew.Sorting;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * the bubble sort is the most basic sort and intuitive as every element is compared in every pass
+ * o(n^2) every time
+ */
 public class BubbleSort extends Sorts{
     @Override
     public void sort(int[] array) {
@@ -15,6 +19,19 @@ public class BubbleSort extends Sorts{
                 }
             }
         }
+    }
+
+    @Override
+    public void sort(Object[] array) {
+            for (int i=0; i<array.length-1; i++){
+                for (int j=0; j<array.length-i-1; j++){
+                    if (array[j].toString().compareTo(array[j+1].toString())>0){
+                        Object temp = array[j];
+                        array[j] = array[j+1];
+                        array[j+1] = temp;
+                    }
+                }
+            }
     }
 
     public static void main(String[] args) {

@@ -3,6 +3,10 @@ package com.codingcorcs.demo.MiniLabs.Andrew.Sorting;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * best case o(n) no sorts
+ * worst case 0(n^2)
+ */
 public class InsertionSort extends Sorts{
     @Override
     public void sort(int[] array) {
@@ -16,6 +20,21 @@ public class InsertionSort extends Sorts{
              }
              array[j+1]=key;
         }
+    }
+
+    @Override
+    public void sort(Object[] array) {
+            Object key;
+            int j;
+            for (int i=1; i<array.length; i++){
+                key= array[i];
+                j=i-1;
+                while (j>=0 && array[j].toString().compareTo(key.toString())>0){
+                    array[j+1] = array[j];
+                    j--;
+                }
+                array[j+1] = key;
+            }
     }
 
     public static void main(String[] args) {
