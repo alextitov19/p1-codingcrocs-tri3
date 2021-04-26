@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 @Controller
-@RequestMapping({"/miniLab/Recursion","/minilab/Recursion"})
+@RequestMapping({"/miniLab/Benny","/minilab/Benny"})
 public class BennyMinilabController {
 
     @GetMapping("/Recursion")
