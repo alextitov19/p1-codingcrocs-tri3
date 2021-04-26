@@ -32,5 +32,4 @@ public class BennyMinilabController {
         return "Bennybbsort";
     }
 
-
 }
