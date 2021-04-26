@@ -1,6 +1,6 @@
 # p1-codingcrocs-tri3
 
-# Website [Link: ](http://unified-ruler-310320.wm.r.appspot.com/miniLab)
+# Website: [Link](http://unified-ruler-310320.wm.r.appspot.com/miniLab)
 - Username: Tester
 - Password: Password
 
