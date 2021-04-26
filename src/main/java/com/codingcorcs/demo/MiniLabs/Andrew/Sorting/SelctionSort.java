@@ -1,6 +1,8 @@
 package com.codingcorcs.demo.MiniLabs.Andrew.Sorting;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -56,5 +58,13 @@ public class SelctionSort extends Sorts{
         totalTime = System.nanoTime()-time;
         System.out.println(Arrays.toString(array));
         System.out.println("Time(time in Mill): " +totalTime/nanoToMill);
+        Object[] objects = new Object[5];
+        objects[0] = new String("thing");
+        objects[1] = 230.25;
+        objects[2] = "not a number";
+        objects[3] = 12;
+        objects[4] = new ArrayList<>(List.of("Thisispart1","part2","part3"));
+        new SelctionSort().sort(objects);
+        System.out.println(Arrays.toString(objects));
     }
 }
