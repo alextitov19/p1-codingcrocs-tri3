@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title class="center">Jett Recursion Minilab</title>
+</head>
+<body style="background-color:LightBlue;">
+
+<h1 style="font-family:'Courier New', monospace; background-color:LightSkyBlue">Jett's Mini-Lab</h1>
+<h3 style="font-family:'Courier New', monospace">Inheritance</h3>
+
+<div class="data">
+    <table class="center">
+        <tr>
+            <th>Input</th>
+            <th>Lbs</th>
+        </tr>
+
+        <tr th:each="string: ${strings}">
+            <td th:text="${string}" />
+            <td th:text="${cals[stringStat.index]}" />
+        </tr>
+
+    </table>
+    <h3 style="font-family:'Courier New', monospace">Total Lbs: <bold th:text="${totalPnds}"></bold></h3>
+</div>
+
+
+<form th:action="@{/miniLab/Jett/inheritance}">
+
+    <h2 style="font-family:'Courier New', monospace">Cats and Dogs</h2>
+    <label>Cats w/ Spots</label>
+    <input name="catSpots" type="number" placeholder="Cats with Spots" th:value="${catSpots}"><br>
+    <label>Cats w/ Stripes</label>
+    <input name="catStripes" type="number" placeholder="Cats with Stripes" th:value="${catStripes}"><br>
+    <label>Dogs w/ Brown</label>
+    <input name="dogBrown" type="number" placeholder="Dogs with Brown" th:value="${dogBrown}"><br>
+    <label>Dogs w/ White</label>
+    <input name="dogWhite" type="number" placeholder="Dogs with White" th:value="${dogWhite}"><br>
+
+    <input type="submit" value="add item">
+
+</form>
+
+<script>
+</script>
+
+</body>
+
+<style>
+h1 {text-align: center;}
+h2 {text-align: center;}
+div {text-align: center;}
+h3 {text-align: center;}
+
+    form{
+        display: flex:
+        flex-direction: column;
+    }
+
+    .gist{
+        width: 50%;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        margin-top: 3%;
+    }
+
+    .data{
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+
+    table{
+      border-collapse: collapse;
+    }
+
+    td, th {
+      border: 1px solid #999;
+      padding: 0.5rem;
+      text-align: left;
+    }
+    .center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+</style>
+</html>

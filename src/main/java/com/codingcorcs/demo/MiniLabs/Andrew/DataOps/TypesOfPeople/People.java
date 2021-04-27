@@ -29,7 +29,7 @@ public class People extends Person {
                     case Occupation: return String.format("%s , %s , %s",this.Occupation, super.getLastName() , super.getFirstName());
                     case Married: return String.format("%s , %s , %s",this.Married , super.getLastName() , super.getFirstName());
                     case Title:
-                    default: return String.format("%s: %s , %s , %s , %s , %s , %s ,",super.getType(),super.getLastName(), super.getFirstName(), super.getAge(), this.Gender, this.Occupation, this.Married);
+                    default: return String.format("%s: %s , %s , %s , %s , %s , %s",super.getType(),super.getLastName(), super.getFirstName(), super.getAge(), this.Gender, this.Occupation, this.Married);
                 }
     }
 }

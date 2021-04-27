@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .bufferTop{
+            margin-top: 3.5em; /* shifts element down by *em responsive*/
+        }
+    </style>
+</head>
+<body>
+<div class="import" th:replace="fragments/MiniLabNavBar"></div>
+<div class="bufferTop">
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col">
+        <div class="square square-md bg-secondary w-25">
+        <form th:object="${Dto}" action="/miniLab/Andrew/DataOps">
+            <input type="checkbox" id="person" name="person" value="person" th:field="*{person}">
+            <label for="person">Search for person</label>
+            <label for="PersonSearch">Field Selector</label><select name="Search" id="PersonSearch" th:field="*{personEnums}">
+                <option th:each= "options: ${T(com.codingcorcs.demo.MiniLabs.Andrew.DataOps.TypesOfPeople.PersonAttributes).values()}" th:value="${options}" th:text="${options.toString()}"></option>
+            </select>
+            <br/>
+            <label for="Animal">Search for animals</label><input type="checkbox" id="Animal" name="animal" value="animal" th:field="*{animal}">
+            <label for="AnimalSearch">Field Selector</label><select  name="AnimalSearch" id="AnimalSearch" th:field="*{animalEnums}">
+                 <option th:each="options: ${T(com.codingcorcs.demo.MiniLabs.Andrew.DataOps.Animal.AnimalEnums).values()}" th:value="${options}" th:text="${options.toString()}"></option>
+        </select><br/>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        </div>
+    </div>
+     <div class="col">
+        <div class="pt-auto w-50">
+            <table class="mx-auto table table-dark table-bordered table-hover">
+                <tr>
+                    <th scope="col">Data</th>
+                </tr>
+                <tr th:each="data:${ListData}">
+                    <td th:text="${data.toString()}"></td>
+                </tr>
+            </table>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.codingcorcs.demo.MiniLabs.Recursion;
+package com.codingcorcs.demo.MiniLabs.Brendan;
 
 class recursion
 {static int factorial( int n ) {
@@ -15,4 +15,3 @@ class recursion
 
     }
 }
-

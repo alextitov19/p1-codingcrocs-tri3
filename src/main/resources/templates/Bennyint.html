@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <title class="center">Benny's Recursion Minilab</title>
+    </head>
+<body style="background-color:LightBlue;">
+
+<h1 style="font-family:'Courier New', monospace; background-color:LightSkyBlue"> Benny's Mini-Lab</h1>
+<div style="width: 800px; padding: 10px;  solid #dda1ff; margin: 50px; text-align: center; : 900px">
+    <label style="font-size: 35px">Create a Cow MiniLab</label><br>
+    <label style="font-size: 20px">Height</label><br>
+    <input type="text" id="Height" name="Height"><br><br>
+    <label style="font-size: 20px">Age</label><br>
+    <input type="text" id="Age" name="Age"><br><br>
+    <label style="font-size: 20px">Weight</label><br>
+    <input type="number" id="Weight" name="Weight"><br><br>
+    <label style="font-size: 20px">Color</label><br>
+    <input type="text" id="Color" name="Color"><br><br>
+    <button onclick="registerCow()">Execute</button><br><br><br>
+    <label id="output3">Weight</label><br><br>
+    <label id="output4">Color</label>
+
+
+</div>
+<script>
+function Animal(Height, Age, Weight, Color) {
+        this.Height = Height
+        this.Age = Age
+        this.Weight = Weight;
+        this.Color = Color;
+
+    };
+
+    function Cow(Height, Age, Weight, Color) {
+        Animal.call(this, Height, Age, Weight, Color);
+
+        this.cowID = Math.round(Math.random() * 100000000)
+    }
+     function registerCow() {
+        let myCow = new Cow(document.getElementById("Height").value, document.getElementById("Age").value, document.getElementById("Weight").value, document.getElementById("Color").value);
+        document.getElementById("output3").innerText = myCow.Weight;
+        document.getElementById("output4").innerText = myCow.Color;
+    }
+</script>

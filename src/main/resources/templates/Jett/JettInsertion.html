@@ -2,23 +2,54 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Jett Insertion Minilab</title>
+    <title>Insertion Sort Refined</title>
 </head>
 <body style="background-color:LightBlue;">
-<h1 style="font-family:'Courier New', monospace; background-color:LightSkyBlue">Jett's Mini-Lab</h1>
-<h3 style="font-family:'Courier New', monospace">Insertion Recursion</h3>
-<h3 style="font-family:'Courier New', monospace">Unsorted</h3>
-<h3 th:text="${unsorted}"></h3>
-<h3 style="font-family:'Courier New', monospace">Sorted</h3>
-<h3 th:text="${sorted}"></h3>
-<button type="submit" onClick="refreshPage()">Refresh Button</button>
-<script>
-function refreshPage(){
-    window.location.reload();
-}
- </script>
-<form th:action="@{/miniLab/Jett/}">
-</form>
-</body>
-</html>
+<div class="lab">
+    <h1 style="font-family:'Courier New', monospace; background-color:LightSkyBlue">Insertion Sort Refined</h1>
+    <h3 style="font-family:'Courier New', monospace">Integers</h3>
+    <form th:action="@{/miniLab/Jett/insertion}">
+        <label style="font-family:'Courier New', monospace">User inputs the length of the array in integers, random array generated, program sorts by least to greatest</label>
+        <br>
+        <label style="font-family:'Courier New', monospace">Length (Integers)</label>
+        <input th:name="length" th:value="${length}">
+        <input style="font-family:'Courier New', monospace" type="submit">
+    </form>
 
+    <p style="font-family:'Courier New', monospace" th:text="${time}"></p>
+
+    <p style="font-family:'Courier New', monospace" th:text="${unsorted}"></p>
+
+    <p style="font-family:'Courier New', monospace" th:text="${sorted}"></p>
+
+    <h3 style="font-family:'Courier New', monospace">Strings</h3>
+    <form th:action="@{/miniLab/Jett/insertion}">
+        <label style="font-family:'Courier New', monospace">User inputs strings, sorts alphabetically, separate words with "" and commas]</label>
+        <br>
+        <label style="font-family:'Courier New', monospace">Array (Strings)</label>
+        <input type="text" th:name="array" th:value="${array}">
+        <input style="font-family:'Courier New', monospace" type="submit">
+    </form>
+
+    <p style="font-family:'Courier New', monospace" th:text="${time}"></p>
+
+    <p style="font-family:'Courier New', monospace" th:text="${notsorted}"></p>
+
+    <p style="font-family:'Courier New', monospace" th:text="${sorted2}"></p>
+
+    <h3 style="font-family:'Courier New', monospace">toString</h3>
+    <p style="font-family:'Courier New', monospace">Automatically sorts when loading into webpage:</p>
+    <p style="font-family:'Courier New', monospace" th:text="${sportunsorted}"></p>
+
+    <p style="font-family:'Courier New', monospace" th:text="${sportsorted}"></p>
+
+</div>
+</body>
+<style>
+h1 {text-align: center;}
+h2 {text-align: center;}
+div {text-align: center;}
+h3 {text-align: center;}
+</style>
+
+</html>
