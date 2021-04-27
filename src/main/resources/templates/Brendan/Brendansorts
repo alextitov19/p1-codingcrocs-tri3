@@ -1,0 +1,53 @@
+<div style="width: 800px; padding: 10px; #dda1ff; margin: 50px; text-align: center; position: absolute; ; top: 30px; left: 10px">
+    <h1 style="font-family:'Courier New', monospace; background-color:skyblue">Benny's Mini-Lab</h1>
+    <h3 style="font-family:'Courier New', monospace">Insertion sorts</h3>
+    <h1 style="background-color:LightBlue;"></h1>
+    <input type="text" id="numstring" name="numstring" style="width: 400px"><br><br>
+    <button onclick="sortArray()">Execute</button><br><br><br>
+    <label style="font-size: 20px">Insertion-sorted array</label><br>
+    <label id="insertionOutput">Sorted array</label><br>
+    <label id="insertionTime">Time</label><br><br>
+
+
+</div>
+
+<script>
+    function sortArray() {
+        let string = document.getElementById("numstring").value;
+        let stringArr = string.split(" ");
+        let array = stringArr.map(Number);
+
+        let startTimeInsertion = performance.now();
+        let insertionArr = insertionSort(array);
+        let endTimeInsertion = performance.now();
+        let timeInsertion = endTimeInsertion - startTimeInsertion;
+        let insertionTimeString = String(timeInsertion) + " ms"
+
+
+        document.getElementById("insertionOutput").innerText = insertionArr;
+
+
+        document.getElementById("insertionTime").innerText = insertionTimeString;
+
+    }
+
+    function insertionSort(inputArr) {
+        let n = inputArr.length;
+        for (let i = 1; i < n; i++) {
+            // Choosing the first element in our unsorted subarray
+            let current = inputArr[i];
+            // The last element of our sorted subarray
+            let j = i-1;
+            while ((j > -1) && (current < inputArr[j])) {
+                inputArr[j+1] = inputArr[j];
+                j--;
+            }
+            inputArr[j+1] = current;
+        }
+        return inputArr;
+    }
+
+</script>
+
+</body>
+</html>
