@@ -38,9 +38,10 @@ public class BennyMinilabController {
         return "Bennysorts";
 
     }
+
     @GetMapping("/SecSorts")
     public String greeting5(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("SecSorts", name);
         return "Bennyselsorts";
-}
+    }
 }
