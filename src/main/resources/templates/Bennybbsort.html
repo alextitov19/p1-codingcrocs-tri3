@@ -8,6 +8,8 @@
     <button onclick="sortArray()">Execute</button><br><br><br>
     <label style="font-size: 20px">Bubble-sorted array</label><br>
     <label id="output4">Sorted array</label><br><br>
+    <label id="bubbleOutput">Sorted array</label><br>
+    <label id="bubbleTime">Time</label><br><br>
 </div>
 <script>
     function sortArray() {
@@ -16,6 +18,15 @@
         var array = stringArr.map(Number);
         let sortedArr = bubbleSort(array)
         document.getElementById("output4").innerText = sortedArr;
+
+         let startTimeBubble = performance.now();
+        let bubbleArr = bubbleSort(array);
+        let endTimeBubble = performance.now();
+        let timeBubble = endTimeBubble - startTimeBubble;
+        let bubbleTimeString = String(timeBubble) + " ms"
+
+         document.getElementById("bubbleOutput").innerText = bubbleArr;
+          document.getElementById("bubbleTime").innerText = bubbleTimeString;
     }
     function bubbleSort(a) {
         var swapp;

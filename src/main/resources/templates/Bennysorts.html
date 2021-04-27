@@ -2,23 +2,37 @@
     <h1 style="font-family:'Courier New', monospace; background-color:skyblue">Benny's Mini-Lab</h1>
     <h3 style="font-family:'Courier New', monospace">Insertion sorts</h3>
     <h1 style="background-color:LightBlue;"></h1>
-    <label style="font-size: 35px">Insertion sort MiniLab</label><br>
-    <label style="font-size: 20px">Please enter numbers in the box </label><br>
     <input type="text" id="numstring" name="numstring" style="width: 400px"><br><br>
     <button onclick="sortArray()">Execute</button><br><br><br>
     <label style="font-size: 20px">Insertion-sorted array</label><br>
-    <label id="output4">Sorted array</label><br><br>
+    <label id="insertionOutput">Sorted array</label><br>
+    <label id="insertionTime">Time</label><br><br>
+
+
 </div>
+
 <script>
-  function sortArray() {
+    function sortArray() {
         let string = document.getElementById("numstring").value;
         let stringArr = string.split(" ");
-        var array = stringArr.map(Number);
-        let sortedArr = InsertionSort(array)
-        document.getElementById("output4").innerText = sortedArr;
+        let array = stringArr.map(Number);
+
+        let startTimeInsertion = performance.now();
+        let insertionArr = insertionSort(array);
+        let endTimeInsertion = performance.now();
+        let timeInsertion = endTimeInsertion - startTimeInsertion;
+        let insertionTimeString = String(timeInsertion) + " ms"
+
+
+        document.getElementById("insertionOutput").innerText = insertionArr;
+
+
+        document.getElementById("insertionTime").innerText = insertionTimeString;
+
     }
-    function InsertionSort (inputArr) {
-    let n = inputArr.length;
+
+    function insertionSort(inputArr) {
+        let n = inputArr.length;
         for (let i = 1; i < n; i++) {
             // Choosing the first element in our unsorted subarray
             let current = inputArr[i];
@@ -30,11 +44,10 @@
             }
             inputArr[j+1] = current;
         }
-    return inputArr;
-}
+        return inputArr;
+    }
 
 </script>
-
 
 </body>
 </html>

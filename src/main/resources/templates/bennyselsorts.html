@@ -9,14 +9,25 @@
     <button onclick="sortArray()">Execute</button><br><br><br>
     <label style="font-size: 20px">selection-sorted array</label><br>
     <label id="output4">Sorted array</label><br><br>
+    <label id="selectionOutput">Sorted array</label><br>
+    <label id="selectionTime">Time</label><br><br>
 </div>
 <script>
-    function sortArray() {
+   function sortArray() {
         let string = document.getElementById("numstring").value;
         let stringArr = string.split(" ");
         var array = stringArr.map(Number);
         let sortedArr = selectionSort(array)
         document.getElementById("output4").innerText = sortedArr;
+
+        let startTimeSelection = performance.now();
+        let selectionArr = selectionSort(array);
+        let endTimeSelection = performance.now();
+        let timeSelection = endTimeSelection - startTimeSelection;
+        let selectionTimeString = String(timeSelection) + " ms"
+
+         document.getElementById("selectionOutput").innerText = selectionArr;
+          document.getElementById("selectionTime").innerText = selectionTimeString;
     }
     function selectionSort(inputArr) {
     let n = inputArr.length;
