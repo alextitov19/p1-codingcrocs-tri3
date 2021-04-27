@@ -20,12 +20,6 @@ public class BennyMinilabController {
         return "Bennyrec";
     }
 
-    @GetMapping("/SecSorts")
-    public String greeting5(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
-        model.addAttribute("SecSorts", name);
-        return "Bennyselsorts";
-    }
-
     @GetMapping("/Inheritance")
     public String greeting2(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("Inheritance", name);
@@ -44,4 +38,9 @@ public class BennyMinilabController {
         return "Bennysorts";
 
     }
+    @GetMapping("/SecSorts")
+    public String greeting5(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
+        model.addAttribute("SecSorts", name);
+        return "Bennyselsorts";
+}
 }
