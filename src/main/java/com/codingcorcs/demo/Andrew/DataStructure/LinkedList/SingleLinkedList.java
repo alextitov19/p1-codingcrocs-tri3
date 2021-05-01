@@ -214,18 +214,63 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
         return data;
     }
 
+    /**
+     * <p color='yellow'>This sort is a selection sort that iterates forward </p>
+     */
     @Override
     public void sort() {
-
+        checkSize();
+            Node Pointer1 = head;
+            while (Pointer1.getNext()!=null){
+                Node indexer = Pointer1.getNext();
+                Node minNode = Pointer1;
+                t min = Pointer1.getData();
+                while (indexer!=null){
+                    if (indexer.getData().toString().compareTo(min.toString())<0){
+                        min = indexer.getData();
+                        minNode=indexer;
+                    }
+                    indexer= indexer.getNext();
+                }
+                if (minNode!=Pointer1){
+                    minNode.setData(Pointer1.getData());
+                    Pointer1.setData(min);
+                }
+                Pointer1= Pointer1.getNext();
+            }
     }
 
+
+    /**
+     * <p color='yellow'>This sort is a selection sort that iterates forward </p>
+     * @param comparator <font color='red'>the comparator used by method to sort the data in the give list must be of t type</font>
+     */
     @Override
     public void sort(Comparator<t> comparator) {
+        checkSize();
+        Node Pointer1 = head;
+        while (Pointer1.getNext()!=null){
+            Node indexer= Pointer1.getNext();
+            Node minNode = Pointer1;
+            t min = Pointer1.getData();
+            while(indexer!=null){
+                if (comparator.compare(indexer.getData(),min)<0){
+                    minNode = indexer;
+                    min= indexer.getData();
+                }
+                indexer=indexer.getNext();
+            }
+            if (Pointer1!=minNode){
+                minNode.setData(Pointer1.getData());
+                Pointer1.setData(min);
+            }
+            Pointer1= Pointer1.getNext();
+        }
 
     }
 
     /**
-     * adds all the objects into the list greats for copying data into the list
+     * adds all the objects into the list great for copying data into the list
      * @param list data to be added into the LinkedList
      */
     @Override
@@ -307,5 +352,30 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
             current= current.getNext();
             return data;
         }
+    }
+    @Override
+    public String toString(){
+        StringBuilder builder = new StringBuilder("[");
+        Node pointer = head;
+        while (pointer!=null){
+            if (pointer.getData()==null){
+                builder.append("null");
+            }else{
+                builder.append(pointer.getData());
+            }
+            if (pointer.getNext()!=null){
+                builder.append(", ");
+            }
+            pointer = pointer.getNext();
+        }
+        builder.append("]");
+        return  builder.toString();
+
+    }
+
+    public static void main(String[] args) {
+        SingleLinkedList<Integer> thing = new SingleLinkedList<>(new Integer[]{12, 2, 14, 15});
+        thing.sort(Integer::compareTo);
+        System.out.println(thing);
     }
 }
