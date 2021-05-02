@@ -10,7 +10,17 @@
         let form = field.form;
         form.submit();
 
-    }</script>
+    }
+    function LoadField1(){
+        let textField = document.getElementById("ArrayList").innerText;
+        let field = document.getElementById("ListField1");
+        field.value=textField.toString().replace('[','').replace(']','').replaceAll(',','');
+        let form = field.form;
+        form.submit();
+
+    }
+
+    </script>
 </head>
 <body>
 <div class="import" th:replace="fragments/MiniLabNavBar"></div>
@@ -21,7 +31,7 @@
           <label> Input values with space inBetween to create a list
             <input type="text" id="ListCreateField" name="CreateField">
           </label>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Create List</button>
         </form>
   </div>
         <div class="col-sm">
@@ -39,10 +49,21 @@
                 </label>
                 <label>Enter a valid index for value to be inserted into the list
                     <input name="Index" type="number">
-                </label>
+                </label><br>
                 <label for="Sort">Do you want the list to be sorted</label><input type="checkbox" id="Sort" name="Sort">
                 <input type="text" hidden id="ListField" name="CreateField" th:value="${ArrayList.toString().replace('[','').replace(']','').replace(', ','').toString()}">
-                <button onclick="LoadField()" class="btn btn-primary btn-sm">Submit</button>
+                <button onclick="LoadField()" class="btn btn-primary btn-sm">Append/Sort</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <form name="Delete" action="/minilab/Andrew/Lists">
+                <label>Enter a number of a valid index to be deleted
+                    <input name="DeleteIndex" type="number">
+                </label>
+                <input hidden id="ListField1" name="CreateField">
+                <button onclick="LoadField1()" class="btn btn-primary btn-sm">Delete</button>
             </form>
         </div>
     </div>
