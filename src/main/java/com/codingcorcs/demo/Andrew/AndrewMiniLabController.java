@@ -121,8 +121,16 @@ public class AndrewMiniLabController {
         MyArrayList<Integer> integerMyArrayList = new MyArrayList<>(integers);
         LinkedListInterFace<Integer> integerLinkedListInterFace = new SingleLinkedList<>(integers);
         if (value !=null && index != null){
-            integerMyArrayList.add(value,index);
-            integerLinkedListInterFace.add(index,value);
+            try {
+                integerMyArrayList.add(value,index);
+                integerLinkedListInterFace.add(index,value);
+            }
+            catch (IndexOutOfBoundsException e){
+                index = index>= integerMyArrayList.size()? integerMyArrayList.size()-1: 0;
+                integerLinkedListInterFace.add(index,value);
+                integerMyArrayList.add(value,index);
+            }
+
         }
         if (Sort){
             integerMyArrayList.sort(Integer::compareTo);
