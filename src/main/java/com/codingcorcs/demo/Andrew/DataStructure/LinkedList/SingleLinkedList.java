@@ -122,6 +122,8 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
         checkIndex(index);
         if (index==0){
             head= new Node(object,head);
+            size++;
+            return;
         }
         int counter = 0;
         Node temp = head;
