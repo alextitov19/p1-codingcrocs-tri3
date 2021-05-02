@@ -81,9 +81,9 @@ public class MyArrayList<t> implements Iterable<t>{
         System.out.println(myArray.size()); //size is number of elements in the array not the capacity
         MyArrayList<Integer> arrayList= new MyArrayList<>();
         arrayList.addAll(12,15,16,17,18);
-        System.out.println(arrayList.size());
         arrayList.delete(4);
-        System.out.println(arrayList.size());
+        arrayList.add(18,3);
+
 
     }
 
