@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AlexMiniLabController {
 
-    @GetMapping("/alexFirstLab")
+    @GetMapping("/alex/FirstLab")
     public String index(Model model) {
         return "Alex/Recursion";
     }
