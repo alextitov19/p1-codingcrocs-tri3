@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AlexMiniLabController {
 
     @GetMapping("/alex")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
+    public String index(Model model) {
         return "Alex";
     }
 
