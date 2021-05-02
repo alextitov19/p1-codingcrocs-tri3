@@ -103,6 +103,12 @@ public class AndrewMiniLabController {
 
     }
 
+    @GetMapping("/Lists")
+    public String listMapping(Model model){
+
+        return "Andrew/Lists";
+    }
+
 
 
 }

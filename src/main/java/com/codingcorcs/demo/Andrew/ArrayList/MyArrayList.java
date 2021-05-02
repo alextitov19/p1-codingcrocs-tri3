@@ -9,7 +9,7 @@ import java.util.*;
 
 public class MyArrayList<t> implements Iterable<t>{
     private int size;
-    private Object array[]; // not allowed to create arrays
+    private Object[] array; // not allowed to create arrays
 
 
     MyArrayList(){
@@ -83,8 +83,6 @@ public class MyArrayList<t> implements Iterable<t>{
         arrayList.addAll(12,15,16,17,18);
         arrayList.delete(4);
         arrayList.add(18,3);
-
-
     }
 
 
