@@ -40,6 +40,7 @@
                 <label>Enter a valid index for value to be inserted into the list
                     <input name="Index" type="number">
                 </label>
+                <label for="Sort">Do you want the list to be sorted</label><input type="checkbox" id="Sort" name="Sort">
                 <input type="text" hidden id="ListField" name="CreateField" th:value="${ArrayList.toString().replace('[','').replace(']','').replace(', ','').toString()}">
                 <button onclick="LoadField()" class="btn btn-primary btn-sm">Submit</button>
             </form>

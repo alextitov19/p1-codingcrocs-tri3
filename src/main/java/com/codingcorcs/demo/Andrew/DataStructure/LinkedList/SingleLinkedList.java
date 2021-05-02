@@ -154,10 +154,13 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
         checkIndex(index);
         if (index==0){
             head=head.getNext(); // java will use trash collection to get rid of the old head node
+            size--;
             return;
         }
         if (index==getSize()-1){
-            delete();return;
+            delete();
+            size--;
+            return;
         }
         Node temp = head;
         int counter = 0;
@@ -166,6 +169,7 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
             counter++;
         }
         temp.setNext(temp.getNext().getNext());
+        size--;
     }
 
 
@@ -283,6 +287,7 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
     public void addAll(List<t> list) {
         list.forEach(this::add);
     }
+
 
     /**
      * adds all the objects into the list great for copying data into the list

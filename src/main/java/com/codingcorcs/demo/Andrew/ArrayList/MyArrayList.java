@@ -31,6 +31,10 @@ public class MyArrayList<t> implements Iterable<t>{
         size++;
     }
     private void growArray(){
+      if (array.length==0){
+          array = new Object[10];
+          return;
+      }
         Object[] temp = new Object[array.length*2]; // grows the array by two
         System.arraycopy(array,0,temp,0,array.length); // like memcpy mehtod found in c
         array=temp; //old fashion c style array copy method lol expect the whole free(array) thing, java :)
@@ -57,13 +61,16 @@ public class MyArrayList<t> implements Iterable<t>{
         }else {
             System.arraycopy(array, index + 1, array, index, size - (index + 1));
         }
-        array[size--]=null;
+        array[--size]=null;
     }
     @SafeVarargs
     public final void addAll(t... data){
         for (t d:data){
             add(d);
         }
+    }
+    public void addAll(List<t> list){
+      list.forEach(this::add);
     }
     public int size(){
         return size;
@@ -72,6 +79,9 @@ public class MyArrayList<t> implements Iterable<t>{
     public t get(int index){
         checkIndex(index);
         return (t) array[index];
+    }
+    public void delete(){
+      array[--size] = null;
     }
 
     @Override
@@ -97,6 +107,24 @@ public class MyArrayList<t> implements Iterable<t>{
         arrayList.addAll(12,15,16,17,18);
         arrayList.delete(4);
         arrayList.add(18,3);
+    }
+    @SuppressWarnings("unchecked")
+    public void sort(Comparator<t> comparator){
+      for (int i=1; i< size(); i++){
+          int j = i-1;
+          t key = (t) array[i];
+          while (j>=0 && comparator.compare((t)array[j],key)>0){
+              array[j+1] = array[j];
+              j--;
+          }
+          array[j+1]=key;
+
+      }
+    }
+    public void clear(){
+      array=new Object[0];
+      size=0;
+
     }
 
 
