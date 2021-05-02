@@ -105,7 +105,7 @@ public class AndrewMiniLabController {
     }
 
     @GetMapping("/Lists")
-    public String listMapping(Model model,@RequestParam(value = "CreateField",required = false,defaultValue = "12 15 16 17 18 19 152 167")String listOfData){
+    public String listMapping(Model model,@RequestParam(value = "CreateField",required = false,defaultValue = "12 15 16 17 18 19 152 167")String listOfData , @RequestParam(value = "Index", required = false) Integer index,@RequestParam(value = "Append",required = false) Integer value){
         String[] array = listOfData.split(" ");
         ArrayList<Integer> integers = new ArrayList<>();
         for (String data:array) {
@@ -118,6 +118,10 @@ public class AndrewMiniLabController {
         }
         MyArrayList<Integer> integerMyArrayList = new MyArrayList<>(integers);
         LinkedListInterFace<Integer> integerLinkedListInterFace = new SingleLinkedList<>(integers);
+        if (value !=null && index != null){
+            integerMyArrayList.add(value,index);
+            integerLinkedListInterFace.add(index,value);
+        }
         model.addAttribute("ArrayList", integerMyArrayList);
         model.addAttribute("LinkedList",integerLinkedListInterFace);
         return "Andrew/Lists";

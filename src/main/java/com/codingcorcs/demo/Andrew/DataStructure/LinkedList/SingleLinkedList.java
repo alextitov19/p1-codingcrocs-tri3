@@ -120,6 +120,9 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
     @Override
     public void add(int index, t object) {
         checkIndex(index);
+        if (index==0){
+            head= new Node(object,head);
+        }
         int counter = 0;
         Node temp = head;
         while(counter<index-1){
