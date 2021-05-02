@@ -59,6 +59,7 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
                     add(type);
                 }
             }else throw new IllegalStateException("empty set given");
+
     }
 
     /**
@@ -371,6 +372,21 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
         builder.append("]");
         return  builder.toString();
 
+    }
+
+    /**
+     * theory based idea to check on runtime if a class use comparable if so then does some extra logic
+     * just an idea that seems to work
+     */
+    public void Checking(){
+        Class<?> object = head.getData().getClass();
+        if (Arrays.asList(object.getInterfaces()).contains(Comparable.class)){
+            Comparable<t> comparable = (Comparable<t>) head.getData();
+            System.out.println("made cast");
+            if (comparable.compareTo(head.getData())==0){
+                System.out.println("head equals data");
+            }
+        }
     }
 
     public static void main(String[] args) {
