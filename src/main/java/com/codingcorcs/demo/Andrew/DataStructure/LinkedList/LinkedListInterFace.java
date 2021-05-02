@@ -79,6 +79,11 @@ public interface LinkedListInterFace<t> extends Iterable<t>{
      */
     void sort(Comparator<t> comparator);
 
+
+    /**
+     *
+     * @param list of t type that will be added to the list
+     */
     void addAll(List<t> list);
 
     void addAll(t...data);

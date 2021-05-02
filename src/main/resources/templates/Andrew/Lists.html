@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>function LoadField(){
+        let textField = document.getElementById("ArrayList").innerText;
+        let field = document.getElementById("ListField");
+        field.value=textField.toString().replace('[','').replace(']','').replaceAll(',','');
+        let form = field.form;
+        form.submit();
+
+    }
+    function LoadField1(){
+        let textField = document.getElementById("ArrayList").innerText;
+        let field = document.getElementById("ListField1");
+        field.value=textField.toString().replace('[','').replace(']','').replaceAll(',','');
+        let form = field.form;
+        form.submit();
+
+    }
+
+    </script>
+</head>
+<body>
+<div class="import" th:replace="fragments/MiniLabNavBar"></div>
+<div class="container">
+<div class="row mt-5 pt-2 justify-content-md-center">
+  <div class="col-sm">
+        <form id="CreateList" name="CreateList" action="/minilab/Andrew/Lists" method="get">
+          <label> Input values with space inBetween to create a list
+            <input type="text" id="ListCreateField" name="CreateField">
+          </label>
+          <button type="submit" class="btn btn-primary">Create List</button>
+        </form>
+  </div>
+        <div class="col-sm">
+            <div class="square square-md bg-info text-white">
+                <span id="ArrayList" th:text="${ArrayList}"></span>:ArrayList<br>
+                <span id="LinkedList" th:text="${LinkedList}"></span>:LinkedList
+            </div>
+        </div>
+</div>
+    <div class="row">
+        <div class="col">
+            <form name="Append" method="get" action="/minilab/Andrew/Lists">
+                <label> Enter a single value to be added to the list
+                    <input name="Append" type="number">
+                </label>
+                <label>Enter a valid index for value to be inserted into the list
+                    <input name="Index" type="number">
+                </label><br>
+                <label for="Sort">Do you want the list to be sorted</label><input type="checkbox" id="Sort" name="Sort">
+                <input type="text" hidden id="ListField" name="CreateField" th:value="${ArrayList.toString().replace('[','').replace(']','').replace(', ','').toString()}">
+                <button onclick="LoadField()" class="btn btn-primary btn-sm">Append/Sort</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <form name="Delete" action="/minilab/Andrew/Lists">
+                <label>Enter a number of a valid index to be deleted
+                    <input name="DeleteIndex" type="number">
+                </label>
+                <input hidden id="ListField1" name="CreateField">
+                <button onclick="LoadField1()" class="btn btn-primary btn-sm">Delete</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col w-50">
+        <div class="container-sm">
+        <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Falextitov19%2Fp1-codingcrocs-tri3%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2Fcom%2Fcodingcorcs%2Fdemo%2FAndrew%2FDataStructure%2FLinkedList%2FSingleLinkedList.java%23L1-L374&style=github&showBorder=on&showLineNumbers=on&showFileMeta=on&showCopy=on"></script>
+        </div>
+        </div>
+        <div class="col w-50">
+            <div class="container-sm">
+                <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Falextitov19%2Fp1-codingcrocs-tri3%2Fblob%2FAndrew-April-30%2Fsrc%2Fmain%2Fjava%2Fcom%2Fcodingcorcs%2Fdemo%2FAndrew%2FArrayList%2FMyArrayList.java%23L1-L89&style=github&showBorder=on&showLineNumbers=on&showFileMeta=on&showCopy=on"></script>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

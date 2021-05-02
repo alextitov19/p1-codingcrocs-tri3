@@ -59,6 +59,7 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
                     add(type);
                 }
             }else throw new IllegalStateException("empty set given");
+
     }
 
     /**
@@ -119,6 +120,11 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
     @Override
     public void add(int index, t object) {
         checkIndex(index);
+        if (index==0){
+            head= new Node(object,head);
+            size++;
+            return;
+        }
         int counter = 0;
         Node temp = head;
         while(counter<index-1){
@@ -148,10 +154,13 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
         checkIndex(index);
         if (index==0){
             head=head.getNext(); // java will use trash collection to get rid of the old head node
+            size--;
             return;
         }
         if (index==getSize()-1){
-            delete();return;
+            delete();
+            size--;
+            return;
         }
         Node temp = head;
         int counter = 0;
@@ -160,6 +169,7 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
             counter++;
         }
         temp.setNext(temp.getNext().getNext());
+        size--;
     }
 
 
@@ -278,6 +288,7 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
         list.forEach(this::add);
     }
 
+
     /**
      * adds all the objects into the list great for copying data into the list
      * @param data varargs that is added to the list
@@ -371,6 +382,21 @@ public class SingleLinkedList<t> implements LinkedListInterFace<t>{
         builder.append("]");
         return  builder.toString();
 
+    }
+
+    /**
+     * theory based idea to check on runtime if a class use comparable if so then does some extra logic
+     * just an idea that seems to work
+     */
+    public void Checking(){
+        Class<?> object = head.getData().getClass();
+        if (Arrays.asList(object.getInterfaces()).contains(Comparable.class)){
+            Comparable<t> comparable = (Comparable<t>) head.getData();
+            System.out.println("made cast");
+            if (comparable.compareTo(head.getData())==0){
+                System.out.println("head equals data");
+            }
+        }
     }
 
     public static void main(String[] args) {
