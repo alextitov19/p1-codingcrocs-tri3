@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Recursion</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body style="background-color: #948ad2">
+<div style="text-align: center; font-size: 50px"><br>
+  Welcome to Alex's MiniLab
+  <br><br>
+</div>
+<div style="width: 800px; padding: 10px; border: 5px solid #dda1ff; margin: 50px; text-align: center; position: absolute">
+  <label style="font-size: 35px">Recursion MiniLab</label><br>
+  <label style="font-size: 20px">Please enter a number</label><br>
+  <input type="number" id="num" name="num"><br><br>
+  <button onclick="setLabelText()">Execute</button><br><br><br>
+  <label id="output">sum</label>
+
+</div>
+
+
+<script>
+  function setLabelText() {
+    var number = addUp(document.getElementById("num").value);
+    var s = number.toString()
+    var final = parseInt(s.charAt(0)) + parseInt(s.substring(1, s.length))
+    document.getElementById("output").innerText = final
+  }
+
+  function addUp(k) {
+    if (k > 0) {
+      return k + addUp(k-1);
+    } else {
+      return 0;
+    }
+  }
+</script>
+</body>
+</html>
