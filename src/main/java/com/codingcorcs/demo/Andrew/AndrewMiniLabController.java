@@ -16,6 +16,8 @@ import com.codingcorcs.demo.MiniLabs.Andrew.Sorting.BubbleSort;
 import com.codingcorcs.demo.MiniLabs.Andrew.Sorting.InsertionSort;
 import com.codingcorcs.demo.MiniLabs.Andrew.Sorting.SelctionSort;
 import com.codingcorcs.demo.MiniLabs.Andrew.Sorting.Sorts;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -133,8 +135,9 @@ public class AndrewMiniLabController {
 
     @GetMapping("/Lists/BenchMark")
     @ResponseBody
-    public String BenchMark(){
-        return new ListsTester().deltas.toString();
+    public String BenchMark() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+       return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(new ListsTester().deltas);
     }
 
 
