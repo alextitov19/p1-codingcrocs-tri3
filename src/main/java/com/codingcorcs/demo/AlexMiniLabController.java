@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class AlexMiniLabController {
 
-    @GetMapping("/alex")
+    @GetMapping("/alexFirstLab")
     public String index(Model model) {
         return "Alex";
     }
