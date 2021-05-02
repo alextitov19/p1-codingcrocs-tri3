@@ -12,14 +12,14 @@ public class MyArrayList<t> implements Iterable<t>{
     private Object[] array; // not allowed to create arrays
 
 
-    MyArrayList(){
+  public   MyArrayList(){
         array= new Object[10];
     }
 
-    MyArrayList(int initialCapacity){
+   public MyArrayList(int initialCapacity){
         array = new Object[initialCapacity];
     }
-    MyArrayList(Collection<t> data){
+   public MyArrayList(Collection<t> data){
         array = Arrays.copyOf(data.toArray(),data.size());
         size = array.length;
     }
@@ -72,6 +72,20 @@ public class MyArrayList<t> implements Iterable<t>{
     public t get(int index){
         checkIndex(index);
         return (t) array[index];
+    }
+
+    @Override
+    public String toString() {
+      StringBuilder builder = new StringBuilder("[");
+        int curser =0;
+        while (curser!=size()){
+            builder.append(array[curser].toString());
+            curser++;
+            if (curser!=size()){
+                builder.append(", ");
+            }
+        }
+        return builder.append("]").toString();
     }
 
     public static void main(String[] args) {

@@ -1,21 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <div class="import" th:replace="fragments/MiniLabNavBar"></div>
-<div class="row mt-5">
+<div class="row mt-5 pt-2">
   <div class="col">
-    <form id="CreateList" name="CreateList" action="/minilab/Andrew/Lists" method="post">
-      <label> Input values with space inBetween to create a list
-        <input type="text" id="ListCreateField">
-      </label>
-      <button></button>
-    </form>
+      <div class="container-md">
+        <form id="CreateList" name="CreateList" action="/minilab/Andrew/Lists" method="get">
+          <label> Input values with space inBetween to create a list
+            <input type="text" id="ListCreateField" name="CreateField">
+          </label>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+          <form>
 
+          </form>
+      </div>
   </div>
+    <div class="col">
+        <div class="container-md">
+        <span id="ArrayList" th:text="${ArrayList}"></span><br>
+        <span id="LinkedList" th:text="${LinkedList}"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container-sm w-50 h-25">
+        <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Falextitov19%2Fp1-codingcrocs-tri3%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2Fcom%2Fcodingcorcs%2Fdemo%2FAndrew%2FDataStructure%2FLinkedList%2FSingleLinkedList.java%23L1-L374&style=github&showBorder=on&showLineNumbers=on&showFileMeta=on&showCopy=on"></script>
+        </div>
+    </div>
 </div>
 </body>
 </html>
