@@ -1,8 +1,5 @@
 package com.codingcorcs.demo;
 
-import com.codingcorcs.demo.MiniLabs.Recursion.BHLinkedList;
-import com.codingcorcs.demo.MiniLabs.Recursion.BHPojo;
-import com.codingcorcs.demo.MiniLabs.Recursion.BHNode;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,10 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
 
 @Controller
@@ -51,9 +44,9 @@ public class BennyMinilabController {
         return "Bennyselsorts";
     }
 
-    @GetMapping("/LinkLists")
-    public String greeting6(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
-        model.addAttribute("LinkLists", name);
+    @GetMapping("/LinkList")
+    public String greeting7(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
+        model.addAttribute("LinkList", name);
         return "LinkList";
     }
 }
