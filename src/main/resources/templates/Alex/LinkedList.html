@@ -1,0 +1,298 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Linked List</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body style="background-color: #948ad2">
+<div style="text-align: center; font-size: 50px"><br>
+  Welcome to Alex's MiniLab
+  <br><br>
+</div>
+<div style="width: 800px; padding: 10px; border: 5px solid #dda1ff; margin: 50px; text-align: center; position: absolute; ; top: 730px; left: 900px">
+  <label style="font-size: 35px">Linked List MiniLab</label><br>
+  <label style="font-size: 20px">Here you can insert, delete, and sort the Linked Lists</label><br><br>
+  <label style="font-size: 20px">Linked List</label><br>
+  <label id="linkedListString" name="linkedListString" style="width: 400px">0 12 41 3</label><br><br>
+  <label style="font-size: 20px">Insert</label>
+  <input type="number" id="linkedlistNumber" placeholder="number" style="width: 60px">
+  <input type="number" id="linkedlistInsertPosition" placeholder="position" style="width: 60px">
+
+  <button onclick="insertInLinkedList()">Insert</button><br><br>
+
+  <label style="font-size: 20px">Remove</label>
+  <input type="number" id="linkedlistRemovePosition" placeholder="position" style="width: 60px">
+
+  <button onclick="removeInLinkedList()">Remove</button><br><br><br>
+
+  <button onclick="sortLinkedList()">Sort</button><br><br><br>
+
+
+</div>
+
+<script>
+  function getLinkedList() {
+    let string = document.getElementById("linkedListString").textContent;
+    let stringArr = string.split(" ");
+    let array = stringArr.map(Number);
+    let linkedlist = new LinkedList();
+    for (i =0; i < array.length; i++) {
+      linkedlist.add(array[i]);
+    }
+    return linkedlist;
+  }
+
+  function insertInLinkedList() {
+    let number = document.getElementById("linkedlistNumber").value;
+    let index = document.getElementById("linkedlistInsertPosition").value;
+    let list = getLinkedList()
+    list.insertAt(number, index)
+    document.getElementById("linkedListString").innerText = list.printList();
+  }
+
+  function removeInLinkedList() {
+    let index = document.getElementById("linkedlistRemovePosition").value;
+    let list = getLinkedList()
+    list.removeFrom(index)
+    document.getElementById("linkedListString").innerText = list.printList();
+  }
+
+  function sortLinkedList() {
+    let list = getLinkedList();
+    list = list.sortList();
+    document.getElementById("linkedListString").innerText = list.printList();
+  }
+
+</script>
+
+<script> //This is a structure of the linked list
+class Node {
+  // constructor
+  constructor(element) {
+    this.element = element;
+    this.next = null
+  }
+}
+// linkedlist class
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.size = 0;
+  }
+
+  // adds an element at the end
+  // of list
+  add(element) {
+    // creates a new node
+    var node = new Node(element);
+
+    // to store current node
+    var current;
+
+    // if list is Empty add the
+    // element and make it head
+    if (this.head == null)
+      this.head = node;
+    else {
+      current = this.head;
+
+      // iterate to the end of the
+      // list
+      while (current.next) {
+        current = current.next;
+      }
+
+      // add node
+      current.next = node;
+    }
+    this.size++;
+  }
+
+  // insert element at the position index
+  // of the list
+  insertAt(element, index) {
+    if (index < 0 || index > this.size)
+      return console.log("Please enter a valid index.");
+    else {
+      // creates a new node
+      var node = new Node(element);
+      var curr, prev;
+
+      curr = this.head;
+
+      // add the element to the
+      // first index
+      if (index == 0) {
+        node.next = this.head;
+        this.head = node;
+      } else {
+        curr = this.head;
+        var it = 0;
+
+        // iterate over the list to find
+        // the position to insert
+        while (it < index) {
+          it++;
+          prev = curr;
+          curr = curr.next;
+        }
+
+        // adding an element
+        node.next = curr;
+        prev.next = node;
+      }
+      this.size++;
+    }
+  }
+
+  // removes an element from the
+  // specified location
+  removeFrom(index) {
+    if (index < 0 || index >= this.size)
+      return console.log("Please Enter a valid index");
+    else {
+      var curr, prev, it = 0;
+      curr = this.head;
+      prev = curr;
+
+      // deleting first element
+      if (index === 0) {
+        this.head = curr.next;
+      } else {
+        // iterate over the list to the
+        // position to removce an element
+        while (it < index) {
+          it++;
+          prev = curr;
+          curr = curr.next;
+        }
+
+        // remove the element
+        prev.next = curr.next;
+      }
+      this.size--;
+
+      // return the remove element
+      return curr.element;
+    }
+  }
+
+  // removes a given element from the
+  // list
+  removeElement(element) {
+    var current = this.head;
+    var prev = null;
+
+    // iterate over the list
+    while (current != null) {
+      // comparing element with current
+      // element if found then remove the
+      // and return true
+      if (current.element === element) {
+        if (prev == null) {
+          this.head = current.next;
+        } else {
+          prev.next = current.next;
+        }
+        this.size--;
+        return current.element;
+      }
+      prev = current;
+      current = current.next;
+    }
+    return -1;
+  }
+
+
+  // finds the index of element
+  indexOf(element) {
+    var count = 0;
+    var current = this.head;
+
+    // iterae over the list
+    while (current != null) {
+      // compare each element of the list
+      // with given element
+      if (current.element === element)
+        return count;
+      count++;
+      current = current.next;
+    }
+
+    // not found
+    return -1;
+  }
+
+  // checks the list for empty
+  isEmpty() {
+    return this.size == 0;
+  }
+
+  // gives the size of the list
+  size_of_list() {
+    console.log(this.size);
+  }
+
+
+  // prints the list items
+  printList() {
+    var curr = this.head;
+    var str = "";
+    while (curr) {
+      str += curr.element + " ";
+      curr = curr.next;
+    }
+    return str;
+  }
+
+  merge(l1, l2) {
+    const head = new ListNode();
+    let current = head;
+
+    while (l1 !== null && l2 !== null) {
+      if (l1.val < l2.val) {
+        current.next = l1;
+        l1 = l1.next;
+      } else {
+        current.next = l2;
+        l2 = l2.next;
+      }
+
+      current = current.next;
+    }
+
+    current.next = (l1 === null) ? l2 : l1;
+
+    return head.next;
+  }
+
+
+  sortList = function (head) {
+    if (head === null || head.next === null) {
+      return head;
+    }
+
+    let prev = null;
+    let slow = head;
+    let fast = head;
+
+    while (fast !== null && fast.next !== null) {
+      fast = fast.next.next;
+      prev = slow;
+      slow = slow.next;
+    }
+
+    // close first half list
+    prev.next = null;
+
+    const l1 = sortList(head)
+    const l2 = sortList(slow);
+    return merge(l1, l2);
+  };
+
+
+
+}
+</script>
+</body>
+</html>
