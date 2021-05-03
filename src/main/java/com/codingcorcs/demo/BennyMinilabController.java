@@ -51,9 +51,9 @@ public class BennyMinilabController {
         return "Bennyselsorts";
     }
 
-    @GetMapping("LinkLists")
+    @GetMapping("/LinkLists")
     public String greeting6(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
-        model.addAttribute("SecSorts", name);
+        model.addAttribute("LinkLists", name);
         return "BennyLinkLists";
     }
 }
