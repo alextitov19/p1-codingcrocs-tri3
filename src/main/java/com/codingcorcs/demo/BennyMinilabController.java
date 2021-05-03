@@ -45,7 +45,7 @@ public class BennyMinilabController {
     }
 
     @GetMapping("/LinkList")
-    public String greeting7(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
+    public String greeting6(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("LinkList", name);
         return "LinkList";
     }
