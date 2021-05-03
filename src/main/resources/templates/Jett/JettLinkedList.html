@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-color:LightBlue;">
+<h1 style="font-family:'Courier New', monospace; background-color:LightSkyBlue">LinkedList</h1>
+<form th:action="@{/miniLab/Jett/linkedlist}">
+    <input type="text" id="length" th:name="unsortedlist" th:value="${unsortedlist}" placeholder="Enter Array Ex: 5, 1, 4, 3, 2"/>
+    <input style="font-family:'Courier New', monospace; display: inline;" type="Submit"/>
+</form>
+<p><span style="font-family:'Courier New', monospace">Original LinkedList Unsorted:</span>
+    <span style="font-family:'Courier New', monospace" th:text="${unsorted}"></span></p>
+
+<p><span style="font-family:'Courier New', monospace">Sorted LinkedList O(nlogn):</span>
+    <span style="font-family:'Courier New', monospace" th:text="${sorted}"></span></p>
+
+<p><span style="font-family:'Courier New', monospace">Head 0 inserted:</span>
+    <span style="font-family:'Courier New', monospace" th:text="${inserthead}"></span></p>
+
+<p><span style="font-family:'Courier New', monospace">Middle 0 inserted:</span>
+    <span style="font-family:'Courier New', monospace" th:text="${insertmiddle}"></span></p>
+
+<p><span style="font-family:'Courier New', monospace">Tail 0 inserted:</span>
+    <span style="font-family:'Courier New', monospace" th:text="${inserttail}"></span></p>
+
+<p><span style="font-family:'Courier New', monospace">Head deleted:</span>
+    <span style="font-family:'Courier New', monospace" th:text="${deletehead}"></span></p>
+
+<p><span style="font-family:'Courier New', monospace">Middle deleted:</span>
+    <span style="font-family:'Courier New', monospace" th:text="${deletemiddle}"></span></p>
+
+<p><span style="font-family:'Courier New', monospace">Tail deleted:</span>
+    <span style="font-family:'Courier New', monospace" th:text="${deletetail}"></span></p>
+
+</body>
+<style>
+p {text-align: center;}
+form {text-align: center;}
+h1 {text-align: center;}
+</style>
+</html>

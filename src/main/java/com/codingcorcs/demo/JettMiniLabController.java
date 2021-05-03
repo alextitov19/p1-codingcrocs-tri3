@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
 
 @Controller
 @RequestMapping({"/miniLab/Jett"})
@@ -105,6 +103,53 @@ public class JettMiniLabController {
 
 
         return "Jett/JettInheritance.html";
+    }
+
+    @GetMapping("/linkedlist")
+    public String LinkedExample(@RequestParam(value = "unsortedlist", required = false, defaultValue = "[5, 1, 4, 3, 2]") String unsortedlist, Model model ) {
+        if (unsortedlist == null) {
+            unsortedlist = " ";
+        }
+        String parsedlist = unsortedlist;
+        String[] items = parsedlist.replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+        LinkedList<Integer> mylist = new LinkedList<Integer>();
+        for(int i = 0; i < items.length; i++) {
+            mylist.add(Integer.parseInt(items[i]));
+        }
+        LinkedList<Integer> mylistremovehead = new LinkedList<>(mylist);
+        mylistremovehead.remove();
+
+        LinkedList<Integer> mylistremovemid = new LinkedList<>(mylist);
+        int mid = mylistremovemid.size()/2;
+        mylistremovemid.remove(mid);
+
+        LinkedList<Integer> mylistremovetail = new LinkedList<>(mylist);
+        int tail = mylistremovetail.size() - 1;
+        mylistremovetail.remove(tail);
+
+        LinkedList<Integer> mylistinserthead = new LinkedList<>(mylist);
+        mylistinserthead.add(0,0);
+
+        LinkedList<Integer> mylistinsertmid = new LinkedList<>(mylist);
+        mylistinsertmid.add(mid, 0);
+
+        LinkedList<Integer> mylistinsertail = new LinkedList<>(mylist);
+        mylistinsertail.add(0);
+        // make sure this adds to the end
+
+        LinkedList<Integer> mylistsorted = new LinkedList<>(mylist);
+        Collections.sort(mylistsorted);
+
+        model.addAttribute("unsorted", parsedlist);
+        model.addAttribute("deletehead", mylistremovehead);
+        model.addAttribute("deletemiddle", mylistremovemid);
+        model.addAttribute("deletetail", mylistremovetail);
+        model.addAttribute("inserthead", mylistinserthead);
+        model.addAttribute("insertmiddle", mylistinsertmid);
+        model.addAttribute("inserttail", mylistinsertail);
+        model.addAttribute("sorted", mylistsorted);
+
+        return "Jett/JettLinkedList.html";
     }
 
 }
