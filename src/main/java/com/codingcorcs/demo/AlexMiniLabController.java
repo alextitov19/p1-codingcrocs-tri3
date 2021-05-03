@@ -34,8 +34,7 @@ public class AlexMiniLabController {
         sll = sll.insert(sll, 6);
         sll = sll.insert(sll, 7);
         sll = sll.insert(sll, 8);
-        String mystring = "A Linked List";
-        model.addAttribute(mystring);
+        model.addAttribute("sll", sll);
         return "Alex/LinkedList";
     }
 

@@ -4,35 +4,65 @@
   <title>Linked List</title>
   <meta charset="UTF-8">
 </head>
-<body style="background-color: #948ad2">
+<body style="background-color: #948ad2; text-align: center">
 <div style="text-align: center; font-size: 50px"><br>
   Welcome to Alex's MiniLab
   <br><br>
 </div>
-<div style="width: 800px; padding: 10px; border: 5px solid #dda1ff; margin: 50px; text-align: center; position: absolute; ; top: 730px; left: 900px">
+<div style="width: 50%; padding: 10px; border: 5px solid #dda1ff; text-align: center">
   <label style="font-size: 35px">Linked List MiniLab</label><br>
   <label style="font-size: 20px">Here you can insert, delete, and sort the Linked Lists</label><br><br>
   <label style="font-size: 20px">Linked List</label><br>
-  <p th:text= "${mystring}" />
+  <p th:text= "${sll.printList(sll)}" />
 
-  <!--  <label id="linkedListString" name="linkedListString" style="width: 400px">0 12 41 3</label><br><br>-->
-<!--  <label style="font-size: 20px">Insert</label>-->
-<!--  <input type="number" id="linkedlistNumber" placeholder="number" style="width: 60px">-->
-<!--  <input type="number" id="linkedlistInsertPosition" placeholder="position" style="width: 60px">-->
+    <label id="linkedListString" name="linkedListString" style="width: 400px">0 12 41 3</label><br><br>
+  <label style="font-size: 20px">Insert</label>
+  <input type="number" id="linkedlistNumber" placeholder="number" style="width: 60px">
+  <input type="number" id="linkedlistInsertPosition" placeholder="position" style="width: 60px">
 
-<!--  <button onclick="insertInLinkedList()">Insert</button><br><br>-->
+  <button onclick="insertInLinkedList()">Insert</button><br><br>
 
-<!--  <label style="font-size: 20px">Remove</label>-->
-<!--  <input type="number" id="linkedlistRemovePosition" placeholder="position" style="width: 60px">-->
+  <label style="font-size: 20px">Remove</label>
+  <input type="number" id="linkedlistRemovePosition" placeholder="position" style="width: 60px">
 
-<!--  <button onclick="removeInLinkedList()">Remove</button><br><br><br>-->
+  <button onclick="removeInLinkedList()">Remove</button><br><br><br>
 
-<!--  <button onclick="sortLinkedList()">Sort</button><br><br><br>-->
+  <button onclick="sort()">Sort</button><br><br><br>
 
 
 </div>
 
 <script>
+  function sort() {
+
+    let string = document.getElementById("linkedListString").innerText;
+    let stringArr = string.split(" ");
+    let array = stringArr.map(Number);
+    let bubbleArr = bubbleSort(array);
+    let arrString = bubbleArr.toString()
+    document.getElementById("linkedListString").innerText = arrString;
+  }
+  function bubbleSort(a) {  //simple bubble sort implementation
+    var swap;
+    var n = a.length-1;
+    var x=a;
+    do {
+      swap = false;
+      for (var i=0; i < n; i++)
+      {
+        if (x[i] > x[i+1]) //if need to swap
+        {
+          var temp = x[i];
+          x[i] = x[i+1];
+          x[i+1] = temp;
+          swap = true;
+        }
+      }
+      n--;
+    } while (swap);
+    return x;
+  }
+
   function getLinkedList() {
     let string = document.getElementById("linkedListString").textContent;
     let stringArr = string.split(" ");
