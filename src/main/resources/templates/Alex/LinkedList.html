@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Linked List</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta charset="UTF-8">
 </head>
 <body style="background-color: #948ad2">
 <div style="text-align: center; font-size: 50px"><br>
@@ -13,19 +13,21 @@
   <label style="font-size: 35px">Linked List MiniLab</label><br>
   <label style="font-size: 20px">Here you can insert, delete, and sort the Linked Lists</label><br><br>
   <label style="font-size: 20px">Linked List</label><br>
-  <label id="linkedListString" name="linkedListString" style="width: 400px">0 12 41 3</label><br><br>
-  <label style="font-size: 20px">Insert</label>
-  <input type="number" id="linkedlistNumber" placeholder="number" style="width: 60px">
-  <input type="number" id="linkedlistInsertPosition" placeholder="position" style="width: 60px">
+  <p th:text= "${mystring}" />
 
-  <button onclick="insertInLinkedList()">Insert</button><br><br>
+  <!--  <label id="linkedListString" name="linkedListString" style="width: 400px">0 12 41 3</label><br><br>-->
+<!--  <label style="font-size: 20px">Insert</label>-->
+<!--  <input type="number" id="linkedlistNumber" placeholder="number" style="width: 60px">-->
+<!--  <input type="number" id="linkedlistInsertPosition" placeholder="position" style="width: 60px">-->
 
-  <label style="font-size: 20px">Remove</label>
-  <input type="number" id="linkedlistRemovePosition" placeholder="position" style="width: 60px">
+<!--  <button onclick="insertInLinkedList()">Insert</button><br><br>-->
 
-  <button onclick="removeInLinkedList()">Remove</button><br><br><br>
+<!--  <label style="font-size: 20px">Remove</label>-->
+<!--  <input type="number" id="linkedlistRemovePosition" placeholder="position" style="width: 60px">-->
 
-  <button onclick="sortLinkedList()">Sort</button><br><br><br>
+<!--  <button onclick="removeInLinkedList()">Remove</button><br><br><br>-->
+
+<!--  <button onclick="sortLinkedList()">Sort</button><br><br><br>-->
 
 
 </div>
