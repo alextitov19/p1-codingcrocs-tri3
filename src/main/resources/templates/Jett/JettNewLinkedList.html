@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LinkedList</title>
+</head>
+<body style="background-color:LightBlue;">
+<div class="lab">
+    <h1 style="font-family:'Courier New', monospace; background-color:LightSkyBlue">LinkedList</h1>
+    <form th:action="@{/miniLab/Jett/newlinkedlist}">
+        <p style="font-family:'Courier New', monospace" th:text="${list}"></p>
+        <br>
+        <label style="font-family:'Courier New', monospace">Insert integers to head, middle, tail:</label>
+        <br>
+        <label style="font-family:'Courier New', monospace">Insert Head</label>
+        <input type="number" min="0" max="100" th:name="num1" th:value="${num1}">
+        <input type="submit">
+        <br>
+        <label style="font-family:'Courier New', monospace">Insert Middle</label>
+        <input type="number" min="0" max="100" th:name="num3" th:value="${num3}">
+        <input type="submit">
+        <br>
+        <label style="font-family:'Courier New', monospace">Insert Tail</label>
+        <input type="number" min="0" max="100" th:name="num2" th:value="${num2}">
+        <input type="submit">
+        <br>
+        <br>
+        <label style="font-family:'Courier New', monospace">Delete head, middle, tail. Type "1" in submit box:</label>
+        <br>
+        <label style="font-family:'Courier New', monospace">Delete from head?</label>
+        <input type="number" min="0" max="100" th:name="headremove" th:value="${headremove}">
+        <input type="submit">
+        <br>
+        <label style="font-family:'Courier New', monospace">Delete from middle?</label>
+        <input type="number" min="0" max="100" th:name="midremove" th:value="${midremove}">
+        <input type="submit">
+        <br>
+        <label style="font-family:'Courier New', monospace">Delete from tail?</label>
+        <input type="number" min="0" max="100" th:name="tailremove" th:value="${tailremove}">
+        <input type="submit">
+    </form>
+</div>
+</body>
+<style>
+h1 {text-align: center;}
+form {text-align: center;}
+</style>
+</html>

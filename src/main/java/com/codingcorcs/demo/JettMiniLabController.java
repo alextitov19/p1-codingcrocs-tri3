@@ -1,21 +1,36 @@
 package com.codingcorcs.demo;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-import com.codingcorcs.demo.MiniLabs.Jett.Inheritance;
-import com.codingcorcs.demo.MiniLabs.Jett.InsertionRecursion;
-import com.codingcorcs.demo.MiniLabs.Jett.Summer;
-import com.codingcorcs.demo.MiniLabs.Jett.Winter;
-import com.codingcorcs.demo.MiniLabs.Jett.PalindromeCheck;
+import com.codingcorcs.demo.MiniLabs.Jett.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.*;
-
 @Controller
 @RequestMapping({"/miniLab/Jett"})
 public class JettMiniLabController {
+
+    private static int[] linkedArray = {4, 8, 3, 2, 5};
+
+    public ArrayList<Integer> toArrayList(int[] arr) {
+        ArrayList<Integer> nums = new ArrayList<>();
+        for (int a : arr) {
+            nums.add(a);
+        }
+        return nums;
+    }
+
+    public int[] toArray(ArrayList<Integer> arr) {
+        int[] array = new int[arr.size()];
+        for (int i = 0; i < arr.size(); i++) {
+            array[i] = arr.get(i);
+        }
+        return array;
+    }
+
     @GetMapping("")
     public String HtmlTemplate(@RequestParam(value = "word", required = false) String word, Model model)
     {
@@ -105,51 +120,31 @@ public class JettMiniLabController {
         return "Jett/JettInheritance.html";
     }
 
-    @GetMapping("/linkedlist")
-    public String LinkedExample(@RequestParam(value = "unsortedlist", required = false, defaultValue = "[5, 1, 4, 3, 2]") String unsortedlist, Model model ) {
-        if (unsortedlist == null) {
-            unsortedlist = " ";
+    @GetMapping("/newlinkedlist")
+    public String linkedList(@RequestParam(value = "num1", required = false) Integer num1, @RequestParam(value = "num2", required = false) Integer num2, @RequestParam(value = "num3", required = false) Integer num3, @RequestParam(value = "headremove", required = false, defaultValue = "no") String headremove, @RequestParam(value = "tailremove", required = false, defaultValue = "no") String tailremove, @RequestParam(value = "midremove", required = false, defaultValue = "no") String midremove, Model model) {
+        ArrayList<Integer> numbers = toArrayList(linkedArray);
+        if (num1 != null) {
+            numbers.add(0, num1);
         }
-        String parsedlist = unsortedlist;
-        String[] items = parsedlist.replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
-        LinkedList<Integer> mylist = new LinkedList<Integer>();
-        for(int i = 0; i < items.length; i++) {
-            mylist.add(Integer.parseInt(items[i]));
+        if (num2 != null) {
+            numbers.add(num2);
         }
-        LinkedList<Integer> mylistremovehead = new LinkedList<>(mylist);
-        mylistremovehead.remove();
-
-        LinkedList<Integer> mylistremovemid = new LinkedList<>(mylist);
-        int mid = mylistremovemid.size()/2;
-        mylistremovemid.remove(mid);
-
-        LinkedList<Integer> mylistremovetail = new LinkedList<>(mylist);
-        int tail = mylistremovetail.size() - 1;
-        mylistremovetail.remove(tail);
-
-        LinkedList<Integer> mylistinserthead = new LinkedList<>(mylist);
-        mylistinserthead.add(0,0);
-
-        LinkedList<Integer> mylistinsertmid = new LinkedList<>(mylist);
-        mylistinsertmid.add(mid, 0);
-
-        LinkedList<Integer> mylistinsertail = new LinkedList<>(mylist);
-        mylistinsertail.add(0);
-        // make sure this adds to the end
-
-        LinkedList<Integer> mylistsorted = new LinkedList<>(mylist);
-        Collections.sort(mylistsorted);
-
-        model.addAttribute("unsorted", parsedlist);
-        model.addAttribute("deletehead", mylistremovehead);
-        model.addAttribute("deletemiddle", mylistremovemid);
-        model.addAttribute("deletetail", mylistremovetail);
-        model.addAttribute("inserthead", mylistinserthead);
-        model.addAttribute("insertmiddle", mylistinsertmid);
-        model.addAttribute("inserttail", mylistinsertail);
-        model.addAttribute("sorted", mylistsorted);
-
-        return "Jett/JettLinkedList.html";
+        if (num3 != null) {
+            numbers.add(numbers.size() / 2, num3);
+        }
+        if (headremove.equals("1")) {
+            numbers.remove(0);
+        }
+        if (tailremove.equals("1")) {
+            numbers.remove(numbers.size() - 1);
+        }
+        if (midremove.equals("1")) {
+            numbers.remove(numbers.size() / 2);
+        }
+        linkedArray = toArray(numbers);
+        LinkedList list = new LinkedList(linkedArray);
+        model.addAttribute("list", list);
+        return "Jett/JettNewLinkedList.html";
     }
 
 }
