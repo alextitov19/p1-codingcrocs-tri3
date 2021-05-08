@@ -1,8 +1,8 @@
 # p1-codingcrocs-tri3
 
 # Website: [Link](http://unified-ruler-310320.wm.r.appspot.com/miniLab)
-- Username: Tester
-- Password: Password
+- Username: tester
+- Password: password
 
 # [Tickets](https://github.com/alextitov19/p1-codingcrocs-tri3/projects/1)
 
