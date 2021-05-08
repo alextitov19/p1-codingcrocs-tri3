@@ -59,7 +59,7 @@ public class MyArrayList<t> implements Iterable<t>{
         if (index==size-1){
             array[index] = null;
         }else {
-            System.arraycopy(array, index + 1, array, index, size - (index + 1));
+            System.arraycopy(array, index + 1, array, index, size - (index + 1)); 
         }
         array[--size]=null;
     }
