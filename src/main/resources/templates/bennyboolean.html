@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Benny Minilab</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body style="background-color: purple">
+<div style="text-align: left; font-size: 60px"><br>
+    Benny's MiniLab
+    <br><br>
+</div>
+<div style="width: 800px; padding: 10px; ; margin: 50px; text-align: left; position: center">
+    <label style="font-size: 35px">Boolean MiniLab</label><br>
+    <label style="font-size: 20px">Apple lab</label><br>
+    <label style="font-size: 20px">Enter clean for consumption</label><br>
+    <label style="font-size: 20px">Enter anything else for no consumption</label><br>
+    <input id = "input" type="text" name="input"/>
+    <button onclick="convertToBoolean()"> Start conversion </button>
+    <h3 id = "div" style="color: white"></h3>
+</div>
+<script>
+      function convertToBoolean() {
+			var input = document.getElementById("input");
+			var x = document.getElementById("div");
+			var str = input.value;
+			x.innerHTML = str == 'clean';
+		}
+     </script>
