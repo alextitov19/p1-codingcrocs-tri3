@@ -16,10 +16,10 @@ public class BinarySearch {
      */
     public static <t extends Comparable<t>> int BinarySort(List<? extends t> list,t x){
         int mid;
-        mid = list.size()/2;
+        mid = (list.size()-1)/2;
         if (x.compareTo(list.get(mid))==0) return mid;
         if(x.compareTo(list.get(mid))>0){
-            return BinarySort(list,++mid,list.size(),x);
+            return BinarySort(list,++mid,list.size()-1,x);
         }else{
             return BinarySort(list,0,--mid,x);
         }
@@ -49,9 +49,8 @@ public class BinarySearch {
         System.out.println("Tester for Binary Sort");
         List<Integer> numberList = new Random().ints(120000).boxed().sorted().collect(Collectors.toList());
         System.out.println((BinarySort(numberList,numberList.get(new Random().nextInt(numberList.size())))));
-        List<SecondaryClass> secondaryClasses = new ArrayList<>(List.of(new SecondaryClass(5,"thanks"),new SecondaryClass(12,"hello"),new SecondaryClass(14,"bye"), new SecondaryClass(16,"tag")));
-        int x;
-        System.out.println(( x=BinarySort(secondaryClasses,new SecondaryClass(14,"bye"))));
+        List<SecondaryClass> secondaryClasses = new ArrayList<>(List.of(new SecondaryClass(5,"thanks"), new SecondaryClass(6,"small"), new SecondaryClass(9,"feel"),new SecondaryClass(12,"hello"),new SecondaryClass(14,"bye") ,new SecondaryClass(16,"small"),new SecondaryClass(143,"bye"), new SecondaryClass(162,"tag")));
+        int x=BinarySort(secondaryClasses,new SecondaryClass(14,"bye"));
         System.out.println(secondaryClasses.get(x));
     }
 
