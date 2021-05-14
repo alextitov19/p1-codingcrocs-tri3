@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Brendan Minilab</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body style="background-color: pink">
+<div style="text-align: left; font-size: 60px"><br>
+   Benny's MiniLab
+    <br><br>
+</div>
+<div style="width: 800px; padding: 10px; ; margin: 50px; text-align: left; position: center">
+    <label style="font-size: 35px">Recursion MiniLab</label><br>
+    <label style="font-size: 20px">Please enter a number</label><br>
+    <input type="number" id="num" name="num"><br><br>
+    <button onclick="setLabelText()">Fibbonaci!!</button><br><br><br>
+    <label id="output">answer</label>
+
+</div>
+
+
+<script>
+ function setLabelText() {
+        var number = addUp(document.getElementById("num").value);
+        var s = number.toString()
+        var final = parseInt(s.charAt(0)) + parseInt(s.substring(1, s.length))
+        document.getElementById("output").innerText = final
+    }
+    function addUp(k) {
+      if (k > 0) {
+            return k + addUp(k-1);
+        } else {
+            return 0;
+        }
+    }
+</script>
