@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Benny Minilab</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body style="background-color: pink">
+<div style="text-align: left; font-size: 60px"><br>
+    Benny's MiniLab
+    <br><br>
+</div>
+<div style="width: 800px; padding: 10px; ; margin: 50px; text-align: left; position: center">
+    <label style="font-size: 35px">Binary search MiniLab</label><br>
+    <label style="font-size: 25px">insert numbers</label><br>
+    <input type="text" id="numstring" name="numstring" style="width: 400px"><br><br>
+    <label style="font-size: 25px">insert x value</label><br>
+    <input type="number" id="numvalue" name="numvalue" style="width: 400px"><br><br>
+    <button onclick="bennyscoolbinaryfunction()">Search</button><br><br><br>
+
+</div>
+
+
+<script>
+    function binarySearch(sortedArray, key){
+    let start = 0;
+    let end = sortedArray.length - 1;
+
+    while (start <= end) {
+        let middle = Math.floor((start + end) / 2);
+
+        if (sortedArray[middle] === key) {
+
+            return middle;
+        } else if (sortedArray[middle] < key) {
+
+            start = middle + 1;
+        } else {
+
+            end = middle - 1;
+        }
+    }
+    return -1;
+}
+
+
+ function bennyscoolbinaryfunction() {
+let string = document.getElementById("numstring").value;
+let stringArr = string.split(" ");
+var array = stringArr.map(Number);
+array.sort(function(a, b) {
+  return a - b;
+});
+let x = parseInt(document.getElementById("numvalue").value);
+let result = binarySearch(array, x);
+ (result == -1) ? document.write( "Element is not present in array")
+                   : document.write("Element is present at index " +result);
+}
+
+</script>
+
