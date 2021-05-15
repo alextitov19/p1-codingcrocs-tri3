@@ -38,4 +38,9 @@ public class AlexMiniLabController {
         return "Alex/LinkedList";
     }
 
+    @GetMapping("/alex/binarytree")
+    public String binaryTreeIndex(Model model) {
+        return "Alex/BinaryTree";
+    }
+
 }
