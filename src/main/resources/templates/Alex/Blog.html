@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Blogs</title>
+  </head>
+  <body>
+
+    <div align="center">
+      <h1 align="center">Firebase Blogs</h1>
+      <textarea id="mainText" placeholder="Enter text here..."></textarea><br>
+      <button id="submitButton" onclick="submitClick()">Submit</button>
+    </div>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyCTtYyWB6ego23PiqT9xDxAla7LQNEG2v8",
+        authDomain: "csacodingcrocs.firebaseapp.com",
+        projectId: "csacodingcrocs",
+        storageBucket: "csacodingcrocs.appspot.com",
+        messagingSenderId: "744970618223",
+        appId: "1:744970618223:web:c46c9906aaa54edf37d49a",
+        measurementId: "G-GVFCZY7XD5"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+
+  <script src="Blog.js"></script>
+
+
+  </body>
+</html>
