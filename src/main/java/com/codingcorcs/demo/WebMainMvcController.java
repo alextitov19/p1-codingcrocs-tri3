@@ -3,6 +3,8 @@ package com.codingcorcs.demo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 /**
  * Main controller of the project will handle the landing page and things related to it
