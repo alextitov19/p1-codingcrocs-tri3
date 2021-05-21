@@ -1,6 +1,9 @@
 package com.codingcorcs.demo;
 
+import com.codingcorcs.demo.DataBaseTools.DataBaseMethods;
 import com.codingcorcs.demo.NewUser.NewUser;
+import com.codingcorcs.demo.security.Vaildator.Vaildator;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,20 +43,25 @@ public class WebMainMvcController {
 
     }
     @PostMapping("/SignUp")
-    public String SignUpPage(@Valid NewUser user, BindingResult bindingResult, PasswordEncoder encoder){
+    public String SignUpPage(@Valid NewUser user, BindingResult bindingResult, PasswordEncoder encoder, @Qualifier("UserValidator") Vaildator vaildator){
 
         if (bindingResult.hasErrors()){
             return null; //placeHolder;
         }
-        /*
-        * Custom validator goes here
-        */
+        vaildator.validate(user,bindingResult);
+        if (bindingResult.hasErrors()){
+            return null;
+        }
         user.setPassword(encoder.encode(user.getPassword()));
+        if (DataBaseMethods.putUser(user)){
+            return null; //  page
+        }else {
 
-
-
-        return null; //place holder
+            return null; //error page
+        }
+        //place holder
     }
+
 
 
 }

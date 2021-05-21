@@ -15,9 +15,10 @@ public class Config {
     private static String user;
     private static String url;
 
+
     @PostConstruct
     private void initTable()  {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("info.txt"))));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("DataBaseTools/info.txt"))));
         String temp;
         try {
             int counter =0;
@@ -45,6 +46,7 @@ public class Config {
             }
         }catch (Exception e){
             e.printStackTrace();
+            System.exit(2);
         }
 
 
