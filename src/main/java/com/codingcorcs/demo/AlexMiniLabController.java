@@ -43,4 +43,9 @@ public class AlexMiniLabController {
         return "Alex/BinaryTree";
     }
 
+    @GetMapping("/blog")
+    public String blogIndex(Model model) {
+        return "Alex/Blog";
+    }
+
 }
