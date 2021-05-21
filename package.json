@@ -1,0 +1,22 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "# Website: [Link](http://unified-ruler-310320.wm.r.appspot.com/miniLab) - Username: tester - Password: password",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alextitov19/p1-codingcrocs-tri3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alextitov19/p1-codingcrocs-tri3/issues"
+  },
+  "homepage": "https://github.com/alextitov19/p1-codingcrocs-tri3#readme",
+  "dependencies": {
+    "firebase": "^8.6.2"
+  }
+}
