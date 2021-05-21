@@ -1,7 +1,5 @@
 package com.codingcorcs.demo.DataBaseTools;
 
-import com.google.crypto.tink.*;
-import com.google.crypto.tink.aead.AesGcmKeyManager;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -19,7 +17,7 @@ public class Config {
 
     @PostConstruct
     private void initTable()  {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(getClass().getResourceAsStream("info.txt"))));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("info.txt"))));
         String temp;
         try {
             int counter =0;
@@ -53,4 +51,15 @@ public class Config {
 
     }
 
+    public static String getPassword() {
+        return password;
+    }
+
+    public static String getUser() {
+        return user;
+    }
+
+    public static String getUrl() {
+        return url;
+    }
 }
