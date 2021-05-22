@@ -31,11 +31,12 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests().antMatchers("/","/home","/createUser").permitAll()
-                .antMatchers("/miniLab**","/minilab/**","/minLab/**","/minilab**")
-                .authenticated()
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/","/home","/SignUp","/SignUp").permitAll()
+                .antMatchers("/miniLab/**","/minilab/**").authenticated()
                 .and()
-                .formLogin()
+                .formLogin().permitAll()
                 .defaultSuccessUrl("/miniLab",true)
                 .and()
                 .rememberMe().tokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(7));

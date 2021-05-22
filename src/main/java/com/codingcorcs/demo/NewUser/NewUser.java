@@ -1,13 +1,14 @@
 package com.codingcorcs.demo.NewUser;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class NewUser {
     @NotNull(message = "username can not be empty")
-    @Size(min = 6 , max = 15 , message = "name must be between 6 and 15 character long")
+    @NotBlank(message = "username can not be null")
+    @Size(min = 6, max = 15, message = "name must be between 6 and 15 character long")
     private String username;
     @NotNull(message = "password must not be empty")
     private String password;
