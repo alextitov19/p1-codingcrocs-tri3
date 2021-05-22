@@ -1,6 +1,7 @@
 package com.codingcorcs.demo;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.codingcorcs.demo.MiniLabs.Jett.*;
 import org.springframework.stereotype.Controller;
@@ -145,6 +146,33 @@ public class JettMiniLabController {
         LinkedList list = new LinkedList(linkedArray);
         model.addAttribute("list", list);
         return "Jett/JettNewLinkedList.html";
+    }
+
+    @GetMapping("/mergesort")
+    public String recursion(@RequestParam(value = "length", required = false) Integer length,
+                            @RequestParam(value = "iterations", required = false) Integer iterations, Model model){
+
+        int l = (length == null || length<1 || length>100)?10:length.intValue();
+        String[] exampleData = MergeSort.getExampleSort(l);
+
+
+        List<Long> iterationData = null;
+        if(iterations != null){
+            int i = iterations.intValue();
+            i = Math.min(i, 10000);
+            i = Math.max(i, 10);
+
+            iterationData = MergeSort.sortMany(i);
+        }else{
+            iterations = 100;
+        }
+
+        model.addAttribute("iterations", iterations);
+        model.addAttribute("iterationData", iterationData);
+        model.addAttribute("length", l);
+        model.addAttribute("unsorted", exampleData[0]);
+        model.addAttribute("sorted", exampleData[1]);
+        return "Jett/JettMergeSort.html";
     }
 
 }
