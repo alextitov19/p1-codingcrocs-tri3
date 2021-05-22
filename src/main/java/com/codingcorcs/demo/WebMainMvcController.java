@@ -39,7 +39,7 @@ public class WebMainMvcController {
     @GetMapping("/SignUp")
     public String SignUpPage(Model model){
         model.addAttribute("user",new NewUser());
-        return null; // place holder
+        return "SignUpPage"; // place holder
 
     }
     @PostMapping("/SignUp")
