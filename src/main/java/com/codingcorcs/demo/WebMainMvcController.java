@@ -9,15 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class WebMainMvcController {
-    @GetMapping("/hello")
-    public String helloMapping()
-    {
-        return "Hello";
-    }
     @GetMapping("/Home")
-    public String HomePage()
+    public String Home()
     {
-        return "Hello"; // place holder for now
+        return "homepage"; // place holder for now
     }
 
 }
