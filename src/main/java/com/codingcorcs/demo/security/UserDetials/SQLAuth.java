@@ -22,7 +22,7 @@ public class SQLAuth implements UserDao{
 
     public User getUserFromDB(String username){
         User query = null;
-        final String sqlRequest = "SELECT * FROM users WHERE username='"+username+"'";
+        final String sqlRequest = "SELECT * FROM userinfo WHERE username='"+username+"'";
         try(Connection con = DriverManager.getConnection(Config.getUrl(),Config.getUser(),Config.getPassword())) {
 
             Statement statement = con.createStatement();
@@ -35,7 +35,5 @@ public class SQLAuth implements UserDao{
             e.printStackTrace();
         }
         return query;
-
-
     }
 }

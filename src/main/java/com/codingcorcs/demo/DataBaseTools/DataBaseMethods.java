@@ -13,7 +13,7 @@ public class DataBaseMethods {
 
         try(Connection connection = DriverManager.getConnection(Config.getUrl(),Config.getUser(),Config.getPassword())){
             Statement statement = connection.createStatement();
-            String sql = String.format("INSERT INTO users(username,password) VALUES ('%s','%s')",user.getUsername(),user.getPassword());
+            String sql = String.format("INSERT INTO userinfo(username,password) VALUES ('%s','%s')",user.getUsername(),user.getPassword());
             return statement.executeUpdate(sql) >0;
 
         }catch (SQLException e){
