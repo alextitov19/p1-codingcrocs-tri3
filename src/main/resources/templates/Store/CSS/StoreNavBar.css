@@ -32,3 +32,12 @@ li a:hover {
 .active {
     background-color: #e27d60;
 }
+
+.input[type=text] {
+    padding: 14px 16px;
+    font-size: 16px;
+    background-color: #adffcd;
+    border: none;
+    border-right: 1px solid #85dccf;
+    width: 300px;
+}
