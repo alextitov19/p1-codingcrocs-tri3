@@ -7,14 +7,19 @@ h1 {
     font-size: 50px;
     margin-top: 70px;
 }
+
 p {
-    color: red;
+    font-size: 18px;
+    color: #d3f1ff;
+    margin: 5px;
 }
 
 .item-row {
-    border: 3px solid #fff;
+    border: 0px solid #fff;
     padding: 20px;
     height: 550px;
+    display: flex;
+    justify-content: center;
 }
 
 .item {
@@ -30,4 +35,17 @@ p {
 .item-image {
     width: 400px;
     height: 300px;
+}
+
+.buyButton {
+    width: 150px;
+    height: 50px;
+    background-color: #d76d74;
+    text-align: center;
+    margin: 10px;
+    border: none;
+    font-size: 24px;
+    color: #d3f1ff;
+    border-radius: 12px;
+    bottom: 10px;
 }
