@@ -31,7 +31,7 @@ public class Vaildator implements Validator {
     private boolean isUnique(String username){
         try(Connection connection = DriverManager.getConnection(Config.getUrl(),Config.getUser(),Config.getPassword())) {
             Statement statement = connection.createStatement();
-            String sqlQuery = "SELECT COUNT(username) AS total FROM users WHERE username='"+username+"'";
+            String sqlQuery = "SELECT COUNT(username) AS total FROM userinfo WHERE username='"+username+"'";
             ResultSet set = statement.executeQuery(sqlQuery);
             if (set.next()){
                 return set.getInt("total")<=0;
