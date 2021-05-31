@@ -3,11 +3,16 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #37b17f;
 }
 
 li {
     float: left;
+    border-right: 1px solid #85dccf;
+}
+
+li:last-child {
+    border-right: none;
 }
 
 li a {
@@ -18,7 +23,12 @@ li a {
     text-decoration: none;
 }
 
-/* Change the link color to #111 (black) on hover */
+/* Change the link color on hover */
 li a:hover {
     background-color: #111;
+}
+
+/* Currently active tab */
+.active {
+    background-color: #e27d60;
 }
