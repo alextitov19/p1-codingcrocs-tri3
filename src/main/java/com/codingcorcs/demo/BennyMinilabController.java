@@ -59,4 +59,9 @@ public class BennyMinilabController {
         model.addAttribute("Binarysearch", name);
         return "bennybinary";
     }
+    @GetMapping("/Homepage")
+    public String greeting9(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
+        model.addAttribute("Homepage", name);
+        return "homepage";
+    }
 }
