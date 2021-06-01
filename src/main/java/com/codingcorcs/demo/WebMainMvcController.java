@@ -55,7 +55,7 @@ public class WebMainMvcController {
     }
 
     @PostMapping("/SignUp")
-    public String SignUpPage(@Valid NewUser user,BindingResult bindingResult,Model model){
+    public String SignUpPage(@Valid NewUser user, BindingResult bindingResult){
 
         if (bindingResult.hasErrors()){
             return "SignUpPage";
@@ -66,7 +66,7 @@ public class WebMainMvcController {
         }
         user.setPassword(encoder.encode(user.getPassword()));
         if (DataBaseMethods.putUser(user)){
-            return "SuccessfulSignUp"; //  page
+            return "redirect:/login"; //  page
         }else {
 
             return "SignUpERROR"; //error page
