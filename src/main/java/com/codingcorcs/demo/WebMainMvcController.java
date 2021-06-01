@@ -48,14 +48,14 @@ public class WebMainMvcController {
 
     @GetMapping("/SignUp")
     public String SignUpPage(Model model){
-        model.addAttribute("user",new NewUser());
+        model.addAttribute("newUser",new NewUser());
         System.out.println("Made it here to sign up");
         return "SignUpPage"; // place holder
 
     }
 
     @PostMapping("/SignUp")
-    public String SignUpPage(@ModelAttribute @Valid NewUser user, BindingResult bindingResult){
+    public String SignUpPage(@Valid NewUser user,BindingResult bindingResult,Model model){
 
         if (bindingResult.hasErrors()){
             return "SignUpPage";

@@ -22,7 +22,7 @@ public class Vaildator implements Validator {
     public void validate(Object o, Errors errors) {
             NewUser user = (NewUser) o;
             if (!isUnique(user.getUsername())){
-                errors.rejectValue("username","USER.USERNAME.UNIQUE.username","username is not unique");
+                errors.rejectValue("username","USER.USERNAME.UNIQUE.username");
             }
 
     }
