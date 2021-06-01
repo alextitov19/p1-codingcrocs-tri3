@@ -14,6 +14,7 @@ public class Config {
     private static String password;
     private static String user;
     private static String url;
+    private static String urlForm;
 
 
     @PostConstruct
@@ -43,6 +44,10 @@ public class Config {
                     url = builder.toString();
                     counter++;
                 }
+                if (counter==3){
+                    urlForm = builder.toString();
+                    counter++;
+                }
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -64,4 +69,5 @@ public class Config {
     public static String getUrl() {
         return url;
     }
+    public static String getUrlForm(){return urlForm;}
 }
