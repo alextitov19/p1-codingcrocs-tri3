@@ -48,4 +48,14 @@ public class AlexMiniLabController {
         return "Alex/Blog";
     }
 
+    @GetMapping("/store")
+    public String storeIndex(Model model) {
+        return "Store/Store";
+    }
+
+    @GetMapping("/newItem")
+    public String storeNewItemIndex(Model model) {
+        return "Store/Store_NewItem";
+    }
+
 }
