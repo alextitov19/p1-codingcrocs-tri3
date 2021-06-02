@@ -7,14 +7,23 @@
 # [Tickets](https://github.com/alextitov19/p1-codingcrocs-tri3/projects/1)
 
 # Goals:
-- working social media platform
-- Have users be able to subscribe to content
-- Have users upload images
-- Use Aws to backend the project
+- have Form pages and a store set up
+- Have users be able post content and access form data pages
+- Have users upload form post/ content feeds
+- Use PostgreSQL and google cloud to run backend services
 
 # Tickets
  Back Log Tickets 
  
+# Info:
+- PostgreSQL 13 runing on pi 4 
+- /signUp is where accounts can be created
+- /login is how user can sign into accounts
+- Server is hosted by google 
+- Java sdk 11
+
+
+
 # Mini Lab Access
 - Alex: "/alex/" (Not yet fully deployed)
 - Andrew: "/miniLab/Andrew/Fib/"
