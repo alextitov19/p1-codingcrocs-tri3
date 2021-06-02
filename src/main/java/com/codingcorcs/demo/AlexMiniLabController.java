@@ -45,7 +45,7 @@ public class AlexMiniLabController {
 
     @GetMapping("/blog")
     public String blogIndex(Model model) {
-        return "Alex/Blog";
+        return "Blog/Blog";
     }
 
     @GetMapping("/store")
