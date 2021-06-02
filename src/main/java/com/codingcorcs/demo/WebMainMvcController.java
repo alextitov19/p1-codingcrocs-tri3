@@ -48,14 +48,14 @@ public class WebMainMvcController {
 
     @GetMapping("/SignUp")
     public String SignUpPage(Model model){
-        model.addAttribute("user",new NewUser());
+        model.addAttribute("newUser",new NewUser());
         System.out.println("Made it here to sign up");
         return "SignUpPage"; // place holder
 
     }
 
     @PostMapping("/SignUp")
-    public String SignUpPage(@ModelAttribute @Valid NewUser user, BindingResult bindingResult){
+    public String SignUpPage(@Valid NewUser user, BindingResult bindingResult){
 
         if (bindingResult.hasErrors()){
             return "SignUpPage";
@@ -66,7 +66,7 @@ public class WebMainMvcController {
         }
         user.setPassword(encoder.encode(user.getPassword()));
         if (DataBaseMethods.putUser(user)){
-            return "SuccessfulSignUp"; //  page
+            return "redirect:/login"; //  page
         }else {
 
             return "SignUpERROR"; //error page

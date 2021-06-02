@@ -29,15 +29,17 @@
         <div class="form">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-6">
-                    <form th:action="@{/SignUp}" method="post" th:object="${user}">
+                    <form th:action="@{/SignUp}" method="post" th:object="${newUser}">
                         <div class="form-group">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" id="username" placeholder="username" th:field="*{username}">
                         </div>
+                        <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" style="color: red">Username Error</span>
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" placeholder="password" th:field="*{password}">
                         </div>
+                        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color: red">Password Error</span>
                         <!--<input name="_csrf" type="hidden" th:value="${_csrf.token}"> -->
                         <button type="submit" class="btn btn-success text-center">Sign UP</button>
                     </form>
