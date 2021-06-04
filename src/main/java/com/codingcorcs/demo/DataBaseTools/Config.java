@@ -43,6 +43,7 @@ public class Config {
                 if (counter==2){
                     url = builder.toString();
                     counter++;
+                    continue;
                 }
                 if (counter==3){
                     urlForm = builder.toString();

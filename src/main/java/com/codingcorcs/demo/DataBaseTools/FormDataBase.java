@@ -7,6 +7,9 @@ import java.sql.*;
 import java.text.Normalizer;
 import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import static java.lang.System.out;
 
 public class FormDataBase {
 
@@ -17,7 +20,7 @@ public class FormDataBase {
      * @return all titles from database
      */
     public Forms[] formTitles() {
-        String sqlStatement = "SELECT post_id, form_title FROM forms LIMIT 90";
+        String sqlStatement = "SELECT post_id,form_title FROM forms LIMIT 90";
         try (Connection connection = DriverManager.getConnection(Config.getUrlForm(), Config.getUser(), Config.getPassword())) {
             Statement statement = connection.createStatement();
             ResultSet set = statement.executeQuery(sqlStatement);
@@ -76,5 +79,8 @@ public class FormDataBase {
         }
         return new AbstractMap.SimpleEntry<>(form, comment);
     }
+
+
+
 
 }
