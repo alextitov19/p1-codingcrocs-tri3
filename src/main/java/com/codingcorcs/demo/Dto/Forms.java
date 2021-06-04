@@ -49,4 +49,15 @@ public class Forms {
     public void setPost_content(String post_content) {
         this.post_content = post_content;
     }
+
+
+    @Override
+    public String toString() {
+        return "Forms{" +
+                "post_id=" + post_id +
+                ", form_title='" + form_title + '\'' +
+                ", poster_name='" + poster_name + '\'' +
+                ", post_content='" + post_content + '\'' +
+                '}';
+    }
 }

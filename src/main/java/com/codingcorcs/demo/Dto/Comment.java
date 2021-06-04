@@ -64,5 +64,17 @@ public class Comment {
     public void setReply_user(String reply_user) {
         this.reply_user = reply_user;
     }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "comment_id=" + comment_id +
+                ", post_id=" + post_id +
+                ", poster_name='" + poster_name + '\'' +
+                ", content_text='" + content_text + '\'' +
+                ", reply=" + reply +
+                ", reply_user='" + reply_user + '\'' +
+                '}';
+    }
 }
 
