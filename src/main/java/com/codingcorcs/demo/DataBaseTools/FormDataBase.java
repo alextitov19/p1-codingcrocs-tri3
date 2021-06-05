@@ -80,6 +80,38 @@ public class FormDataBase {
         return new AbstractMap.SimpleEntry<>(form, comment);
     }
 
+    public boolean putComment(Comment comment) {
+        if (comment == null) {
+            return false;
+        }
+        String sqlStatment;
+        if (comment.isReply()) { // if statement if reply user is null
+            sqlStatment = String.format("INSERT INTO comment (post_id,poster_name,content_text,reply,reply_user) VALUES (%d,'%s','%s',%s,'%s')", comment.getPost_id(), comment.getPoster_name(), comment.getContent_text(), comment.isReply(), comment.getReply_user());
+        } else {
+            sqlStatment = String.format("INSERT INTO comment (post_id,poster_name,content_text,reply) VALUES (%d,'%s','%s',%s)", comment.getPost_id(), comment.getPoster_name(), comment.getContent_text(), comment.isReply());
+        }
+        try (Connection connection = DriverManager.getConnection(Config.getUrlForm(), Config.getUser(), Config.getPassword())) {
+            Statement statement = connection.createStatement();
+            return statement.executeUpdate(sqlStatment) > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean putPost(Forms forms) {
+        if (forms == null) {
+            return false;
+        }
+        String sqlStatment = String.format("INSERT INTO forms (form_title,poster_name,post_content) VALUES ('%s','%s','%s')", forms.getForm_title(), forms.getPoster_name(), forms.getPost_content());
+        try (Connection connection = DriverManager.getConnection(Config.getUrlForm(), Config.getUser(), Config.getPassword())) {
+            Statement statement = connection.createStatement();
+            return statement.executeUpdate(sqlStatment) > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 
 
