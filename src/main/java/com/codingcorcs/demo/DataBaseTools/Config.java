@@ -16,9 +16,6 @@ public class Config {
     private static String url;
     private static String urlForm;
 
-    public Config() {
-        initTable();
-    }
 
     @PostConstruct
     private void initTable() {

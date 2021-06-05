@@ -138,9 +138,9 @@ public class FormDataBase {
         }
         String sqlStatment;
         if (forms.getPost_content() == null) {
-            sqlStatment = String.format("UPDATE forms SET form_title='%s',post_content=NULL WHERE post_id=%d", forms.getForm_title(),forms.getPost_id());
+            sqlStatment = String.format("UPDATE forms SET form_title='%s',post_content=NULL WHERE post_id=%d", forms.getForm_title(), forms.getPost_id());
         } else {
-             sqlStatment = String.format("UPDATE forms SET form_title='%s',post_content='%s' WHERE post_id=%d", forms.getForm_title(), forms.getPost_content(), forms.getPost_id());
+            sqlStatment = String.format("UPDATE forms SET form_title='%s',post_content='%s' WHERE post_id=%d", forms.getForm_title(), forms.getPost_content(), forms.getPost_id());
         }
         try (Connection connection = DriverManager.getConnection(Config.getUrlForm(), Config.getUser(), Config.getPassword())) {
             Statement statement = connection.createStatement();
@@ -173,14 +173,5 @@ public class FormDataBase {
         }
     }
 
-    public static void main(String[] args) {
-        new Config();
-        FormDataBase dataBase = new FormDataBase();
-        Forms forms = new Forms();
-        forms.setForm_title("this a test from java");
-        forms.setPost_content("data back");
-        forms.setPost_id(1L);
-        out.println(dataBase.updateForm(forms));
-    }
 
 }
