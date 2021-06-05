@@ -6,6 +6,11 @@ public class Forms {
     private String poster_name;
     private String post_content;
 
+
+    public Forms() {
+
+    }
+
     public Forms(Long post_id, String form_title) {
         this.post_id = post_id;
         this.form_title = form_title;

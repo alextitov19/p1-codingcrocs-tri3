@@ -4,6 +4,7 @@ import com.codingcorcs.demo.Dto.Comment;
 import com.codingcorcs.demo.Dto.Forms;
 
 import java.sql.*;
+import java.text.Normalizer;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 
@@ -101,7 +102,12 @@ public class FormDataBase {
         if (forms == null) {
             return false;
         }
-        String sqlStatment = String.format("INSERT INTO forms (form_title,poster_name,post_content) VALUES ('%s','%s','%s')", forms.getForm_title(), forms.getPoster_name(), forms.getPost_content());
+        String sqlStatment;
+        if (forms.getPost_content() == null) {
+            sqlStatment = String.format("INSERT INTO forms (form_title,poster_name) VALUES ('%s','%s')", forms.getForm_title(), forms.getPoster_name());
+        } else {
+            sqlStatment = String.format("INSERT INTO forms (form_title,poster_name,post_content) VALUES ('%s','%s','%s')", forms.getForm_title(), forms.getPoster_name(), forms.getPost_content());
+        }
         try (Connection connection = DriverManager.getConnection(Config.getUrlForm(), Config.getUser(), Config.getPassword())) {
             Statement statement = connection.createStatement();
             return statement.executeUpdate(sqlStatment) > 0;
@@ -130,7 +136,12 @@ public class FormDataBase {
         if (forms == null) {
             return false;
         }
-        String sqlStatment = String.format("UPDATE forms SET form_title='%s',post_content='%s' WHERE post_id=%d", forms.getForm_title(), forms.getPost_content(), forms.getPost_id());
+        String sqlStatment;
+        if (forms.getPost_content() == null) {
+            sqlStatment = String.format("UPDATE forms SET form_title='%s',post_content=NULL WHERE post_id=%d", forms.getForm_title(),forms.getPost_id());
+        } else {
+             sqlStatment = String.format("UPDATE forms SET form_title='%s',post_content='%s' WHERE post_id=%d", forms.getForm_title(), forms.getPost_content(), forms.getPost_id());
+        }
         try (Connection connection = DriverManager.getConnection(Config.getUrlForm(), Config.getUser(), Config.getPassword())) {
             Statement statement = connection.createStatement();
             return statement.executeUpdate(sqlStatment) > 0;
@@ -140,26 +151,36 @@ public class FormDataBase {
         }
     }
 
-    public boolean deleteComment(Long comment_id){
-        String sqlStatment = "DELETE FROM comments WHERE comment_id="+comment_id;
-        try(Connection connection = DriverManager.getConnection(Config.getUrlForm(),Config.getUser(),Config.getPassword())){
+    public boolean deleteComment(Long comment_id) {
+        String sqlStatment = "DELETE FROM comment WHERE comment_id=" + comment_id;
+        try (Connection connection = DriverManager.getConnection(Config.getUrlForm(), Config.getUser(), Config.getPassword())) {
             Statement statement = connection.createStatement();
-            return statement.executeUpdate(sqlStatment)>0;
-        }catch (SQLException e){
+            return statement.executeUpdate(sqlStatment) > 0;
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
     }
 
-    public boolean deleteForm(Long form_id){
-        String sqlStatment = "DELETE FROM forms WHERE post_id="+form_id;
-        try(Connection connection = DriverManager.getConnection(Config.getUrlForm(),Config.getUser(),Config.getPassword())){
+    public boolean deleteForm(Long form_id) {
+        String sqlStatment = "DELETE FROM forms WHERE post_id=" + form_id;
+        try (Connection connection = DriverManager.getConnection(Config.getUrlForm(), Config.getUser(), Config.getPassword())) {
             Statement statement = connection.createStatement();
-            return statement.executeUpdate(sqlStatment)>0;
-        }catch (SQLException e){
+            return statement.executeUpdate(sqlStatment) > 0;
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public static void main(String[] args) {
+        new Config();
+        FormDataBase dataBase = new FormDataBase();
+        Forms forms = new Forms();
+        forms.setForm_title("this a test from java");
+        forms.setPost_content("data back");
+        forms.setPost_id(1L);
+        out.println(dataBase.updateForm(forms));
     }
 
 }
