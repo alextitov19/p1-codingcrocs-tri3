@@ -8,6 +8,27 @@ public class Comment {
     private boolean reply;
     private String reply_user;
 
+
+    public Comment(){
+
+    }
+
+    /**
+     *
+     * @param post_id the post id
+     * @param poster_name name of poster
+     * @param content_text text of comment
+     * @param reply whether it is a reply
+     * @param reply_user user who is being replied too
+     */
+    public Comment(Long post_id, String poster_name, String content_text, boolean reply, String reply_user) {
+        this.post_id = post_id;
+        this.poster_name = poster_name;
+        this.content_text = content_text;
+        this.reply = reply;
+        this.reply_user = reply_user;
+    }
+
     public Comment(Long comment_id, Long post_id, String poster_name, String content_text, boolean reply, String reply_user) {
         this.comment_id = comment_id;
         this.post_id = post_id;
