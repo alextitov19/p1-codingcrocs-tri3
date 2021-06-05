@@ -4,10 +4,8 @@ import com.codingcorcs.demo.Dto.Comment;
 import com.codingcorcs.demo.Dto.Forms;
 
 import java.sql.*;
-import java.text.Normalizer;
 import java.util.AbstractMap;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import static java.lang.System.out;
 
@@ -114,5 +112,54 @@ public class FormDataBase {
     }
 
 
+    public boolean updateComment(Comment comment) {
+        if (comment == null) {
+            return false;
+        }
+        String sqlStatment = String.format("UPDATE comment SET content_text='%s' WHERE comment_id=%d", comment.getContent_text(), comment.getComment_id());
+        try (Connection connection = DriverManager.getConnection(Config.getUrlForm(), Config.getUser(), Config.getPassword())) {
+            Statement statement = connection.createStatement();
+            return statement.executeUpdate(sqlStatment) > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean updateForm(Forms forms) {
+        if (forms == null) {
+            return false;
+        }
+        String sqlStatment = String.format("UPDATE forms SET form_title='%s',post_content='%s' WHERE post_id=%d", forms.getForm_title(), forms.getPost_content(), forms.getPost_id());
+        try (Connection connection = DriverManager.getConnection(Config.getUrlForm(), Config.getUser(), Config.getPassword())) {
+            Statement statement = connection.createStatement();
+            return statement.executeUpdate(sqlStatment) > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean deleteComment(Long comment_id){
+        String sqlStatment = "DELETE FROM comments WHERE comment_id="+comment_id;
+        try(Connection connection = DriverManager.getConnection(Config.getUrlForm(),Config.getUser(),Config.getPassword())){
+            Statement statement = connection.createStatement();
+            return statement.executeUpdate(sqlStatment)>0;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean deleteForm(Long form_id){
+        String sqlStatment = "DELETE FROM forms WHERE post_id="+form_id;
+        try(Connection connection = DriverManager.getConnection(Config.getUrlForm(),Config.getUser(),Config.getPassword())){
+            Statement statement = connection.createStatement();
+            return statement.executeUpdate(sqlStatment)>0;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 }
