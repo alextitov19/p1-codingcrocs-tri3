@@ -19,11 +19,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
-import java.sql.Time;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.AbstractMap;
+import java.util.*;
 
 /**
  * Froms is controller for all form related things like database management on top resolving templates and client connections
@@ -52,7 +50,10 @@ public class WebController {
      */
     @GetMapping({"/", "/titles", "/all"})
     public String getTitles(Model model) {
-        return null;
+        ArrayList<Forms> forms = new ArrayList<>();
+        Collections.addAll(forms,formDataBase.formTitles());
+        model.addAttribute("Forms",forms);
+        return null; // TODO: 6/7/2021 write front-end
     }
 
     /**
@@ -74,7 +75,7 @@ public class WebController {
      * @implNote <font color='red'>Still needs to be implemented</font>
      */
     @PreAuthorize("hasRole('ROLE_User')")
-    @PostMapping(value = "/Form/Add",consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/Form/Add")
     public String AddForm(@Valid Forms forms, BindingResult bindingResult) {
         if (bindingResult.hasErrors()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Form has errors: " + bindingResult.getFieldErrors());
@@ -109,7 +110,7 @@ public class WebController {
         try {
             return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(objectNode);
         } catch (JsonProcessingException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Something went processing your request we apologies for the inconvenience");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Something went wrong processing your request, we apologies for the inconvenience");
         }
 
     }
