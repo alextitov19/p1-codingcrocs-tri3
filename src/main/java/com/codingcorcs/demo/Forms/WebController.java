@@ -27,11 +27,16 @@ public class WebController {
 
     private final FormDataBase formDataBase;
 
+    /**
+     * Constructor of form web controller
+     * @param formDataBase Autowired service for the form data bases methods
+     */
     @Autowired
-    public WebController(FormDataBase formDataBase){
+    public WebController(FormDataBase formDataBase) {
 
         this.formDataBase = formDataBase;
     }
+
     /**
      * Get all of the forms from the database
      *
@@ -65,32 +70,37 @@ public class WebController {
     @PostMapping("/Form/Add")
     public String AddForm(@ModelAttribute Forms forms) {
 
-        if (formDataBase.putPost(forms)){
+        if (formDataBase.putPost(forms)) {
             return null; // could be template or json stuff
-        }else{
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Request was not prefilled");
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Request was not prefilled");
         }
 
     }
 
+    /**
+     * This should be called async as this method will take a longer time to process
+     * @param id the id of the form to be deleted
+     * @param authentication user account to make sure a non owner can not delete the form with out permission
+     * @return json output of what was deleted
+     */
     @PreAuthorize("hasAuthority('ROLE_User')")
-    @DeleteMapping(value = "/Form/Delete/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/Form/Delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String deleteForm(@PathVariable long id, Authentication authentication){
+    public String deleteForm(@PathVariable long id, Authentication authentication) {
         String username = authentication.getName();
-        AbstractMap.SimpleEntry<Boolean, Boolean> simpleEntry = formDataBase.deleteForm(id,username);
-        if (simpleEntry.getValue()==null&&simpleEntry.getKey()==null){
-            throw  new ResponseStatusException(HttpStatus.BAD_REQUEST,"There was an error processing your request with our database verify that you are the owner of the form");
+        AbstractMap.SimpleEntry<Boolean, Boolean> simpleEntry = formDataBase.deleteForm(id, username);
+        if (simpleEntry.getValue() == null && simpleEntry.getKey() == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "There was an error processing your request with our database verify that you are the owner of the form");
         }
         ObjectNode objectNode = new ObjectMapper().createObjectNode();
-        objectNode.put("Form Deleted",simpleEntry.getKey());
-        objectNode.put("Comments Deleted",simpleEntry.getValue());
+        objectNode.put("Form Deleted", simpleEntry.getKey());
+        objectNode.put("Comments Deleted", simpleEntry.getValue());
         try {
             return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(objectNode);
-        }catch (JsonProcessingException e){
-            throw  new ResponseStatusException(HttpStatus.BAD_REQUEST,"Something went processing your request we apologies for the inconvenience");
+        } catch (JsonProcessingException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Something went processing your request we apologies for the inconvenience");
         }
-
 
     }
 }
