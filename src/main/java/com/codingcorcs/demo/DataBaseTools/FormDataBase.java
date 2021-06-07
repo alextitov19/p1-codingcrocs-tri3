@@ -2,6 +2,7 @@ package com.codingcorcs.demo.DataBaseTools;
 
 import com.codingcorcs.demo.Dto.Comment;
 import com.codingcorcs.demo.Dto.Forms;
+import org.springframework.stereotype.Service;
 
 import java.sql.*;
 import java.text.Normalizer;
@@ -9,7 +10,7 @@ import java.util.AbstractMap;
 import java.util.ArrayList;
 
 import static java.lang.System.out;
-
+@Service
 public class FormDataBase {
 
 
@@ -151,8 +152,8 @@ public class FormDataBase {
         }
     }
 
-    public boolean deleteComment(Long comment_id) {
-        String sqlStatment = "DELETE FROM comment WHERE comment_id=" + comment_id;
+    public boolean deleteComment(Long comment_id,String username) {
+        String sqlStatment = String.format("DELETE FROM comment WHERE comment_id=%d AND poster_name='%s'",comment_id,username);
         try (Connection connection = DriverManager.getConnection(Config.getUrlForm(), Config.getUser(), Config.getPassword())) {
             Statement statement = connection.createStatement();
             return statement.executeUpdate(sqlStatment) > 0;
@@ -162,16 +163,41 @@ public class FormDataBase {
         }
     }
 
-    public boolean deleteForm(Long form_id) {
-        String sqlStatment = "DELETE FROM forms WHERE post_id=" + form_id;
+    /**
+     * this should be called async because execution time could be long depending on form size
+     * @param form_id the id of the form
+     * @param username the user trying to delete the form
+     * @return true if the form is deleted with comments or false if form isn't deleted or comments
+     */
+    public AbstractMap.SimpleEntry<Boolean,Boolean> deleteForm(Long form_id,String username) {
+
+        String sqlStatment = String.format("DELETE FROM forms WHERE post_id=%d AND poster_name='%s'",form_id,username);
         try (Connection connection = DriverManager.getConnection(Config.getUrlForm(), Config.getUser(), Config.getPassword())) {
             Statement statement = connection.createStatement();
-            return statement.executeUpdate(sqlStatment) > 0;
+             if(statement.executeUpdate(sqlStatment) > 0){
+                 String sqlUpdate = String.format("DELETE FROM comment WHERE post_id=%d",form_id);
+                return new AbstractMap.SimpleEntry<>(true, deleteComments(sqlUpdate));
+             }
+             return new AbstractMap.SimpleEntry<>(false,null);
         } catch (SQLException e) {
+            e.printStackTrace();
+            return new AbstractMap.SimpleEntry<>(null,null);
+        }
+    }
+
+    /**
+     * internal method call from deleteForm to delete associated comments of form
+     * @param sqlStatement statement to be executed
+     * @return true it comments of the form have been deleted or false if not. Will return false if form had zero comments
+     */
+    private boolean deleteComments(String sqlStatement){
+        try(Connection connection = DriverManager.getConnection(Config.getUrlForm(),Config.getUser(),Config.getPassword())){
+            Statement statement = connection.createStatement();
+           return statement.executeUpdate(sqlStatement)>0;
+        }catch (SQLException e){
             e.printStackTrace();
             return false;
         }
     }
-
 
 }
