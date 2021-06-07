@@ -2,6 +2,7 @@ package com.codingcorcs.demo.Forms;
 
 
 import com.codingcorcs.demo.DataBaseTools.FormDataBase;
+import com.codingcorcs.demo.Dto.Comment;
 import com.codingcorcs.demo.Dto.Forms;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,9 +14,15 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.AbstractMap;
 
 /**
@@ -67,8 +74,11 @@ public class WebController {
      * @implNote <font color='red'>Still needs to be implemented</font>
      */
     @PreAuthorize("hasRole('ROLE_User')")
-    @PostMapping("/Form/Add")
-    public String AddForm(@ModelAttribute Forms forms) {
+    @PostMapping(value = "/Form/Add",consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String AddForm(@Valid Forms forms, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Form has errors: " + bindingResult.getFieldErrors());
+        }
 
         if (formDataBase.putPost(forms)) {
             return null; // could be template or json stuff
@@ -103,4 +113,27 @@ public class WebController {
         }
 
     }
+
+    @PreAuthorize("hasAuthority('ROLE_User')")
+    @PutMapping(value = "/Form/Comment/Add",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    public String addComment(@RequestBody Comment comment,Authentication authentication)  {
+       comment.setPoster_name(authentication.getName());
+       if(formDataBase.putComment(comment)){
+           ObjectMapper objectMapper = new ObjectMapper();
+           ObjectNode objectNode = objectMapper.createObjectNode();
+           DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+           objectNode.put("Time-Created", dtf.format(LocalDateTime.now()));
+           objectNode.put("Poster-Name",authentication.getName());
+           try {
+               return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(objectNode);
+           }catch (JsonProcessingException e){
+               e.printStackTrace();
+               throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,"Error processing json value but request prefilled");
+           }
+       }else{
+           throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"User request Failed");
+       }
+    }
+
+
 }

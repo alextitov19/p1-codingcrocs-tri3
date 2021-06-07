@@ -1,9 +1,15 @@
 package com.codingcorcs.demo.Dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.validator.constraints.Length;
+
 public class Forms {
+
     private Long post_id;
+    @Length(min = 4,max = 50,message = "title must not be longer then 50 characters")
     private String form_title;
     private String poster_name;
+    @Length(min = 0,max = 500,message = "message must not be longer than 500 characters")
     private String post_content;
 
 
