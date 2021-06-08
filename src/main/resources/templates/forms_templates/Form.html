@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:value="${Form.getForm_title()} +' '+ ${Form.getPost_id()}"></title>
+</head>
+<body>
+    <div class="import" th:replace="forms_templates/NavBar.html"></div>
+    <div class="Post">
+      <div class="Container">
+        <article class="form-post">
+          <span th:text="${Form.getPoster_name()}"></span>
+          <span class="form-title" th:text="${Form.getForm_title()}"></span><br>
+          <label>
+            <textarea class="post-content" readonly th:text="${Form.getPost_content()}"></textarea>
+          </label>
+        </article>
+      </div>
+      <div class="comments">
+        <div class="comment" th:each="Comment : ${Comments}">
+            <span class="comment-name" th:text="${Comment.getPoster_name()}"></span><br>
+          <label>
+            <textarea readonly th:text="${Comment.getContent_text()}"></textarea>
+          </label><br>
+        </div>
+      </div>
+
+    </div>
+
+</body>
+</html>

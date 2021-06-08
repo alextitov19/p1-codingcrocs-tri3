@@ -53,7 +53,7 @@ public class WebController {
         ArrayList<Forms> forms = new ArrayList<>();
         Collections.addAll(forms,formDataBase.formTitles());
         model.addAttribute("Forms",forms);
-        return null; // TODO: 6/7/2021 write front-end
+        return "forms_templates/Forms";
     }
 
     /**
@@ -65,8 +65,10 @@ public class WebController {
      */
     @GetMapping("/Forms/{id}") // path varable that gets the post_id from the database
     public String getForm(@PathVariable("id") long post_id, Model model) {
-
-        return null;
+        AbstractMap.SimpleEntry<ArrayList<Forms>,ArrayList<Comment>> map = formDataBase.getForm(post_id);
+        model.addAttribute("Form",map.getKey().get(0));
+        model.addAttribute("Comments",map.getValue());
+        return "forms_templates/Form";
     }
 
     @GetMapping(value = "/Forms/Add")
