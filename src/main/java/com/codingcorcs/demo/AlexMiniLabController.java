@@ -58,4 +58,9 @@ public class AlexMiniLabController {
         return "Store/Store_NewItem";
     }
 
+    @GetMapping("/chat")
+    public String storeChatIndex(Model model) {
+        return "Store/Store_Chat";
+    }
+
 }
