@@ -9,6 +9,7 @@
 <script type="text/javascript">
     function get_action(){
         document.getElementById('searchForm').action = "/Forms/Forms/" + document.getElementById('searchBox').value.toString();
+        return true;
     }
 </script>
 
@@ -24,10 +25,10 @@
                     <li class="nav-item px-3">
                         <a class="nav-link" href="/Forms/Form/Add">Add Form</a>
                     </li>
-
                 </ul>
-                <form class="d-flex" action="" id="searchForm">
+                <form class="d-flex" onsubmit="return get_action();" id="searchForm">
                     <input class="form-control me-2" type="search" placeholder="id of form" aria-label="Search" id="searchBox">
+                    <button type="submit" class="btn btn-outline-success">Search</button>
                 </form>
             </div>
         </div>
