@@ -69,6 +69,12 @@ public class WebController {
         return null;
     }
 
+    @GetMapping(value = "/Forms/Add")
+    public String AddForm(){
+
+        return null;
+    }
+
     /**
      * @param forms <font color='green'>form dto passed from front end to the back end for processing</font>
      * @return template to be resoled
@@ -136,5 +142,24 @@ public class WebController {
        }
     }
 
+    @PreAuthorize("hasAuthority('ROLE_User')")
+    @DeleteMapping(value = "/Form/Comment/Delete/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String deleteComment(@PathVariable long id,Authentication authentication){
+        String username = authentication.getName();
+        if(formDataBase.deleteComment(id,username)){
+                ObjectMapper objectMapper = new ObjectMapper();
+                ObjectNode objectNode = objectMapper.createObjectNode();
+                objectNode.put("Comment_ID",id);
+                objectNode.put("Time_Deleted",DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss").format(LocalDateTime.now()));
+                try {
+                    return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(objectNode);
+                }catch (JsonProcessingException e){
+                    throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,"Comment of Id "+id+" has been deleted but json string failed to be created");
+                }
+        }else{
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"There was an error processing your request");
+        }
+    }
 
 }
