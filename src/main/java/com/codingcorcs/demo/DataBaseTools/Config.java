@@ -14,41 +14,46 @@ public class Config {
     private static String password;
     private static String user;
     private static String url;
+    private static String urlForm;
 
 
     @PostConstruct
-    private void initTable()  {
+    private void initTable() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("DataBaseTools/info.txt"))));
         String temp;
         try {
-            int counter =0;
-            while ((temp= reader.readLine())!=null){
+            int counter = 0;
+            while ((temp = reader.readLine()) != null) {
                 String[] tempArray = temp.split(" ");
                 StringBuilder builder = new StringBuilder();
-                for (String thing:tempArray) {
+                for (String thing : tempArray) {
                     char ch = (char) Integer.parseInt(thing);
                     builder.append(ch);
                 }
-                if (counter==0){
-                    user=builder.toString();
+                if (counter == 0) {
+                    user = builder.toString();
                     counter++;
                     continue;
                 }
-                if (counter==1){
-                    password=builder.toString();
+                if (counter == 1) {
+                    password = builder.toString();
                     counter++;
                     continue;
                 }
-                if (counter==2){
+                if (counter == 2) {
                     url = builder.toString();
+                    counter++;
+                    continue;
+                }
+                if (counter == 3) {
+                    urlForm = builder.toString();
                     counter++;
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.exit(2);
         }
-
 
 
     }
@@ -63,5 +68,9 @@ public class Config {
 
     public static String getUrl() {
         return url;
+    }
+
+    public static String getUrlForm() {
+        return urlForm;
     }
 }
