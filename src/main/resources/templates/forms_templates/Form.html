@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title th:value="${Form.getForm_title()} +' '+ ${Form.getPost_id()}"></title>
+    <style>
+        .Container{
+            background-color: darkgrey;
+            color: black;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            margin: auto;
+            width: 50%;
+        }
+        .comments{
+            padding-top: 5em;
+            background-color: darkgrey;
+            margin: auto;
+            width: 50%;
+
+        }
+        .comment{
+            text-align: center;
+            padding-top: 2%;
+            flex-direction: row;
+            justify-content: center;
+        }
+        .CommentBox{
+            margin: auto;
+            text-align: center;
+            position: sticky;
+            position: -webkit-sticky;
+        }
+    </style>
+</head>
+<body>
+    <input type="hidden" id="ValueOf" th:value="${Form.getPost_id()}">
+    <script>
+        $(document).ready(function (){
+            $('#Post-Comment').click(function (){
+                let attr = {post_id:parseInt($('#ValueOf').val()),content_text:$('#ContentText-user').val(),reply:false,reply_user:null};
+                $.ajaxSetup(
+                    {
+                        contentType: 'application/json; charset=utf-8'
+
+                    });
+                $.post("/Forms/Form/Comment/Add",JSON.stringify(attr), function (){
+                    alert("Comment Sent To controller may not be posted if not log in");
+                    location.reload();
+              })
+            })
+        })
+    </script>
+    <div class="import" th:replace="forms_templates/NavBar.html"></div>
+    <div class="Post">
+      <div class="Container">
+        <article class="form-post">
+          <span th:text="${Form.getPoster_name()} + ':'"></span>
+          <span class="form-title" th:text="${Form.getForm_title()}"></span><br>
+          <label>
+            <textarea class="post-content" readonly th:text="${Form.getPost_content()}"></textarea>
+          </label>
+        </article>
+      </div>
+      <div class="comments">
+          <span>Comments</span>
+        <div class="comment" th:each="Comment : ${Comments}">
+            <span class="comment-name" th:text="${Comment.getPoster_name()}"></span><br>
+          <label>
+            <textarea readonly th:text="${Comment.getContent_text()}"></textarea>
+          </label><br>
+        </div>
+      </div>
+        <div class="CommentBox">
+            <label>
+                Comment Content<br><textarea id="ContentText-user"></textarea>
+            </label><br>
+            <button id="Post-Comment" class="btn btn-primary btn-md">Post Comment</button>
+        </div>
+    </div>
+
+
+</body>
+</html>

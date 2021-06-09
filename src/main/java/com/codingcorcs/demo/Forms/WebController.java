@@ -53,7 +53,7 @@ public class WebController {
         ArrayList<Forms> forms = new ArrayList<>();
         Collections.addAll(forms,formDataBase.formTitles());
         model.addAttribute("Forms",forms);
-        return null; // TODO: 6/7/2021 write front-end
+        return "forms_templates/Forms";
     }
 
     /**
@@ -65,8 +65,10 @@ public class WebController {
      */
     @GetMapping("/Forms/{id}") // path varable that gets the post_id from the database
     public String getForm(@PathVariable("id") long post_id, Model model) {
-
-        return null;
+        AbstractMap.SimpleEntry<ArrayList<Forms>,ArrayList<Comment>> map = formDataBase.getForm(post_id);
+        model.addAttribute("Form",map.getKey().get(0));
+        model.addAttribute("Comments",map.getValue());
+        return "forms_templates/Form";
     }
 
     @GetMapping(value = "/Forms/Add")
@@ -122,8 +124,11 @@ public class WebController {
     }
 
     @PreAuthorize("hasAuthority('ROLE_User')")
-    @PutMapping(value = "/Form/Comment/Add",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/Form/Comment/Add",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
     public String addComment(@RequestBody Comment comment,Authentication authentication)  {
+        System.out.println(comment.toString());
+        System.out.println("Entered");
        comment.setPoster_name(authentication.getName());
        if(formDataBase.putComment(comment)){
            ObjectMapper objectMapper = new ObjectMapper();
@@ -141,7 +146,6 @@ public class WebController {
            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"User request Failed");
        }
     }
-
     @PreAuthorize("hasAuthority('ROLE_User')")
     @DeleteMapping(value = "/Form/Comment/Delete/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
