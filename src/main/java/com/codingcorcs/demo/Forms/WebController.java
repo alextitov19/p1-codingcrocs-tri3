@@ -124,8 +124,11 @@ public class WebController {
     }
 
     @PreAuthorize("hasAuthority('ROLE_User')")
-    @PutMapping(value = "/Form/Comment/Add",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/Form/Comment/Add",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
     public String addComment(@RequestBody Comment comment,Authentication authentication)  {
+        System.out.println(comment.toString());
+        System.out.println("Entered");
        comment.setPoster_name(authentication.getName());
        if(formDataBase.putComment(comment)){
            ObjectMapper objectMapper = new ObjectMapper();
@@ -143,7 +146,6 @@ public class WebController {
            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"User request Failed");
        }
     }
-
     @PreAuthorize("hasAuthority('ROLE_User')")
     @DeleteMapping(value = "/Form/Comment/Delete/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody

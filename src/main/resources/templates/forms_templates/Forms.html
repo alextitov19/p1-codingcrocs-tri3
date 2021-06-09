@@ -5,11 +5,14 @@
     <meta title="Forms">
     <!--<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}"> -->
     <title>Title</title>
+
 </head>
 <body>
     <div class="import" th:replace="forms_templates/NavBar.html"></div>
-    <div class="aForm" th:each="Form : ${Forms}">
-        <a th:href="@{/Forms/Forms/{id}(id=${Form.getPost_id()})}" th:text="${Form.getForm_title()}"></a>
+    <div class="container">
+        <div class="aForm" th:each="Form : ${Forms}">
+            <a th:href="@{/Forms/Forms/{id}(id=${Form.getPost_id()})}" th:text="${Form.getForm_title()}"></a>
+        </div>
     </div>
 </body>
 </html>

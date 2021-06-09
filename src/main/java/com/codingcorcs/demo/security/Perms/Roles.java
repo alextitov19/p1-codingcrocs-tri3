@@ -10,6 +10,6 @@ public enum Roles {
     Admin,
     User;
     public Set<SimpleGrantedAuthority> getGrantedAuthority(){
-        return new HashSet<>(List.of(new SimpleGrantedAuthority("Role_" + this.name())));
+        return new HashSet<>(List.of(new SimpleGrantedAuthority("ROLE_" + this.name())));
     }
 }
