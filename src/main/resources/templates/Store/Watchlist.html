@@ -2,99 +2,136 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Del Norte Student Store</title>
-  <link rel="stylesheet" href="CSS/Store.css">
-  <link rel="stylesheet" href="CSS/StoreNavBar.css">
-
+    <title>Title</title>
 </head>
-  <body>
+<body style="background-color:#72c6ad;">
 
-    <ul>
-      <li><a class="active" href="#a">Store</a></li>
-      <li><a href="#b">Sale</a></li>
-      <li><a href="watchlist">Watchlist</a></li>
-      <li><a href="#d">Purchased</a></li>
-      <input type="text" class="input" placeholder="Search..">
-      <li style="float:right"><a href="checkout">Cart</a></li>
-    </ul>
+<h1>Watchlist</h1>
 
-    <h1>Del Norte Student Store</h1>
+<div class="row">
+    <div class="col-75">
+        <div class="container">
+            <form action="/action_page.php">
 
-    <div class="item-row">
-      <div class="item">
+                <div class="row">
+                    <div class="col-50">
+                        <label for="fname"><i class="fa fa-user"></i> Add to Watchlist</label>
+                        <input type="text" id="fname" name="filter" placeholder="search here">
+                        <input type="submit" value="enter" class="btn">
+
+                        <div class="row">
+                            <div class="col-50">
+                                <label for="state">Category Filter</label>
+                                <input type="text" id="state" name="state" placeholder="ex: shirts">
+                                <input type="submit" value="enter" class="btn">
+                            </div>
+                            <div class="col-50">
+                                <label for="zip">Enter Email here for any updates on your watchlist items!</label>
+                                <input type="text" id="zip" name="zip" placeholder="email">
+                                <input type="submit" value="enter" class="btn">
+                            </div>
+                            <div class="col-50">
+                                <label>
+                                    <input type="checkbox" checked="checked" name="che"> Add watchlist items to cart
+                                </label>
+                                <input type="submit" value="Continue to Cart" class="btn">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-50">
+                        <h3>Sales List Clearance!</h3>
+                        <div class="icon-container">
+                            <i class="fa fa-cc-visa" style="color:navy;"></i>
+                            <i class="fa fa-cc-amex" style="color:blue;"></i>
+                            <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                            <i class="fa fa-cc-discover" style="color:orange;"></i>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Head back to store" class="btn">
+            </form>
+        </div>
+    </div>
+
+</div>
+<ul>
+    <li><a class="active" href="#a">Store</a></li>
+    <li><a href="#b">Sale</a></li>
+    <li><a href="watchlist">Watchlist</a></li>
+    <li><a href="#d">Purchased</a></li>
+    <input type="text" class="input" placeholder="Search..">
+    <li style="float:right"><a href="checkout">Cart</a></li>
+</ul>
+
+<div class="item-row">
+    <div class="item">
         <img class="item-image" src="https://timage2.prepsportswear.com/GetImage.iaspx?d=44981&outputformat=png&p=5078&pc=navy&scale=92.4&schoolid=1988255&side=F&type=1&up_pp=Enter%20name%7C23%7C2021&up_ss=M&ver=6">
         <p>This short-sleeve t-shirt from Fruit of the Loom fits comfortably and breathes freely, making it an easy choice for displaying your Nighthawks pride. The short-sleeve t-shirt is built for comfort and durability with two-needle hemmed sleeves and bottom.</p>
         <button class="buyButton">Buy</button>
-      </div>
+    </div>
 
-      <div class="item">
+    <div class="item">
         <img class="item-image" src="https://timage2.prepsportswear.com/GetImage.iaspx?d=44981&outputformat=png&p=5179&pc=navy&scale=92.4&schoolid=1988255&side=F&type=1&up_pp=Enter%20name%7C23%7C2021&up_ss=M&ver=6">
         <p>This Del Norte High School Nighthawks t-shirt delivers superior softness, making it an easy choice for displaying your Nighthawks pride. Made from exclusive new fabric technology, it's as versatile as you need it to be, open to negotiations!</p>
         <button class="buyButton">Buy</button>
-      </div>
+    </div>
 
-      <div class="item">
+    <div class="item">
         <img class="item-image" src="https://timage2.prepsportswear.com/GetImage.iaspx?d=44981&outputformat=png&p=5076&pc=navy&scale=92.4&schoolid=1988255&side=F&type=1&up_pp=Enter%20name%7C23%7C2021&up_ss=M&ver=6">
         <p>Crafted for comfort, this traditional 8oz hooded sweatshirt is perfect for relaxing, and is a real value for a sportswear hoodie. Features a two-ply hood, dyed-to-match drawcord, set-in sleeves, and front pouch pocket.</p>
         <button class="buyButton">Buy</button>
-      </div>
     </div>
+</div>
 
-    <div class="item-row">
-      <div class="item">
+<div class="item-row">
+    <div class="item">
         <img class="item-image" src="https://timage2.prepsportswear.com/GetImage.iaspx?d=47671&outputformat=png&p=5131&pc=navy_grey&scale=92.4&schoolid=1988255&side=F&type=1&up_pp=Enter%20name%7C23%7C2021&up_ss=M&ver=6">
         <p>Sport a cool custom pro look, for yourself or the whole team, with this low profile embroidered cap. This Nighthawks hat has contrast stitching and visor edge, with a matching fabric undervisor, sweatband and velcro closure.</p>
         <button class="buyButton">Buy</button>
-      </div>
+    </div>
 
-      <div class="item">
+    <div class="item">
         <img class="item-image" src="https://timage2.prepsportswear.com/GetImage.iaspx?d=51454&outputformat=png&p=5519&pc=navy_heather&scale=92.4&schoolid=1988255&side=F&type=1&up_pp=Enter%20name%7C23%7C2021&up_ss=M&ver=6">
         <p>This protective face mask is made with a two layered construction of moisture wicking performance fabric and soft cotton jersey fabric. Designed to keep you safe and comfortable, while providing both function and fashion during all activities.</p>
         <button class="buyButton">Buy</button>
-      </div>
+    </div>
 
-      <div class="item">
+    <div class="item">
         <img class="item-image" src="https://timage2.prepsportswear.com/GetImage.iaspx?d=44981&outputformat=png&p=5180&pc=navy&scale=92.4&schoolid=1988255&side=F&type=1&up_pp=Enter%20name%7C23%7C2021&up_ss=M&ver=6">
         <p>This long-sleeve t-shirt delivers superior softness, making it an easy choice for displaying your Nighthawks pride. Made from exclusive new fabric technology, this t-shirt is crafted from ethically produced open-end yarn with the soft feel of cotton.</p>
         <button class="buyButton">Buy</button>
-      </div>
     </div>
+</div>
 
-    <div class="item-row">
-      <div class="item">
+<div class="item-row">
+    <div class="item">
         <img class="item-image" src="https://timage2.prepsportswear.com/GetImage.iaspx?d=42577&outputformat=png&p=5136&pc=j_navy&scale=120&schoolid=1988255&side=F&type=1&up_pp=Enter%20name%7C23%7C2021&up_ss=M&ver=6">
         <p>Stay warm and look good in this customized crewneck sweatshirt. This sweatshirt will keep you warm on the Nighthawks sidelines or in the stands. This sweatshirt is a great basic or for layering over your perfect tee.</p>
         <button class="buyButton">Buy</button>
-      </div>
+    </div>
 
-      <div class="item">
+    <div class="item">
         <img class="item-image" src="https://timage2.prepsportswear.com/GetImage.iaspx?d=44981&outputformat=png&p=5453&pc=navy_oxford&scale=92.4&schoolid=1988255&side=F&type=1&up_pp=Enter%20name%7C23%7C2021&up_ss=M&ver=6">
         <p>Get ready for game day with a Nighthawks Tri-Blend Varsity Tee. This Del Norte High School short sleeve, soft, lightweight, moisture wicking cut is perfect for on the field or off.</p>
         <button class="buyButton">Buy</button>
-      </div>
+    </div>
 
-      <div class="item">
+    <div class="item">
         <img class="item-image" src="https://timage2.prepsportswear.com/GetImage.iaspx?d=44981&outputformat=png&p=5158&pc=oxford_navy&scale=92.4&schoolid=1988255&side=F&type=1&up_pp=Enter%20name%7C23%7C2021&up_ss=M&ver=6">
         <p>Nothing says style & comfort like this Del Norte hoodie. Soft brushed poly fleece, complete with vibrant Nighthawks graphics - perfect for game day. This premium Nighthawks sweatshirt is hand crafted, designed, and stitched in the USA.</p>
         <button class="buyButton">Buy</button>
-      </div>
     </div>
+</div>
 
-    <div class="chat-popup" id="myForm">
-      <form action="/action_page.php" class="form-container">
-        <h1>Chat</h1>
-
-        <label for="msg"><b>Message</b></label>
-        <textarea placeholder="Type message.." name="msg" required></textarea>
-
-        <button type="submit" class="btn">Send</button>
-        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-      </form>
-    </div>
-
-  </body>
+</body>
 
 <style>
+p {text-align: center;}
+form {text-align: center;}
+h1 {text-align: center;}
+h3 {text-align: center;}
+
   {box-sizing: border-box;}
 
   /* Button used to open the chat form - fixed at the bottom of the page */
